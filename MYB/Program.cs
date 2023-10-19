@@ -157,8 +157,7 @@ namespace MYB
         }
         static void FillDatabaseWithTestData()
         {
-    
-
+   
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
