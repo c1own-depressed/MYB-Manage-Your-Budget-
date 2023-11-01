@@ -4,37 +4,55 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics.Metrics;
+using MYB.DAL;
+using DAL;
+using BLL;
 
 namespace MYB
 {
     internal class Program
     {
-        static string connectionString = "server=127.0.0.1;uid=root;pwd=1234;database=mybdb";
-        static void Main(string[] args)
+       static string connectionString = "server=127.0.0.1;uid=root;pwd=1234;database=mybdb";
+        static void Main()
         {
+            using (var context = new AppDBContext())
+            {
+                var query = new Queries(context);
 
-            CreateDatabase();
-            //FillDatabaseWithTestData();
-            Console.WriteLine("Displaying User Table Data:");
-            DisplayUserData();
-            Console.WriteLine();
-            Console.WriteLine("Displaying Expense Table Data:");
-            DisplayExpenseData();
-            Console.WriteLine();
-            Console.WriteLine("Displaying ExpenseCategory Table Data:");
-            DisplayExpenseCategoryData();
-            Console.WriteLine();
-            Console.WriteLine("Displaying Income Table Data:");
-            DisplayIncomeData();
-            Console.WriteLine();
-            Console.WriteLine("Displaying Saving Table Data:");
-            DisplaySavingData();
-            Console.WriteLine();
-            Console.WriteLine("Displaying Transaction Table Data:");
-            DisplayTransactionData();
-            Console.WriteLine();
+                UserQueries.AddUser("Romko53", "romkfdsaf28@gmail.com", "fsdafasdfsad");
 
+                // Get a user by ID
+                User user = query.GetUserById(1);
+                if (user != null)
+                {
+                    Console.WriteLine($"User ID: {user.Id}, Username: {user.Username}, Email: {user.Email}");
+                }
+            }
         }
+        //static void Main(string[] args)
+        //{
+        //    CreateDatabase();
+        //    //FillDatabaseWithTestData();
+        //    Console.WriteLine("Displaying User Table Data:");
+        //    DisplayUserData();
+        //    Console.WriteLine();
+        //    Console.WriteLine("Displaying Expense Table Data:");
+        //    DisplayExpenseData();
+        //    Console.WriteLine();
+        //    Console.WriteLine("Displaying ExpenseCategory Table Data:");
+        //    DisplayExpenseCategoryData();
+        //    Console.WriteLine();
+        //    Console.WriteLine("Displaying Income Table Data:");
+        //    DisplayIncomeData();
+        //    Console.WriteLine();
+        //    Console.WriteLine("Displaying Saving Table Data:");
+        //    DisplaySavingData();
+        //    Console.WriteLine();
+        //    Console.WriteLine("Displaying Transaction Table Data:");
+        //    DisplayTransactionData();
+        //    Console.WriteLine();
+
+        //}
         static void DisplayUserData()
         {
             
