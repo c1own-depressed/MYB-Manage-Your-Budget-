@@ -12,19 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
 
 namespace OtherPages
 {
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class SettingsPage : Page
+    public partial class SettingsPageView : Page
     {
-        public SettingsPage()
+        public SettingsPageView()
         {
             InitializeComponent();
-            string connectionString = "server=127.0.0.1;uid=root;pwd=1234;database=mybdb";
+         
 
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
