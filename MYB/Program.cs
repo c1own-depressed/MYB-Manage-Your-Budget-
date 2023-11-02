@@ -17,12 +17,12 @@ namespace MYB
         {
             using (var context = new AppDBContext())
             {
-                var query = new Queries(context);
+                //var query = new Queries(context);
 
                 UserQueries.AddUser("Romko53", "romkfdsaf28@gmail.com", "fsdafasdfsad");
 
                 // Get a user by ID
-                User user = query.GetUserById(1);
+                User user = Queries.GetUserById(1);
                 if (user != null)
                 {
                     Console.WriteLine($"User ID: {user.Id}, Username: {user.Username}, Email: {user.Email}");

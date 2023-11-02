@@ -1,6 +1,4 @@
-﻿using Presentation;
-using reg;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,24 +13,40 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace reg
+namespace Presentation
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GuestPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GuestPage : Page
     {
-        public MainWindow()
+        public GuestPage()
         {
             InitializeComponent();
         }
 
+        //private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    SignUpPage signUpPage = new SignUpPage(IncomeListView);
+        //    signUpPage.ShowDialog();
+        //}
+
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
-        {     
+        {
             try
             {
-                Signup signup = new Signup();
-                this.Content = signup;
+                // Your code here
+                //SignUpPage signUpPage = new SignUpPage();
+                //Window.GetWindow(this).Content = signUpPage;
+
+                //NavigationService nav = NavigationService.GetNavigationService(this);
+                //nav.Navigate(new Uri("SignUpPage.xaml", UriKind.RelativeOrAbsolute));
+
+                //SignUpPage signUpPage = new SignUpPage();
+                //Window.GetWindow(this).Content = signUpPage;
+
+                // Navigating to a page
+                mainFrame.Navigate(new Login()); // YourPage is a Page or UserControl
             }
             catch (Exception ex)
             {
@@ -43,9 +57,8 @@ namespace reg
 
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
-
-            Login login = new Login();
-            this.Content = login;
+            Login addIncomePage2 = new Login();
+            //addIncomePage2.ShowDialog();
         }
 
 
@@ -63,6 +76,5 @@ namespace reg
                 textBox.Text = "Create your login";
             }
         }
-
     }
 }

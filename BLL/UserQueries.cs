@@ -27,7 +27,27 @@ namespace BLL
 
         static public User GetUser(int userId)
         {
-            return new User();
+            return Queries.GetUserById(userId);
+        }
+
+        static public User GetUserByUsername(string username)
+        {
+            return Queries.GetUserByUsername(username);
+        }
+
+        static public int CheckCredentials(string username, string password)
+        {
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
+
+            User user = GetUserByUsername(username);
+            if (user.HashedPassword == hashedPassword)
+            {
+                return user.Id;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

@@ -28,6 +28,14 @@ namespace DAL
                    select user).FirstOrDefault();
         }
 
+        public static User GetUserByUsername(string username)
+        {
+            //return _context.Users.FirstOrDefault(u => u.Id == userId);
+            return (from user in _context.Users
+                    where user.Username == username
+                    select user).FirstOrDefault();
+        }
+
         public static List<ExpenseCategory> GetExpenseCategoriesByUserId(int userID)
         {
             return (from expenseCat in _context.ExpenseCategories
