@@ -19,7 +19,6 @@ namespace DAL
             _context = new AppDBContext();
         }
 
-
         public static User GetUserById(int userId)
         {
             //return _context.Users.FirstOrDefault(u => u.Id == userId);
@@ -33,6 +32,12 @@ namespace DAL
             //return _context.Users.FirstOrDefault(u => u.Id == userId);
             return (from user in _context.Users
                     where user.Username == username
+                    select user).FirstOrDefault();
+        }
+        public static User GetUserByEmail(string email)
+        {
+            return (from user in _context.Users
+                    where user.Email == email
                     select user).FirstOrDefault();
         }
 

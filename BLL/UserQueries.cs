@@ -8,8 +8,8 @@ namespace BLL
         static public User AddUser(string username, string email, string password)
         {
             // Install-Package BCrypt.Net
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
-
+            //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
+            string hashedPassword = password;
             User newUser = new User
             {
                 Username = username,
@@ -37,9 +37,15 @@ namespace BLL
 
         static public int CheckCredentials(string username, string password)
         {
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
+            if (password.Length == 0 || username.Length == 0)
+            {
+                return 0;
+            }
 
-            User user = GetUserByUsername(username);
+            //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
+            string hashedPassword = password;
+
+            User user = Queries.GetUserByUsername(username);
             if (user.HashedPassword == hashedPassword)
             {
                 return user.Id;
@@ -48,6 +54,16 @@ namespace BLL
             {
                 return 0;
             }
+        }
+
+        static public bool EmailExists(string email)
+        {
+            User user = Queries.GetUserByEmail(email);
+            if (user == null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

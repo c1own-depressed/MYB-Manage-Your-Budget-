@@ -37,25 +37,32 @@ namespace Presentation
             string password = PasswordTextBox.Text;
             //bool rememberMe = checkBox.IsChecked == true;
 
-            using (var context = new AppDBContext())
+            if (username.Length == 0 || password.Length == 0)
             {
-                int userId = UserQueries.CheckCredentials(username, password);
-                if (Convert.ToBoolean(userId))  //Convert.ToBoolean(userId)
-                {
-                    InnerUser user = new InnerUser
-                    {
-                        UserId = userId, 
-                    };
-                    UserManager.Instance.CurrentUser = user;
-
-                    Main main = new Main();
-                    Window.GetWindow(this).Content = main;
-                }
-                else
-                {
-                    MessageBox.Show("Invalid username or password. Please try again!");
-                }
+                MessageBox.Show("Login or password is empty");
             }
+            else
+            {
+                using (var context = new AppDBContext())
+                {
+                    int userId = UserQueries.CheckCredentials(username, password);
+                    if (Convert.ToBoolean(userId))  //Convert.ToBoolean(userId)
+                    {
+                        InnerUser user = new InnerUser
+                        {
+                            UserId = userId,
+                        };
+                        UserManager.Instance.CurrentUser = user;
+
+                        Main main = new Main();
+                        Window.GetWindow(this).Content = main;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid username or password. Please try again!");
+                    }
+                }
+            }           
         }
     }
 }

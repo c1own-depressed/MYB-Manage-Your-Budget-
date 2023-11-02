@@ -33,6 +33,6 @@
 
 
         <Button  Grid.Row="2" Content="Log in" Width="475" Height="104" VerticalAlignment="Top" FontSize="64" Foreground="White" Background="#6E6E6E" Margin="362,0,362,0" Click="Button_Click" />
-        <CheckBox x:Name="checkBox" Content="Remember me"  HorizontalAlignment="Center" Margin="0,280,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" Height="24" Width="164" FontSize="14" />
+        <!--<CheckBox x:Name="checkBox" Content="Remember me"  HorizontalAlignment="Center" Margin="0,280,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" Height="24" Width="164" FontSize="14" />-->
     </Grid>
 </Page>

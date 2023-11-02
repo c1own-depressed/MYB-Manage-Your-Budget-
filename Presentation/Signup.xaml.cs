@@ -1,4 +1,6 @@
-﻿using MYB.DAL;
+﻿using BLL;
+using MYB.DAL;
+using MYB_NEW;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,27 +30,23 @@ namespace Presentation
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //string username = usernameTextBox.Text;
-            //string email = emailTextBox.Text;
-            //string password = passwordTextBox.Text;
-
             using (var context = new AppDBContext())
             {
-                //var query = new Queries(context);
+                string username = UsernameTextBox.Text;
+                string email = EmailTextBox.Text;
+                string password = PasswordTextBox.Text;
 
-                if (true)// UserQueries.UserExists(username, email)
+                if (UserQueries.EmailExists(email))
                 {
-                    MessageBox.Show("This Username or email already exists. Please choose another one!");
+                    MessageBox.Show("This email already exists. Please choose another one!");
                 }
                 else
                 {
-                    //UserQueries.AddUser(username, email, password);
-
+                    UserQueries.AddUser(username, email, password);
                     MessageBox.Show("Congratulations, user registered successfully!");
-                    //Login logInPage = new Login();
-                    //Window.GetWindow(this).Content = logInPage;
 
-                    //Main.NavigationService.Navigate(new LogInPage());
+                    Login main = new Login();
+                    Window.GetWindow(this).Content = main;
                 }
             }
         }

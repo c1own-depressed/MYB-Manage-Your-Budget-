@@ -19,14 +19,19 @@ namespace MYB
             {
                 //var query = new Queries(context);
 
-                UserQueries.AddUser("Romko53", "romkfdsaf28@gmail.com", "fsdafasdfsad");
-
+                //UserQueries.AddUser("Romko53", "romkfdsaf28@gmail.com", "fsdafasdfsad");
+                //User user = Queries.GetUserByEmail("yar.rom.rom@fsg.com");
+                //Console.WriteLine(user);
+                //Console.WriteLine(user == null);
+                //int userId = UserQueries.CheckCredentials("yarromrom", "1234");
+                //Console.WriteLine(userId);
+                Console.WriteLine(UserQueries.EmailExists("bfsadfr@gmail.com"));
                 // Get a user by ID
-                User user = Queries.GetUserById(1);
-                if (user != null)
-                {
-                    Console.WriteLine($"User ID: {user.Id}, Username: {user.Username}, Email: {user.Email}");
-                }
+                //User user = Queries.GetUserById(1);
+                //if (user != null)
+                //{
+                //    Console.WriteLine($"User ID: {user.Id}, Username: {user.Username}, Email: {user.Email}");
+                //}
             }
         }
         //static void Main(string[] args)
