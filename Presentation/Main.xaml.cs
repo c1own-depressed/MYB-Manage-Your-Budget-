@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using BLL;
+using DAL;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MYB_NEW
@@ -8,6 +11,12 @@ namespace MYB_NEW
         public Main()
         {
             InitializeComponent();
+            InnerUser currentUser = UserManager.Instance.CurrentUser;
+            int userId = currentUser.UserId;
+
+            List<Income> incomes = IncomeQueries.GetIncomesByUserId(userId);
+            List<Saving> savings = SavingQueries.GetSavingsByUserId(userId);
+            List<ExpenseCategoryWithExpenses> expenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId);
         }
 
         private void AddIncome_Click(object sender, RoutedEventArgs e)

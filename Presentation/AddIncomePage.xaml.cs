@@ -22,7 +22,7 @@ namespace MYB_NEW
             double projectedIncome = double.Parse(ProjectedIncomeTextBox.Text); // Попередньо перевірте правильність введення
 
             // Створіть новий об'єкт доходу
-            Income newIncome = new Income(incomeTitle, projectedIncome);
+            IncomeUI newIncome = new IncomeUI(incomeTitle, projectedIncome);
 
             // Додайте новий дохід до списку доходів на головній сторінці (IncomeListView)
             if (incomeListView != null)

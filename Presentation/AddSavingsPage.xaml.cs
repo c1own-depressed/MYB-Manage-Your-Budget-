@@ -21,7 +21,7 @@ namespace MYB_NEW
             double amount = double.Parse(AmountTextBox.Text);
 
             // Створіть новий об'єкт "Savings"
-            Savings newSavings = new Savings(savingsTitle, amount);
+            SavingsUI newSavings = new SavingsUI(savingsTitle, amount);
 
             // Додайте новий "Savings" до списку на головній сторінці (SavingsListView)
             if (savingsListView != null)

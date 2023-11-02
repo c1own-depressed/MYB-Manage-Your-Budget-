@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace MYB_NEW
 {
-    public class Savings
+    public class IncomeUI
     {
         public string Title { get; set; }
-        public double Amount { get; set; }
+        public double ProjectedIncome { get; set; }
 
-        public Savings(string title, double amount)
+        public IncomeUI(string title, double projectedIncome)
         {
             Title = title;
-            Amount = amount;
+            ProjectedIncome = projectedIncome;
         }
     }
+
 }
+

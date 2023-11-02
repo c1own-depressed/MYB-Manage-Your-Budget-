@@ -146,7 +146,7 @@
 
                         <!-- Category 2 -->
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Category 2" FontSize="64" FontWeight="Bold" Width="Auto" HorizontalAlignment="Left"/>
+                            <TextBlock x:Name="test" Text="Category 2" FontSize="64" FontWeight="Bold" Width="Auto" HorizontalAlignment="Left"/>
                             <Button x:Name="EditCatogoryButton2" Click="EditCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="65" Height="65">
                                 <Image Source="Edit.png" Height="64" Width="64" />
                             </Button>
