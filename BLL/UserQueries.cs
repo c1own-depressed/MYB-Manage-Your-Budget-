@@ -20,10 +20,14 @@ namespace BLL
                 Currency = "uah",
             };
 
-            Queries query = new Queries();
-            query.AddUser(newUser);
+            Queries.AddUser(newUser);
 
             return newUser;
+        }
+
+        static public User GetUser(int userId)
+        {
+            return new User();
         }
     }
 }
