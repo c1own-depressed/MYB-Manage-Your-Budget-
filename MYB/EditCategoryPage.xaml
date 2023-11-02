@@ -1,0 +1,19 @@
+﻿<Window x:Class="MYB_NEW.EditCategoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="LightGray" Title="Income Page" Height="170" Width="280">
+    <Grid Margin="0,0,0,1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+
+        <TextBlock Text="Title of category" Grid.Row="2" Margin="22,47,-9,-6" FontWeight="Bold"/>
+        <TextBox Grid.Row="2" Margin="124,47,56,3" Height="16" Width="100" Background="White" BorderBrush="Black" BorderThickness="0"/>
+
+        <Button Content="Edit" Grid.Row="2" Width="100" HorizontalAlignment="Center" Margin="0,92,0,-54" BorderThickness="0" Background="#515151" Foreground="White" FontWeight="DemiBold"/>
+    </Grid>
+</Window>
