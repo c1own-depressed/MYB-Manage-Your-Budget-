@@ -9,7 +9,7 @@ namespace BLL
 {
     public class SavingQueries
     {
-        static public List<Saving> GetIncomesByUserId(int userId)
+        static public List<Saving> GetSavingsByUserId(int userId)
         {
             List<Saving> savings = Queries.GetSavingsByUserId(userId);
             return savings;
