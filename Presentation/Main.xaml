@@ -28,13 +28,19 @@
     </Page.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid Background="LightGray">
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <!--<MenuItem Header="Save"></MenuItem>-->
+                    <MenuItem Header="Exit" Click="Exit_Click"></MenuItem>
+                </ContextMenu>
+            </Grid.ContextMenu>
             <!-- Block: Income -->
             <Border BorderBrush="Black" BorderThickness="0" Margin="70,30,15,0" Width="360" HorizontalAlignment="Left">
                 <StackPanel>
                     <TextBlock Text="Income" FontSize="64" FontWeight="Bold" HorizontalAlignment="Left" Height="100" />
                     <StackPanel x:Name="IncomeListView" Background="LightGray">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Income 1" FontSize="40" FontWeight="DemiBold" Width="Auto" HorizontalAlignment="Left"/>
+                        <!--<StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="IncomeTextBlock1" Text="" FontSize="40" FontWeight="DemiBold" Width="Auto" HorizontalAlignment="Left"/>
                             <Button x:Name="EditIncomeButton1" Click="EditIncome_Click" Style="{StaticResource VisibleButtonStyle}" Width="40" Height="40">
                                     <Image Source="Edit.png" Height="40" Width="40" />
                                 </Button>
@@ -43,7 +49,7 @@
                                 </Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Income 2" FontSize="40" FontWeight="DemiBold" Width="Auto" HorizontalAlignment="Left"/>
+                            <TextBlock x:Name="IncomeTextBlock2" Text="" FontSize="40" FontWeight="DemiBold" Width="Auto" HorizontalAlignment="Left"/>
                             <Button x:Name="EditIncomeButton2" Click="EditIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41">
                                 <Image Source="Edit.png" Height="40" Width="40" />
                             </Button>
@@ -52,14 +58,14 @@
                             </Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Income 3" FontSize="40" FontWeight="DemiBold" Width="Auto" HorizontalAlignment="Left"/>
+                            <TextBlock x:Name="IncomeTextBlock3" Text="" FontSize="40" FontWeight="DemiBold" Width="Auto" HorizontalAlignment="Left"/>
                             <Button x:Name="EditIncomeButton3" Click="EditIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41">
                                 <Image Source="Edit.png" Height="40" Width="40" />
                             </Button>
                             <Button x:Name="DeleteIncomeButton3" Click="DeleteIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41" BorderThickness="0">
                                 <Image Source="Delete.png" Height="40" Width="40" />
                             </Button>
-                        </StackPanel>
+                        </StackPanel>-->
                     </StackPanel>
                     <Button  Content="Add Income" Click="AddIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="258" FontWeight="Bold" FontSize="40"/>
                 </StackPanel>
@@ -71,7 +77,7 @@
                 <StackPanel>
                     <TextBlock Text="Savings" FontSize="64" FontWeight="Bold" HorizontalAlignment="Left"/>
                     <StackPanel x:Name="SavingsListView" Background="LightGray">
-                        <StackPanel Orientation="Horizontal">
+                        <!--<StackPanel Orientation="Horizontal">
                             <TextBlock Text="Savings 1" FontSize="40" FontWeight="DemiBold" Width="Auto" HorizontalAlignment="Left"/>
                             <Button x:Name="EditSavongsButton1" Click="EditSavings_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41">
                                 <Image Source="Edit.png" Height="40" Width="40" />
@@ -97,7 +103,7 @@
                             <Button x:Name="DeleteSavingsButton3" Click="DeleteSavings_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41" BorderThickness="0">
                                 <Image Source="Delete.png" Height="40" Width="40" />
                             </Button>
-                        </StackPanel>
+                        </StackPanel>-->
                     </StackPanel>
                     <Button  Content="Add Savings" Click="AddSavings_Click" Style="{StaticResource InvisibleButtonStyle}" Width="250" FontWeight="Bold" FontSize="40"/>
                 </StackPanel>
@@ -109,7 +115,7 @@
                     <TextBlock Text="Expenses" FontSize="64" FontWeight="Bold"/>
                     <StackPanel x:Name="CategoriesListView" Background="LightGray" Width="500">
                         <!-- Category 1 -->
-                        <StackPanel Orientation="Horizontal">
+                        <!--<StackPanel Orientation="Horizontal">
                             <TextBlock Text="Category 1" FontSize="64" FontWeight="Bold" Width="Auto" HorizontalAlignment="Left"/>
                             <Button x:Name="EditCatogoryButton1" Click="EditCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="65" Height="65">
                                 <Image Source="Edit.png" Height="64" Width="64" />
@@ -142,10 +148,10 @@
                                 </Button>
                             </StackPanel>
                             <Button x:Name="AddExpenseCategory1"  Content="Add Expense" Click="AddExpense_Click" Style="{StaticResource InvisibleButtonStyle}" Width="360" HorizontalAlignment="Left" FontWeight="Bold" FontSize="40"/>
-                        </StackPanel>
+                        </StackPanel>-->
 
                         <!-- Category 2 -->
-                        <StackPanel Orientation="Horizontal">
+                        <!-- <StackPanel Orientation="Horizontal">
                             <TextBlock x:Name="test" Text="Category 2" FontSize="64" FontWeight="Bold" Width="Auto" HorizontalAlignment="Left"/>
                             <Button x:Name="EditCatogoryButton2" Click="EditCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="65" Height="65">
                                 <Image Source="Edit.png" Height="64" Width="64" />
@@ -176,9 +182,9 @@
                                 <Button x:Name="DeleteCategory2ExpenseButton2" Click="EditIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41" BorderThickness="0">
                                     <Image Source="Delete.png" Height="40" Width="40" />
                                 </Button>
-                            </StackPanel>
+                            </StackPanel
                             <Button x:Name="AddExpenseCategory2" Content="Add Expense" Click="AddExpense_Click" Style="{StaticResource InvisibleButtonStyle}" Width="360" HorizontalAlignment="Left" FontWeight="Bold" FontSize="40"/>
-                        </StackPanel>
+                        </StackPanel>-->
                     </StackPanel>
                     <Button Content="Add Category" Click="AddCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="360" HorizontalAlignment="Left" FontWeight="Bold" FontSize="50"/>
                 </StackPanel>
@@ -191,7 +197,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="User_name" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" Padding="0,3,5,0" Margin="-94,0,0,22" Width="209" />
+                        <TextBlock x:Name="UsernameTextBlock" Text="User_name" FontSize="40" FontWeight="Bold" HorizontalAlignment="Right" Padding="0,3,5,0" Margin="-94,0,0,22" Width="209" />
                         <Border BorderBrush="Black" BorderThickness="0" Margin="10,10,15,0" Width="Auto" HorizontalAlignment="Right">
                             <StackPanel>
                                 <Grid Height="47">
@@ -203,7 +209,7 @@
                                     <Button x:Name="DataExportButton" Content="Data export" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,117,0,-130" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" />
                                     <Button x:Name="TipsAndTricksButton" Content="Tips and tricks" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,177,0,-190" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" />
                                     <Button x:Name="SettingsButton" Content="Settings" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,237,0,-250" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" />
-                                    <Button x:Name="SignOutButton" Content="Sign out" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,297,0,-310" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" />
+                                    <Button x:Name="SignOutButton" Content="Sign out" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,297,0,-310" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="SignOutButton_Click" />
 
                                     <Button x:Name="ToggleButton" Click="Toggle_Click" Height="40" Foreground="White" Margin="118,0,0,0" Width="40" BorderThickness="0">
                                         <Image Source="menu.png" Width="40" Height="40"/>

@@ -19,5 +19,16 @@ namespace BLL
             List<Income> incomes = Queries.GetIncomeByUserId(userId);
             return incomes;
         }
+
+        static public void AddIncome(int userId, string incomeName, int amount)
+        {
+            Income income = new Income()
+            {
+                UserId = userId,
+                IncomeName = incomeName,
+                Amount = amount
+            };
+            Queries.AddIncome(income);
+        }
     }
 }

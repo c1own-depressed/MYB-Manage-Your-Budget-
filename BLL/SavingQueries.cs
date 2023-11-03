@@ -14,5 +14,16 @@ namespace BLL
             List<Saving> savings = Queries.GetSavingsByUserId(userId);
             return savings;
         }
+
+        static public void AddSavings(int userId, string savingName, int amount)
+        {
+            Saving saving = new Saving()
+            {
+                UserId = userId,
+                SavingName = savingName,
+                Amount = amount
+            };
+            Queries.AddSaving(saving);
+        }
     }
 }

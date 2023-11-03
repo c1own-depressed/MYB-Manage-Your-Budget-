@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using BLL;
+using Microsoft.VisualBasic;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +20,10 @@ namespace MYB_NEW
         {
             string savingsTitle = SavingsTitleTextBox.Text;
             double amount = double.Parse(AmountTextBox.Text);
+
+            InnerUser currentUser = UserManager.Instance.CurrentUser;
+            int userId = currentUser.UserId;
+            SavingQueries.AddSavings(userId, savingsTitle, (int)amount);
 
             // Створіть новий об'єкт "Savings"
             SavingsUI newSavings = new SavingsUI(savingsTitle, amount);

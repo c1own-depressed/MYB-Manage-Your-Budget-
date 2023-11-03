@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,12 +27,17 @@ namespace MYB_NEW
         {
             InitializeComponent();
             this.expenseCategory = category;
+            
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             string expenseTitle = ExpenseTitleTextBox.Text;
             double plannedBudget = double.Parse(PlannedBudgetTextBox.Text);
+         
+            //category.
+            int categoryId = 1;
+            ExpenseQueries.AddExpense(categoryId, expenseTitle, (int)plannedBudget);
 
             // Створіть новий об'єкт "Expense"
             Expense newExpense = new Expense(expenseTitle, plannedBudget, expenseCategory);
