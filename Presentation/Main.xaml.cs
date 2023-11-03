@@ -1,5 +1,6 @@
 ﻿using BLL;
 using DAL;
+using OtherPages;
 using Presentation;
 using reg;
 using System.Collections.Generic;
@@ -276,6 +277,24 @@ namespace MYB_NEW
             //UserManager.Instance.LogOutUser();
             Login login = new Login();
             Window.GetWindow(this).Content = login;
+        }
+
+        private void DataExportButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExportDataPage export_data = new ExportDataPage();
+            Window.GetWindow(this).Content = export_data;
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsPageView settingsPage = new SettingsPageView();
+            Window.GetWindow(this).Content = settingsPage;
+        }
+
+        private void TransactionButton_Click(object sender, RoutedEventArgs e)
+        {
+            New_transaction new_transaction = new New_transaction();
+            Window.GetWindow(this).Content = new_transaction;
         }
     }
 }

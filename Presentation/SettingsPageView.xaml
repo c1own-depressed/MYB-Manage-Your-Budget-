@@ -47,7 +47,7 @@
 
             <Button Content="Save" Width="100" Height="30" Margin="0 20 0 0" Click="SaveButton_Click" Background="#474747" Foreground="Black" />
         </StackPanel>
-        <Frame Name="SettingsPage" NavigationUIVisibility="Hidden"/>
+ 
     </Grid>
     
 </Page>

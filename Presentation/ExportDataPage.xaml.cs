@@ -16,6 +16,8 @@ using System.Data.SqlClient;
 using Microsoft.Win32;
 
 using System.IO;
+using MYB_NEW;
+
 namespace OtherPages
 {
     /// <summary>
@@ -29,12 +31,9 @@ namespace OtherPages
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
+            Main main = new Main();
+            Window.GetWindow(this).Content = main;
         }
-
         private void ExportButton_Click(object sender, RoutedEventArgs e)
         {
 

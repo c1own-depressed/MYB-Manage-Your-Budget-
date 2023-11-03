@@ -27,7 +27,7 @@ namespace MYB.DAL
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "server=localhost;user=root;password=uTnw0PIh65_!;database=mybdb2";
+            var connectionString = "server=localhost;user=root;password=qqwwee112233;database=mybdb";
 
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 32));
 
