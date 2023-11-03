@@ -46,13 +46,13 @@ namespace BLL
             string hashedPassword = password;
 
             User user = Queries.GetUserByUsername(username);
-            if (user.HashedPassword == hashedPassword)
+            if (user == null || user.HashedPassword != hashedPassword)
             {
-                return user.Id;
+                return 0;
             }
             else
             {
-                return 0;
+                return user.Id;
             }
         }
 

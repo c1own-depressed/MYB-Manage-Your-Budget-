@@ -29,6 +29,18 @@ namespace BLL
                 }
                 return _instance;
             }
+            set { _instance = value; }
+        }
+        public void LogInUser(InnerUser user)
+        {
+            // Set the current user when logging in
+            CurrentUser = user;
+        }
+
+        public void LogOutUser()
+        {
+            // Reset the current user when logging out
+            CurrentUser = null;
         }
     }
 }

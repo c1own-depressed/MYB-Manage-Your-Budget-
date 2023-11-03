@@ -39,5 +39,26 @@ namespace BLL
             return categoriesWithExpenses;
         }
 
+        static public void AddExpenseCategory(int userId, string expenseCategoryName)
+        {
+            ExpenseCategory expenseCategory = new ExpenseCategory()
+            {
+                UserId = userId,
+                CategoryName = expenseCategoryName
+            };
+            Queries.AddExpenseCategory(expenseCategory);
+        }
+
+        static public void AddExpense(int expenseCategoryId, string expenseName, int amount)
+        {
+            Expense expense = new Expense()
+            {
+                ExpenseCategoryId = expenseCategoryId,
+                ExpenseName = expenseName,
+                Amount = amount
+            };
+            Queries.AddExpense(expense);
+        }
+
     }
 }

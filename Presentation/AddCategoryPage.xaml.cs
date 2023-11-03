@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -22,6 +23,12 @@ namespace MYB_NEW
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             string categoryTitle = CategoryTitleTextBox.Text;
+
+            InnerUser currentUser = UserManager.Instance.CurrentUser;
+            int userId = currentUser.UserId;
+
+            ExpenseQueries.AddExpenseCategory(userId, categoryTitle);
+
 
             // Create a new category block
             Border newCategoryBlock = new Border

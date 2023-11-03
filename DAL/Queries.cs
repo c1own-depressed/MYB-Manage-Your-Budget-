@@ -29,10 +29,10 @@ namespace DAL
 
         public static User GetUserByUsername(string username)
         {
-            //return _context.Users.FirstOrDefault(u => u.Id == userId);
-            return (from user in _context.Users
-                    where user.Username == username
-                    select user).FirstOrDefault();
+            return _context.Users.FirstOrDefault(u => u.Username == username);
+            //return (from user in _context.Users
+            //        where user.Username == username
+            //        select user).FirstOrDefault();
         }
         public static User GetUserByEmail(string email)
         {
@@ -79,6 +79,36 @@ namespace DAL
         public static void AddUser(User user)
         {
             _context.Users.Add(user);
+            _context.SaveChanges();
+        }
+
+        public static void AddIncome(Income income)
+        {
+            _context.Incomes.Add(income);
+            _context.SaveChanges();
+        }
+
+        public static void AddSaving(Saving saving)
+        {
+            _context.Savings.Add(saving);
+            _context.SaveChanges();
+        }
+
+        public static void AddExpenseCategory(ExpenseCategory expenseCategory)
+        {
+            _context.ExpenseCategories.Add(expenseCategory);
+            _context.SaveChanges();
+        }
+
+        public static void AddExpense(Expense expense)
+        {
+            _context.Expenses.Add(expense);
+            _context.SaveChanges();
+        }
+
+        public static void AddTransaction(Transaction transaction)
+        {
+            _context.Transactions.Add(transaction);
             _context.SaveChanges();
         }
     }
