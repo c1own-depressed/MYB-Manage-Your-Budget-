@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MYB_NEW;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,10 +30,8 @@ namespace OtherPages
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
+            Main main = new Main();
+            Window.GetWindow(this).Content = main;
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {

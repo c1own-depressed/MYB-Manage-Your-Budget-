@@ -1,7 +1,7 @@
 ﻿<Page x:Class="MYB_NEW.Main"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="Main Page" Height="Auto" Width="1440">
+      Title="Main Page" Height="Auto" Width="1440" Background="#d3d3d3">
     <Page.Resources>
         <Style x:Key="VisibleButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -206,9 +206,9 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Button x:Name="StatisticButton" Content="Statistic" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,66,0,-72" BorderBrush="Black" BorderThickness="1" />
-                                    <Button x:Name="DataExportButton" Content="Data export" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,117,0,-130" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" />
+                                    <Button x:Name="DataExportButton" Content="Data export" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,117,0,-130" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="DataExportButton_Click" />
                                     <Button x:Name="TipsAndTricksButton" Content="Tips and tricks" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,177,0,-190" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" />
-                                    <Button x:Name="SettingsButton" Content="Settings" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,237,0,-250" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" />
+                                    <Button x:Name="SettingsButton" Content="Settings" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,237,0,-250" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="SettingsButton_Click" />
                                     <Button x:Name="SignOutButton" Content="Sign out" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,297,0,-310" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="SignOutButton_Click" />
 
                                     <Button x:Name="ToggleButton" Click="Toggle_Click" Height="40" Foreground="White" Margin="118,0,0,0" Width="40" BorderThickness="0">
@@ -224,7 +224,7 @@
 
             <Border BorderBrush="Black" BorderThickness="0"  Width="396" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <StackPanel>
-                    <Button Content="Add Transaction" Style="{StaticResource InvisibleButtonStyle}"  Width="415" FontWeight="Bold"  FontSize="48"/>
+                    <Button Click="TransactionButton_Click" Content="Add Transaction" Style="{StaticResource InvisibleButtonStyle}"  Width="415" FontWeight="Bold"  FontSize="48" />
                 </StackPanel>
             </Border>
         </Grid>
