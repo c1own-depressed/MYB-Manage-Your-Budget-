@@ -41,6 +41,13 @@ namespace DAL
                     select user).FirstOrDefault();
         }
 
+        public static ExpenseCategory GetExpenseCategoryById(int expenseCategoryId)
+        {
+            return (from expenseCat in _context.ExpenseCategories
+                    where expenseCat.Id == expenseCategoryId
+                    select expenseCat).First();
+        }
+
         public static List<ExpenseCategory> GetExpenseCategoriesByUserId(int userID)
         {
             return (from expenseCat in _context.ExpenseCategories
@@ -48,7 +55,7 @@ namespace DAL
                    select expenseCat).ToList();
         }
 
-        public static List<Expense> GetExpensesByExpenseCategory(int expenseCategoryID)
+        public static List<Expense> GetExpensesByExpenseCategoryId(int expenseCategoryID)
         {
             return (from expense in _context.Expenses
                    where expense.ExpenseCategoryId == expenseCategoryID
@@ -110,6 +117,33 @@ namespace DAL
         {
             _context.Transactions.Add(transaction);
             _context.SaveChanges();
+        }
+
+        public static User UpdateUser(int userId, string language, bool isLightTheme, string currency)
+        {
+            var existingUser = _context.Users.Find(userId);
+
+            if (existingUser != null)
+            {
+                existingUser.LightTheme = isLightTheme;
+                existingUser.Language = language;
+                existingUser.Currency = currency;
+
+                _context.SaveChanges();
+            }
+
+            return GetUserById(userId);
+        }
+
+        public static void DeleteUser(int userId)
+        {
+            var userToDelete = _context.Users.Find(userId);
+
+            if (userToDelete != null)
+            {
+                _context.Users.Remove(userToDelete);
+                _context.SaveChanges();
+            }
         }
     }
 }
