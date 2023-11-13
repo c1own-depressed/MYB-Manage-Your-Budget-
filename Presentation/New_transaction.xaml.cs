@@ -1,4 +1,6 @@
-﻿using MYB_NEW;
+﻿using BLL;
+using DAL;
+using MYB_NEW;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +22,61 @@ namespace OtherPages
     /// </summary>
     public partial class New_transaction : Page
     {
+        private int userId;
         public New_transaction()
         {
             InitializeComponent();
+            InnerUser currentUser = UserManager.Instance.CurrentUser;
+            userId = currentUser.UserId;
 
-       
-            //string connectionString = "server=127.0.0.1;uid=root;pwd=1234;database=mybdb";
+            List<ExpenseCategoryWithExpenses> categoriesWithExpenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId);
+            foreach (var categoryWithExpenses in categoriesWithExpenses)
+            {
+                CategoryComboBox.Items.Add(categoryWithExpenses.expenseCategory.CategoryName);
+            }
 
+          
+            CategoryComboBox.SelectionChanged += CategoryComboBox_SelectionChanged;
+
+            
+            ExpenseComboBox.IsEnabled = false;
+            CostTextBox.IsEnabled = false;
+
+        }
+
+        private void CategoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ExpenseComboBox.Items.Clear();
+
+            if (CategoryComboBox.SelectedItem != null)
+            {
+                
+                string selectedCategory = CategoryComboBox.SelectedItem.ToString();
+
+                
+                var selectedCategoryWithExpenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId)
+                    .FirstOrDefault(category => category.expenseCategory.CategoryName == selectedCategory);
+
+              
+                if (selectedCategoryWithExpenses != null)
+                {
+                    foreach (var expense in selectedCategoryWithExpenses.expenses)
+                    {
+                        ComboBoxItem comboBoxItem = new ComboBoxItem();
+                        comboBoxItem.Content = expense.ExpenseName;
+                        ExpenseComboBox.Items.Add(comboBoxItem);
+                    }
+                }
+
+                
+                ExpenseComboBox.IsEnabled = true;
+                CostTextBox.IsEnabled = true;
+            }
+            else
+            {
+                CostTextBox.IsEnabled = false;
+                ExpenseComboBox.IsEnabled = false;
+            }
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
@@ -35,16 +85,10 @@ namespace OtherPages
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            ComboBoxItem selectedCategory = (ComboBoxItem)CategoryComboBox.SelectedItem;
-            string category = selectedCategory.Content.ToString();
-
-
-            ComboBoxItem selectedParagraph = (ComboBoxItem)ParagraphComboBox.SelectedItem;
-            string theme = selectedParagraph.Content.ToString();
-
-            
-            string cost = CostTextBox.Text;
-            MessageBox.Show(category + theme + cost);
+ 
+            int cost = Convert.ToInt32(CostTextBox.Text);
+            string transactionName = TransactionTextBox.Text;
+            TransactionQueries.AddTransaction(transactionName, cost, 1);
         }
     }
 }

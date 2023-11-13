@@ -17,6 +17,8 @@ using Microsoft.Win32;
 
 using System.IO;
 using MYB_NEW;
+using BLL;
+using DAL;
 
 namespace OtherPages
 {
@@ -25,9 +27,17 @@ namespace OtherPages
     /// </summary>
     public partial class ExportDataPage : Page
     {
+        private int userId;
         public ExportDataPage()
         {
             InitializeComponent();
+            InnerUser currentUser = UserManager.Instance.CurrentUser;
+            userId = currentUser.UserId;
+            List<ExpenseCategoryWithExpenses> categoriesWithExpenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId);
+            foreach (var categoryWithExpenses in categoriesWithExpenses)
+            {
+                CategoryComboBox.Items.Add(categoryWithExpenses.expenseCategory.CategoryName);
+            }
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
@@ -36,8 +46,57 @@ namespace OtherPages
         }
         private void ExportButton_Click(object sender, RoutedEventArgs e)
         {
+            
+            string selectedCategory = CategoryComboBox.SelectedItem?.ToString();
 
+
+            if (string.IsNullOrEmpty(selectedCategory))
+            {
+                MessageBox.Show("Please select a category.");
+                return;
+            }
+
+
+            DateTime? from = StartDatePicker.SelectedDate;
+            DateTime? to = EndDatePicker.SelectedDate;
+
+
+            if (!from.HasValue || !to.HasValue)
+            {
+                MessageBox.Show("Please select both start and end dates.");
+                return;
+            }
+
+            try
+            {
+
+                int expenseCategoryId = 1;
+
+
+                MemoryStream memoryStream = TransactionQueries.GetCSVMemoryStream(expenseCategoryId, from.Value, to.Value);
+               
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                  
+                    string fileName = saveFileDialog.FileName;
+
+                  
+                    File.WriteAllBytes(fileName, memoryStream.ToArray());
+
+                    MessageBox.Show("File saved successfully!");
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
         }
+
         //private void ExportButton_Click(object sender, RoutedEventArgs e)
         //{
         //    string category = CategoryComboBox.SelectedItem?.ToString();

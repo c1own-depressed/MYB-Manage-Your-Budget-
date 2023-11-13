@@ -23,7 +23,7 @@
             <TextBlock Text="Settings" FontWeight="Bold" FontSize="28" Margin="0 0 0 10" TextAlignment="Center" />
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Center" Width="178">
                 <TextBlock Text="Language:" Margin="0 5 20 5" Width="54" TextAlignment="Center"/>
-                <ComboBox x:Name="LanguageComboBox" Width="100" Height="20">
+                <ComboBox x:Name="LanguageComboBox" Width="100" Height="25">
                     <ComboBoxItem Content="Ukrainian"/>
                     <ComboBoxItem Content="English"/>
 
@@ -31,14 +31,15 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Stretch" Width="231">
                 <TextBlock Text="Choose theme:" Width="80" HorizontalAlignment="Left" TextAlignment="Center" Margin="0 5 20 5"/>
-                <ComboBox x:Name="ThemeComboBox" Width="100" Height="20">
-                    <ComboBoxItem Content="Bright"/>
+                <ComboBox x:Name="ThemeComboBox" Width="100" Height="25">
+                    
                     <ComboBoxItem Content="Dark"/>
+                    <ComboBoxItem Content="Light"/>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Center">
                 <TextBlock Text="Currency:" Margin="0 5 20 5" />
-                <ComboBox Name="CurrencyComboBox" Width="100" Height="20">
+                <ComboBox Name="CurrencyComboBox" Width="100" Height="25">
                     <ComboBoxItem Content="UAH"/>
                     <ComboBoxItem Content="USD"/>
                     <ComboBoxItem Content="EUR"/>
