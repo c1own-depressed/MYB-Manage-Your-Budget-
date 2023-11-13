@@ -28,12 +28,13 @@ namespace OtherPages
     public partial class ExportDataPage : Page
     {
         private int userId;
+        List<ExpenseCategoryWithExpenses> categoriesWithExpenses;
         public ExportDataPage()
         {
             InitializeComponent();
             InnerUser currentUser = UserManager.Instance.CurrentUser;
             userId = currentUser.UserId;
-            List<ExpenseCategoryWithExpenses> categoriesWithExpenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId);
+            categoriesWithExpenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId);
             foreach (var categoryWithExpenses in categoriesWithExpenses)
             {
                 CategoryComboBox.Items.Add(categoryWithExpenses.expenseCategory.CategoryName);
@@ -69,11 +70,12 @@ namespace OtherPages
 
             try
             {
+           
+                var expensesAndCategory = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId)
+                    .FirstOrDefault(category => category.expenseCategory.CategoryName == selectedCategory); 
 
-                int expenseCategoryId = 1;
 
-
-                MemoryStream memoryStream = TransactionQueries.GetCSVMemoryStream(expenseCategoryId, from.Value, to.Value);
+                MemoryStream memoryStream = TransactionQueries.GetCSVMemoryStream(expensesAndCategory.expenseCategory.Id, from.Value, to.Value);
                
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";
