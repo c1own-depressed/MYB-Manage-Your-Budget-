@@ -28,7 +28,7 @@ namespace BLL
 
             foreach (var category in expenseCategoryies)
             {
-                List<Expense> expenses = Queries.GetExpensesByExpenseCategory(category.Id);
+                List<Expense> expenses = Queries.GetExpensesByExpenseCategoryId(category.Id);
                 categoriesWithExpenses.Add(new ExpenseCategoryWithExpenses
                 {
                     expenseCategory = category,

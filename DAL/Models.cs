@@ -78,7 +78,7 @@ namespace DAL
         public int Id { get; set; }
         public string TransactionName { get; set; }
         public int Amount { get; set; }
-        public DateTime date { get; set; }
+        public DateTime Date { get; set; }
         public int ExpenseId { get; set; } // TODO: foreign key
 
     }

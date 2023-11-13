@@ -25,6 +25,11 @@ namespace BLL
             return newUser;
         }
 
+        static public User UpdateUser(int userId, string language, bool isLightTheme, string currency)
+        {
+            return Queries.UpdateUser(userId, language, isLightTheme, currency);
+        }
+
         static public User GetUser(int userId)
         {
             return Queries.GetUserById(userId);
