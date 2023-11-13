@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    internal class TransactionQueries
+    public class TransactionQueries
     {
         static public Transaction AddTransaction(string transactionName, int amount, int expenseId)
         {
