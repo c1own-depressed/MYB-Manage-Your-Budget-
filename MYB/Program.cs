@@ -17,6 +17,10 @@ namespace MYB
         {
             using (var context = new AppDBContext())
             {
+                var expenseCategoryId = ExpenseQueries.GetCategoriesAndExpensesByUserId(1)
+                    .FirstOrDefault(category => category.expenseCategory.CategoryName == "1");
+                var expenseId = expenseCategoryId.expenses.FirstOrDefault(expense => expense.ExpenseName == "4");
+                Console.WriteLine(expenseId.Id);
                 //var query = new Queries(context);
 
                 //UserQueries.AddUser("Romko53", "romkfdsaf28@gmail.com", "fsdafasdfsad");
@@ -35,31 +39,31 @@ namespace MYB
                 //    Console.WriteLine("res is null");
                 //}
                 //Console.WriteLine(res);
-                string username = "br1";
-                string password = "123";
-                if (password.Length == 0 || username.Length == 0)
-                {
-                    Console.WriteLine("0");
-                }
+                //string username = "br1";
+                //string password = "123";
+                //if (password.Length == 0 || username.Length == 0)
+                //{
+                //    Console.WriteLine("0");
+                //}
 
                 //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
-                string hashedPassword = password;
-                int userId = 0;
-                User user = Queries.GetUserByUsername(username);
-                if (user == null || user.HashedPassword != hashedPassword)
-                {
-                    Console.WriteLine("0 (2)");
-                }
-                else
-                {
-                    Console.WriteLine(user.Id);
-                    userId = user.Id;
-                }
+                //string hashedPassword = password;
+                //int userId = 0;
+                //User user = Queries.GetUserByUsername(username);
+                //if (user == null || user.HashedPassword != hashedPassword)
+                //{
+                //    Console.WriteLine("0 (2)");
+                //}
+                //else
+                //{
+                //    Console.WriteLine(user.Id);
+                //    userId = user.Id;
+                //}
 
-                if (Convert.ToBoolean(userId))  //Convert.ToBoolean(userId)
-                {
-                    Console.WriteLine("FJSKLDJFKSJDKF");
-                }
+                //if (Convert.ToBoolean(userId))  //Convert.ToBoolean(userId)
+                //{
+                //    Console.WriteLine("FJSKLDJFKSJDKF");
+                //}
 
 
                 // Get a user by ID

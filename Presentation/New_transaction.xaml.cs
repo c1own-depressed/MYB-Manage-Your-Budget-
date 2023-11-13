@@ -23,6 +23,7 @@ namespace OtherPages
     public partial class New_transaction : Page
     {
         private int userId;
+        private ExpenseCategoryWithExpenses selectedCategoryWithExpenses;
         public New_transaction()
         {
             InitializeComponent();
@@ -53,8 +54,8 @@ namespace OtherPages
                 
                 string selectedCategory = CategoryComboBox.SelectedItem.ToString();
 
-                
-                var selectedCategoryWithExpenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId)
+
+                selectedCategoryWithExpenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId)
                     .FirstOrDefault(category => category.expenseCategory.CategoryName == selectedCategory);
 
               
@@ -85,10 +86,12 @@ namespace OtherPages
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
- 
+            ComboBoxItem expenseItem = (ComboBoxItem)ExpenseComboBox.SelectedItem;
+            string expenseName = expenseItem.Content.ToString();
+            var expense = selectedCategoryWithExpenses.expenses.FirstOrDefault(expense => expense.ExpenseName == expenseName);
             int cost = Convert.ToInt32(CostTextBox.Text);
             string transactionName = TransactionTextBox.Text;
-            TransactionQueries.AddTransaction(transactionName, cost, 1);
+            TransactionQueries.AddTransaction(transactionName, cost, expense.Id);
         }
     }
 }
