@@ -296,5 +296,11 @@ namespace MYB_NEW
             New_transaction new_transaction = new New_transaction();
             Window.GetWindow(this).Content = new_transaction;
         }
+
+        private void TipsAndTricksButton_Click(object sender, RoutedEventArgs e)
+        {
+            TipsAndTricksPage tipsAndTricksPage = new TipsAndTricksPage();
+            Window.GetWindow(this).Content = tipsAndTricksPage;
+        }
     }
 }
