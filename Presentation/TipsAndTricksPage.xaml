@@ -35,7 +35,7 @@
                     
                         <TextBlock FontSize="18" Margin="0,0,0,10" Text="1. " />
                         <TextBlock FontSize="18" Margin="0,0,0,10" >
-                        <Hyperlink NavigateUri="https://www.investopedia.com/terms/z/zbb.asp" RequestNavigate="Hyperlink_RequestNavigate">
+                        <Hyperlink NavigateUri="https://www.anaplan.com/blog/zbb-zero-based-budgeting-guide/" RequestNavigate="Hyperlink_RequestNavigate">
                              <Run Text="Useful link 1" />
                          </Hyperlink>
                         </TextBlock>
@@ -44,7 +44,7 @@
 
                         <TextBlock FontSize="18" Margin="0,0,0,10" Text="2. " />
                         <TextBlock FontSize="18" Margin="0,0,0,10" TextWrapping="Wrap" >
-                            <Hyperlink NavigateUri="https://www.khanacademy.org/college-careers-more/personal-finance" RequestNavigate="Hyperlink_RequestNavigate">
+                            <Hyperlink NavigateUri="https://www.nerdwallet.com/article/finance/zero-based-budgeting-explained" RequestNavigate="Hyperlink_RequestNavigate">
                                     <Run Text="Useful link 2" />
                                 </Hyperlink>
                         </TextBlock>
@@ -52,7 +52,7 @@
                     <StackPanel Orientation="Horizontal">
 
                         <TextBlock FontSize="18" Margin="0,0,0,10" Text="3. " />
-                        <TextBlock FontSize="18" TextWrapping="Wrap" Height="84"><Hyperlink NavigateUri="https://vikna.tv/dlia-tebe/stosunky/vminnya-adaptuvatys-i-detalnyj-analiz-porady-dlya-planuvannya-simejnogo-byudzhetu/" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="Useful link 3" /></Hyperlink></TextBlock>
+                        <TextBlock FontSize="18" TextWrapping="Wrap" Height="84"><Hyperlink NavigateUri="https://www.indeed.com/career-advice/career-development/zero-based-budgeting" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="Useful link 3" /></Hyperlink></TextBlock>
 
                     </StackPanel>
                 </StackPanel>
