@@ -22,21 +22,27 @@ namespace MYB_NEW
     public partial class AddExpensePage : Window
     {
         private StackPanel expenseCategory;
-
+        private int categoryId;
         public AddExpensePage(StackPanel category)
         {
             InitializeComponent();
             this.expenseCategory = category;
-            
+
+        }
+        public AddExpensePage(StackPanel category, int categoryId)
+        {
+            InitializeComponent();
+            this.expenseCategory = category;
+            this.categoryId = categoryId;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             string expenseTitle = ExpenseTitleTextBox.Text;
             double plannedBudget = double.Parse(PlannedBudgetTextBox.Text);
-         
+
             //category.
-            int categoryId = 1;
+         
             ExpenseQueries.AddExpense(categoryId, expenseTitle, (int)plannedBudget);
 
             // Створіть новий об'єкт "Expense"
@@ -52,7 +58,7 @@ namespace MYB_NEW
                 TextBlock newExpenseTitle = new TextBlock
                 {
                     Text = newExpense.Title,
-                    FontSize = 40,
+                    FontSize = 30,
                     FontWeight = FontWeights.DemiBold
                 };
 
@@ -69,7 +75,7 @@ namespace MYB_NEW
                 TextBlock newExpenseBudget = new TextBlock
                 {
                     Text = $"0/{newExpense.Amount} $",
-                    FontSize = 32,
+                    FontSize = 24,
                     FontWeight = FontWeights.DemiBold,
                     Foreground = Brushes.Gray,
                     Height = 35
@@ -90,7 +96,7 @@ namespace MYB_NEW
                     }
                 }
             }
-
+           
             // Закрийте сторінку "AddExpensePage"
             this.Close();
         }

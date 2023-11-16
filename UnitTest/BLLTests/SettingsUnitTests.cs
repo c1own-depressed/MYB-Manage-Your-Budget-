@@ -11,7 +11,8 @@ namespace UnitTest.BLLTests
         [Fact]
         public void TestTest1()
         {
-            Assert.Equal(1, 1);
+            SettingsPageView settingsPageView = new SettingsPageView();
+            Assert.IsNotNull(settingsPageView);
         }
         [Fact]
         public void TestTest2()

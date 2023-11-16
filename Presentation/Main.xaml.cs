@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
+
 namespace MYB_NEW
 {
     public partial class Main : Page
@@ -42,6 +43,7 @@ namespace MYB_NEW
         {
             for (int i = 0; i < expenses.Count; i++)
             {
+                int categoryID = expenses[i].expenseCategory.Id;
                 Dictionary<Button, StackPanel> categoryExpenseButtonMap = new Dictionary<Button, StackPanel>();
                 Border newCategoryBlock = new Border
                 {
@@ -56,13 +58,48 @@ namespace MYB_NEW
                 TextBlock categoryHeader = new TextBlock
                 {
                     Text = expenses[i].expenseCategory.CategoryName,
-                    FontSize = 64,
+                    FontSize = 40,
                     FontWeight = FontWeights.Bold,
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Height = 100,
                 };
 
                 StackPanel categoryListView = new StackPanel();
+                foreach (var expense in expenses[i].expenses)
+                {
+                    StackPanel newExpensePanel = new StackPanel();
+                    newExpensePanel.Orientation = Orientation.Horizontal;
+
+                    TextBlock newExpenseTitle = new TextBlock
+                    {
+                        Text = expense.ExpenseName,
+                        FontSize = 20,
+                        FontWeight = FontWeights.DemiBold
+                    };
+
+                    TextBlock spaceText = new TextBlock
+                    {
+                        Text = " ",
+                        FontSize = 10,
+                        FontWeight = FontWeights.DemiBold,
+                        Foreground = Brushes.Gray
+                    };
+
+                    TextBlock newExpenseBudget = new TextBlock
+                    {
+                        Text = $"0/{expense.Amount} $",
+                        FontSize = 20,
+                        FontWeight = FontWeights.DemiBold,
+                        Foreground = Brushes.Gray,
+                        Height = 20
+                    };
+
+                    newExpensePanel.Children.Add(newExpenseTitle);
+                    newExpensePanel.Children.Add(spaceText);
+                    newExpensePanel.Children.Add(newExpenseBudget);
+
+                    categoryListView.Children.Add(newExpensePanel);
+                }
 
                 Button addCategoryExpenseButton = new Button
                 {
@@ -70,7 +107,7 @@ namespace MYB_NEW
                     Style = (Style)Resources["InvisibleButtonStyle"],
                     Width = 360,
                     FontWeight = FontWeights.Bold,
-                    FontSize = 40,
+                    FontSize = 30,
                 };
 
                 addCategoryExpenseButton.Click += (sender, e) =>
@@ -80,7 +117,8 @@ namespace MYB_NEW
                     if (categoryExpenseButtonMap.ContainsKey(clickedButton))
                     {
                         StackPanel expenseCategory = categoryExpenseButtonMap[clickedButton];
-                        AddExpensePage addExpensePage = new AddExpensePage(expenseCategory);
+                        
+                        AddExpensePage addExpensePage = new AddExpensePage(expenseCategory, categoryID);
                         addExpensePage.ShowDialog();
                     }
                 };
@@ -104,7 +142,7 @@ namespace MYB_NEW
                     CategoriesListView.Children.Add(newCategoryBlock);
                 }
 
-                
+
                 for (int j = 0; j < expenses[i].expenses.Count; j++)
                 {
                     // Створіть новий об'єкт "Expense"
@@ -120,7 +158,7 @@ namespace MYB_NEW
                         TextBlock newExpenseTitle = new TextBlock
                         {
                             Text = newExpense.Title,
-                            FontSize = 40,
+                            FontSize = 30,
                             FontWeight = FontWeights.DemiBold
                         };
 
@@ -140,7 +178,7 @@ namespace MYB_NEW
                             FontSize = 32,
                             FontWeight = FontWeights.DemiBold,
                             Foreground = Brushes.Gray,
-                            Height = 35
+                            Height = 32
                         };
 
                         // Додайте назву витрати, пробіл і бюджет в StackPanel
@@ -159,18 +197,18 @@ namespace MYB_NEW
                         //}
                     }
                 }
-            }         
+            }
         }
 
         private void AddIncome_Click(object sender, RoutedEventArgs e)
         {
-            AddIncomePage addIncomePage = new AddIncomePage(IncomeListView); 
+            AddIncomePage addIncomePage = new AddIncomePage(IncomeListView);
             addIncomePage.ShowDialog();
         }
 
         private void AddSavings_Click(object sender, RoutedEventArgs e)
         {
-            AddSavingsPage addSavingsPage = new AddSavingsPage(SavingsListView); 
+            AddSavingsPage addSavingsPage = new AddSavingsPage(SavingsListView);
             addSavingsPage.ShowDialog();
         }
 
