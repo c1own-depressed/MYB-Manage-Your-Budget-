@@ -302,5 +302,11 @@ namespace MYB_NEW
             TipsAndTricksPage tipsAndTricksPage = new TipsAndTricksPage();
             Window.GetWindow(this).Content = tipsAndTricksPage;
         }
+
+        private void StatisticButton_Click(object sender, RoutedEventArgs e)
+        {
+            Statistic1 statisticPage = new Statistic1();
+            Window.GetWindow(this).Content = statisticPage;
+        }
     }
 }
