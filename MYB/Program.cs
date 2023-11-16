@@ -12,92 +12,32 @@ namespace MYB
 {
     internal class Program
     {
-       static string connectionString = "server=127.0.0.1;uid=root;pwd=1234;database=mybdb";
-        static void Main()
+        static string connectionString = "server=127.0.0.1;uid=root;pwd=1234;database=mybdb";
+
+        static void Main(string[] args)
         {
-            using (var context = new AppDBContext())
-            {
-                var expenseCategoryId = ExpenseQueries.GetCategoriesAndExpensesByUserId(1)
-                    .FirstOrDefault(category => category.expenseCategory.CategoryName == "1");
-                var expenseId = expenseCategoryId.expenses.FirstOrDefault(expense => expense.ExpenseName == "4");
-                Console.WriteLine(expenseId.Id);
-                //var query = new Queries(context);
-
-                //UserQueries.AddUser("Romko53", "romkfdsaf28@gmail.com", "fsdafasdfsad");
-                //User user = Queries.GetUserByEmail("yar.rom.rom@fsg.com");
-                //Console.WriteLine(user);
-                //Console.WriteLine(user == null);
-                //int userId = UserQueries.CheckCredentials("yarromrom", "1234");
-                //Console.WriteLine(userId);
-                //Console.WriteLine(UserQueries.EmailExists("bfsadfr@gmail.com"));
-                //List<Income> incomes = IncomeQueries.GetIncomesByUserId(12);
-                //Console.WriteLine(incomes[0].IncomeName);
-                //var res = UserQueries.CheckCredentials("br1", "123");
-                //var res = UserQueries.GetUserByUsername("br1");
-                //if (res == null)
-                //{
-                //    Console.WriteLine("res is null");
-                //}
-                //Console.WriteLine(res);
-                //string username = "br1";
-                //string password = "123";
-                //if (password.Length == 0 || username.Length == 0)
-                //{
-                //    Console.WriteLine("0");
-                //}
-
-                //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
-                //string hashedPassword = password;
-                //int userId = 0;
-                //User user = Queries.GetUserByUsername(username);
-                //if (user == null || user.HashedPassword != hashedPassword)
-                //{
-                //    Console.WriteLine("0 (2)");
-                //}
-                //else
-                //{
-                //    Console.WriteLine(user.Id);
-                //    userId = user.Id;
-                //}
-
-                //if (Convert.ToBoolean(userId))  //Convert.ToBoolean(userId)
-                //{
-                //    Console.WriteLine("FJSKLDJFKSJDKF");
-                //}
-
-
-                // Get a user by ID
-                //User user = Queries.GetUserById(1);
-                //if (user != null)
-                //{
-                //    Console.WriteLine($"User ID: {user.Id}, Username: {user.Username}, Email: {user.Email}");
-                //}
-            }
+            CreateDatabase();
+            //FillDatabaseWithTestData();
+            Console.WriteLine("Displaying User Table Data:");
+            DisplayUserData();
+            Console.WriteLine();
+            Console.WriteLine("Displaying Expense Table Data:");
+            DisplayExpenseData();
+            Console.WriteLine();
+            Console.WriteLine("Displaying ExpenseCategory Table Data:");
+            DisplayExpenseCategoryData();
+            Console.WriteLine();
+            Console.WriteLine("Displaying Income Table Data:");
+            DisplayIncomeData();
+            Console.WriteLine();
+            Console.WriteLine("Displaying Saving Table Data:");
+            DisplaySavingData();
+            Console.WriteLine();
+            Console.WriteLine("Displaying Transaction Table Data:");
+            DisplayTransactionData();
+            Console.WriteLine();
         }
-        //static void Main(string[] args)
-        //{
-        //    CreateDatabase();
-        //    //FillDatabaseWithTestData();
-        //    Console.WriteLine("Displaying User Table Data:");
-        //    DisplayUserData();
-        //    Console.WriteLine();
-        //    Console.WriteLine("Displaying Expense Table Data:");
-        //    DisplayExpenseData();
-        //    Console.WriteLine();
-        //    Console.WriteLine("Displaying ExpenseCategory Table Data:");
-        //    DisplayExpenseCategoryData();
-        //    Console.WriteLine();
-        //    Console.WriteLine("Displaying Income Table Data:");
-        //    DisplayIncomeData();
-        //    Console.WriteLine();
-        //    Console.WriteLine("Displaying Saving Table Data:");
-        //    DisplaySavingData();
-        //    Console.WriteLine();
-        //    Console.WriteLine("Displaying Transaction Table Data:");
-        //    DisplayTransactionData();
-        //    Console.WriteLine();
 
-        //}
         static void DisplayUserData()
         {
             

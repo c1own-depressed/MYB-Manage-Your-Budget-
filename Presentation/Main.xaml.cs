@@ -19,9 +19,9 @@ namespace MYB_NEW
             InnerUser currentUser = UserManager.Instance.CurrentUser;
             int userId = currentUser.UserId;
 
-            List<Income> incomes = IncomeQueries.GetIncomesByUserId(userId);
-            List<Saving> savings = SavingQueries.GetSavingsByUserId(userId);
-            List<ExpenseCategoryWithExpenses> expenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId);
+            List<Income> incomes = MainPageLogic.GetIncomesByUserId(userId);
+            List<Saving> savings = MainPageLogic.GetSavingsByUserId(userId);
+            List<ExpenseCategoryWithExpenses> expenses = MainPageLogic.GetCategoriesAndExpensesByUserId(userId);
 
             for (int i = 0; i < incomes.Count; i++)
             {
@@ -32,8 +32,9 @@ namespace MYB_NEW
                 SavingsListView.Children.Add(new TextBlock() { Text = savings[i].SavingName, FontSize = 40, FontWeight = FontWeights.DemiBold });
             }
 
-            User user = UserQueries.GetUser(userId);
-            UsernameTextBlock.Text = user.Username;
+            // TODO: username by innerUser (UserManager)
+            //User user = MainPageLogic.GetUser(userId);
+            //UsernameTextBlock.Text = user.Username;
 
             SetCategoriesList(expenses);
         }

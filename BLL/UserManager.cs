@@ -9,6 +9,7 @@ namespace BLL
 {
     public class InnerUser
     {
+        // TODO: add categories and expenses
         public int UserId { get; set; }
     }
 

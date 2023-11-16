@@ -34,7 +34,7 @@ namespace OtherPages
             InitializeComponent();
             InnerUser currentUser = UserManager.Instance.CurrentUser;
             userId = currentUser.UserId;
-            categoriesWithExpenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId);
+            categoriesWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId);
             foreach (var categoryWithExpenses in categoriesWithExpenses)
             {
                 CategoryComboBox.Items.Add(categoryWithExpenses.expenseCategory.CategoryName);
@@ -71,11 +71,11 @@ namespace OtherPages
             try
             {
            
-                var expensesAndCategory = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId)
+                var expensesAndCategory = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId)
                     .FirstOrDefault(category => category.expenseCategory.CategoryName == selectedCategory); 
 
 
-                MemoryStream memoryStream = TransactionQueries.GetCSVMemoryStream(expensesAndCategory.expenseCategory.Id, from.Value, to.Value);
+                MemoryStream memoryStream = ExportDataLogic.GetCSVMemoryStream(expensesAndCategory.expenseCategory.Id, from.Value, to.Value);
                
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";

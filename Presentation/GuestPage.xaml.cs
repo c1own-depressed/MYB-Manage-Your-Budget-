@@ -25,28 +25,11 @@ namespace Presentation
             InitializeComponent();
         }
 
-        //private void SignUpButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    SignUpPage signUpPage = new SignUpPage(IncomeListView);
-        //    signUpPage.ShowDialog();
-        //}
-
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Your code here
-                //SignUpPage signUpPage = new SignUpPage();
-                //Window.GetWindow(this).Content = signUpPage;
-
-                //NavigationService nav = NavigationService.GetNavigationService(this);
-                //nav.Navigate(new Uri("SignUpPage.xaml", UriKind.RelativeOrAbsolute));
-
-                //SignUpPage signUpPage = new SignUpPage();
-                //Window.GetWindow(this).Content = signUpPage;
-
-                // Navigating to a page
-                mainFrame.Navigate(new Login()); // YourPage is a Page or UserControl
+                mainFrame.Navigate(new Login());
             }
             catch (Exception ex)
             {
