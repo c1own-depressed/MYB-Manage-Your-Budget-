@@ -42,7 +42,7 @@ namespace MYB_NEW
             double plannedBudget = double.Parse(PlannedBudgetTextBox.Text);
 
             //category. 
-            ExpenseQueries.AddExpense(categoryId, expenseTitle, (int)plannedBudget);
+            MainPageLogic.AddExpense(categoryId, expenseTitle, (int)plannedBudget);
 
             // Створіть новий об'єкт "Expense"
             Expense newExpense = new Expense(expenseTitle, plannedBudget, expenseCategory);
