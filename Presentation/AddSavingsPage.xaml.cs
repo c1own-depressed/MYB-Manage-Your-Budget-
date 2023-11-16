@@ -21,8 +21,7 @@ namespace MYB_NEW
             string savingsTitle = SavingsTitleTextBox.Text;
             double amount = double.Parse(AmountTextBox.Text);
 
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            int userId = currentUser.UserId;
+            int userId = UserManager.CurrentUser.Id;
             MainPageLogic.AddSavings(userId, savingsTitle, (int)amount);
 
             // Створіть новий об'єкт "Savings"

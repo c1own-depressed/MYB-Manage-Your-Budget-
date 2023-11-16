@@ -16,8 +16,7 @@ namespace MYB_NEW
         public Main()
         {
             InitializeComponent();
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            int userId = currentUser.UserId;
+            int userId = UserManager.CurrentUser.Id;
 
             List<Income> incomes = MainPageLogic.GetIncomesByUserId(userId);
             List<Saving> savings = MainPageLogic.GetSavingsByUserId(userId);

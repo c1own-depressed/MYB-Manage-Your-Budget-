@@ -27,8 +27,8 @@ namespace OtherPages
         public New_transaction()
         {
             InitializeComponent();
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            userId = currentUser.UserId;
+
+            userId =  UserManager.CurrentUser.Id;
 
             List<ExpenseCategoryWithExpenses> categoriesWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId);
             foreach (var categoryWithExpenses in categoriesWithExpenses)

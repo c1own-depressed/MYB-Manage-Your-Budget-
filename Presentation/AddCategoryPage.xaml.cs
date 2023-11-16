@@ -24,8 +24,7 @@ namespace MYB_NEW
         {
             string categoryTitle = CategoryTitleTextBox.Text;
 
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            int userId = currentUser.UserId;
+            int userId = UserManager.CurrentUser.Id;
 
             MainPageLogic.AddExpenseCategory(userId, categoryTitle);
 
