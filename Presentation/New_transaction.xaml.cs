@@ -30,7 +30,7 @@ namespace OtherPages
             InnerUser currentUser = UserManager.Instance.CurrentUser;
             userId = currentUser.UserId;
 
-            List<ExpenseCategoryWithExpenses> categoriesWithExpenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId);
+            List<ExpenseCategoryWithExpenses> categoriesWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId);
             foreach (var categoryWithExpenses in categoriesWithExpenses)
             {
                 CategoryComboBox.Items.Add(categoryWithExpenses.expenseCategory.CategoryName);
@@ -55,7 +55,7 @@ namespace OtherPages
                 string selectedCategory = CategoryComboBox.SelectedItem.ToString();
 
 
-                selectedCategoryWithExpenses = ExpenseQueries.GetCategoriesAndExpensesByUserId(userId)
+                selectedCategoryWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId)
                     .FirstOrDefault(category => category.expenseCategory.CategoryName == selectedCategory);
 
               
@@ -91,7 +91,7 @@ namespace OtherPages
             var expense = selectedCategoryWithExpenses.expenses.FirstOrDefault(expense => expense.ExpenseName == expenseName);
             int cost = Convert.ToInt32(CostTextBox.Text);
             string transactionName = TransactionTextBox.Text;
-            TransactionQueries.AddTransaction(transactionName, cost, expense.Id);
+            NewTransactionLogic.AddTransaction(transactionName, cost, expense.Id);
         }
     }
 }

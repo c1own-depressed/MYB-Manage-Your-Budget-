@@ -27,7 +27,7 @@ namespace MYB_NEW
             InnerUser currentUser = UserManager.Instance.CurrentUser;
             int userId = currentUser.UserId;
 
-            ExpenseQueries.AddExpenseCategory(userId, categoryTitle);
+            MainPageLogic.AddExpenseCategory(userId, categoryTitle);
 
 
             // Create a new category block

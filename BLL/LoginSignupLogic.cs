@@ -1,9 +1,13 @@
 ﻿using DAL;
-using Org.BouncyCastle.Crypto.Generators;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class UserQueries
+    public class LoginSignupLogic
     {
         static public User AddUser(string username, string email, string password)
         {
@@ -20,24 +24,24 @@ namespace BLL
                 Currency = "uah",
             };
 
-            Queries.AddUser(newUser);
+            DAL.UserQueries.AddUser(newUser);
 
             return newUser;
         }
 
         static public User UpdateUser(int userId, string language, bool isLightTheme, string currency)
         {
-            return Queries.UpdateUser(userId, language, isLightTheme, currency);
+            return DAL.UserQueries.UpdateUser(userId, language, isLightTheme, currency);
         }
 
         static public User GetUser(int userId)
         {
-            return Queries.GetUserById(userId);
+            return DAL.UserQueries.GetUserById(userId);
         }
 
         static public User GetUserByUsername(string username)
         {
-            return Queries.GetUserByUsername(username);
+            return DAL.UserQueries.GetUserByUsername(username);
         }
 
         static public int CheckCredentials(string username, string password)
@@ -50,7 +54,7 @@ namespace BLL
             //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
             string hashedPassword = password;
 
-            User user = Queries.GetUserByUsername(username);
+            User user = DAL.UserQueries.GetUserByUsername(username);
             if (user == null || user.HashedPassword != hashedPassword)
             {
                 return 0;
@@ -63,7 +67,7 @@ namespace BLL
 
         static public bool EmailExists(string email)
         {
-            User user = Queries.GetUserByEmail(email);
+            User user = DAL.UserQueries.GetUserByEmail(email);
             if (user == null)
             {
                 return false;

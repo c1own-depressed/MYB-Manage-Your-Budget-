@@ -1,6 +1,4 @@
 ﻿using BLL;
-using DAL;
-using MYB.DAL;
 using MYB_NEW;
 using reg;
 using System;
@@ -43,24 +41,21 @@ namespace Presentation
             }
             else
             {
-                using (var context = new AppDBContext())
+                int userId = LoginSignupLogic.CheckCredentials(username, password);
+                if (Convert.ToBoolean(userId))
                 {
-                    int userId = UserQueries.CheckCredentials(username, password);
-                    if (Convert.ToBoolean(userId))  //Convert.ToBoolean(userId)
+                    InnerUser user = new InnerUser
                     {
-                        InnerUser user = new InnerUser
-                        {
-                            UserId = userId,
-                        };
-                        UserManager.Instance.CurrentUser = user;
+                        UserId = userId,
+                    };
+                    UserManager.Instance.CurrentUser = user;
 
-                        Main main = new Main();
-                        Window.GetWindow(this).Content = main;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid username or password. Please try again!");
-                    }
+                    Main main = new Main();
+                    Window.GetWindow(this).Content = main;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password. Please try again!");
                 }
             }           
         }

@@ -24,7 +24,7 @@ namespace MYB_NEW
             
             InnerUser currentUser = UserManager.Instance.CurrentUser;
             int userId = currentUser.UserId;
-            IncomeQueries.AddIncome(userId, incomeTitle, (int)projectedIncome);
+            MainPageLogic.AddIncome(userId, incomeTitle, (int)projectedIncome);
 
             // Створіть новий об'єкт доходу
             IncomeUI newIncome = new IncomeUI(incomeTitle, projectedIncome);

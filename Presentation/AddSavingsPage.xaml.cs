@@ -23,7 +23,7 @@ namespace MYB_NEW
 
             InnerUser currentUser = UserManager.Instance.CurrentUser;
             int userId = currentUser.UserId;
-            SavingQueries.AddSavings(userId, savingsTitle, (int)amount);
+            MainPageLogic.AddSavings(userId, savingsTitle, (int)amount);
 
             // Створіть новий об'єкт "Savings"
             SavingsUI newSavings = new SavingsUI(savingsTitle, amount);
