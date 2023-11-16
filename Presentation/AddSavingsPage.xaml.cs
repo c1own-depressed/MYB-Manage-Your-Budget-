@@ -21,9 +21,8 @@ namespace MYB_NEW
             string savingsTitle = SavingsTitleTextBox.Text;
             double amount = double.Parse(AmountTextBox.Text);
 
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            int userId = currentUser.UserId;
-            SavingQueries.AddSavings(userId, savingsTitle, (int)amount);
+            int userId = UserManager.CurrentUser.Id;
+            MainPageLogic.AddSavings(userId, savingsTitle, (int)amount);
 
             // Створіть новий об'єкт "Savings"
             SavingsUI newSavings = new SavingsUI(savingsTitle, amount);
@@ -31,7 +30,7 @@ namespace MYB_NEW
             // Додайте новий "Savings" до списку на головній сторінці (SavingsListView)
             if (savingsListView != null)
             {
-                savingsListView.Children.Add(new TextBlock() { Text = newSavings.Title, FontSize = 40, FontWeight = FontWeights.DemiBold });
+                savingsListView.Children.Add(new TextBlock() { Text = newSavings.Title, FontSize = 30, FontWeight = FontWeights.DemiBold });
             }
 
 

@@ -7,37 +7,19 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class InnerUser
+    public static class UserManager
     {
-        public int UserId { get; set; }
-    }
+        public static User CurrentUser { get; set; }
+        public static List<ExpenseCategoryWithExpenses> userExpenseCategoriesWithExpenses { get; set; }   
 
-    public class UserManager
-    {
-        private static UserManager _instance;
-        public InnerUser CurrentUser { get; set; }
-
-        private UserManager() { }
-
-        public static UserManager Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new UserManager();
-                }
-                return _instance;
-            }
-            set { _instance = value; }
-        }
-        public void LogInUser(InnerUser user)
+        public static void LogInUser(int userId)
         {
             // Set the current user when logging in
-            CurrentUser = user;
+            CurrentUser = LoginSignupLogic.GetUser(userId);
+            userExpenseCategoriesWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId);
         }
 
-        public void LogOutUser()
+        public static void LogOutUser()
         {
             // Reset the current user when logging out
             CurrentUser = null;

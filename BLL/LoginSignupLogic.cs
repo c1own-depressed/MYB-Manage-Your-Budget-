@@ -1,43 +1,39 @@
 ﻿using DAL;
-using Org.BouncyCastle.Crypto.Generators;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class UserQueries
+    public class LoginSignupLogic
     {
         static public User AddUser(string username, string email, string password)
         {
             // Install-Package BCrypt.Net
             //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
             string hashedPassword = password;
-            User newUser = new User
-            {
-                Username = username,
-                Email = email,
-                HashedPassword = hashedPassword,
-                LightTheme = true,
-                Language = "ua",
-                Currency = "uah",
-            };
+            User newUser = new User(username, email, hashedPassword, true, "ua", "uah");
 
-            Queries.AddUser(newUser);
+            UserQueries.AddUser(newUser);
 
             return newUser;
         }
 
         static public User UpdateUser(int userId, string language, bool isLightTheme, string currency)
         {
-            return Queries.UpdateUser(userId, language, isLightTheme, currency);
+            return UserQueries.UpdateUser(userId, language, isLightTheme, currency);
         }
 
         static public User GetUser(int userId)
         {
-            return Queries.GetUserById(userId);
+            return UserQueries.GetUserById(userId);
         }
 
         static public User GetUserByUsername(string username)
         {
-            return Queries.GetUserByUsername(username);
+            return UserQueries.GetUserByUsername(username);
         }
 
         static public int CheckCredentials(string username, string password)
@@ -50,7 +46,7 @@ namespace BLL
             //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
             string hashedPassword = password;
 
-            User user = Queries.GetUserByUsername(username);
+            User user = UserQueries.GetUserByUsername(username);
             if (user == null || user.HashedPassword != hashedPassword)
             {
                 return 0;
@@ -63,7 +59,7 @@ namespace BLL
 
         static public bool EmailExists(string email)
         {
-            User user = Queries.GetUserByEmail(email);
+            User user = UserQueries.GetUserByEmail(email);
             if (user == null)
             {
                 return false;

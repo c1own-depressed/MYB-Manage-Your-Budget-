@@ -7,31 +7,16 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class TransactionQueries
+    public class ExportDataLogic
     {
-        static public Transaction AddTransaction(string transactionName, int amount, int expenseId)
-        {
-            Transaction transaction = new Transaction
-            {
-                TransactionName = transactionName,
-                Amount = amount,
-                Date = DateTime.Now,
-                ExpenseId = expenseId
-            };
-
-            Queries.AddTransaction(transaction);
-
-            return transaction;
-        }
-
         static public string GetExportDataByUserId(int expenseCategoryId, DateTime from, DateTime to)
         {
             string exportData = "";
-            List<Expense> expenses = Queries.GetExpensesByExpenseCategoryId(expenseCategoryId);
-            ExpenseCategory expenseCategory = Queries.GetExpenseCategoryById(expenseCategoryId);
+            List<Expense> expenses = DAL.ExpenseQueries.GetExpensesByExpenseCategoryId(expenseCategoryId);
+            ExpenseCategory expenseCategory = DAL.ExpenseCategoryQueries.GetExpenseCategoryById(expenseCategoryId);
             foreach (var expense in expenses)
             {
-                List<Transaction> transactions = Queries.GetTransactionsByExpenseId(expense.Id);
+                List<Transaction> transactions = DAL.TransactionQueries.GetTransactionsByExpenseId(expense.Id);
 
                 foreach (var transaction in transactions)
                 {

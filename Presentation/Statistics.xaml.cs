@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MYB_NEW;
+using BLL;
 
 namespace reg
 {
@@ -30,20 +31,14 @@ namespace reg
             Main main = new Main();
             Window.GetWindow(this).Content = main;
         }
-        public class DataRecord
-        {
-            public string Date { get; set; }
-            public int Income { get; set; }
-            public int SummaryExpenses { get; set; }
-            public int Saved { get; set; }
-        }
+        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //List<DataRecord> records = GetRecordsFromDatabase(); // треба дописати метод який б зчитував то все з таблиці
+            //List<StatisticsLogic.DataRecord> records = StatisticsLogic.GetRecordsFromDatabase();
 
             //for (int i = 0; i < records.Count; i++)
             //{
-            //    DataRecord record = records[i];
+            //    StatisticsLogic.DataRecord record = records[i];
 
             //    TextBlock dateTextBlock = new TextBlock();
             //    dateTextBlock.Text = record.Date.ToString();

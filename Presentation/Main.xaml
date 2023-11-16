@@ -229,8 +229,8 @@
                     </Grid>
                 </StackPanel>
             </Border>
-
             <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0"  Width="396" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="70" >
+
                 <StackPanel>
                     <Button Click="TransactionButton_Click" Content="Add Transaction" Style="{StaticResource InvisibleButtonStyle}"  Width="397" FontWeight="Bold"  FontSize="48" />
                 </StackPanel>

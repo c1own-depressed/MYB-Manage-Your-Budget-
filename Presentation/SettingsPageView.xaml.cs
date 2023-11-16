@@ -28,9 +28,9 @@ namespace OtherPages
         {
 
             InitializeComponent();
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            userId = currentUser.UserId;
-            User user = UserQueries.GetUser(userId);
+
+            userId = UserManager.CurrentUser.Id;
+            User user = SettingsLogic.GetUser(userId);
             LanguageComboBox.Text = (user.Language == "ua") ? "Ukrainian" : (user.Language == "en") ? "English" : "Unknown";
             ThemeComboBox.SelectedIndex = user.LightTheme? 1 : 0;
             CurrencyComboBox.Text = user.Currency.ToUpper();
@@ -49,7 +49,7 @@ namespace OtherPages
 
             ComboBoxItem selectedCurrency = (ComboBoxItem)CurrencyComboBox.SelectedItem;
             string currency = selectedCurrency.Content.ToString().ToLower();
-            UserQueries.UpdateUser(userId, dblanguage, isLight, currency);
+            SettingsLogic.UpdateUser(userId, dblanguage, isLight, currency);
             MessageBox.Show("Success!");
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)

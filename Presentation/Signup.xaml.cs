@@ -30,24 +30,22 @@ namespace Presentation
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            using (var context = new AppDBContext())
+            
+            string username = UsernameTextBox.Text;
+            string email = EmailTextBox.Text;
+            string password = PasswordTextBox.Text;
+
+            if (LoginSignupLogic.EmailExists(email))
             {
-                string username = UsernameTextBox.Text;
-                string email = EmailTextBox.Text;
-                string password = PasswordTextBox.Text;
+                MessageBox.Show("This email already exists. Please choose another one!");
+            }
+            else
+            {
+                LoginSignupLogic.AddUser(username, email, password);
+                MessageBox.Show("Congratulations, user registered successfully!");
 
-                if (UserQueries.EmailExists(email))
-                {
-                    MessageBox.Show("This email already exists. Please choose another one!");
-                }
-                else
-                {
-                    UserQueries.AddUser(username, email, password);
-                    MessageBox.Show("Congratulations, user registered successfully!");
-
-                    Login main = new Login();
-                    Window.GetWindow(this).Content = main;
-                }
+                Login main = new Login();
+                Window.GetWindow(this).Content = main;
             }
         }
     }

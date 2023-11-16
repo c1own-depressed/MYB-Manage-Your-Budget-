@@ -19,11 +19,10 @@ namespace MYB_NEW
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             string incomeTitle = IncomeTitleTextBox.Text;
-            double projectedIncome = double.Parse(ProjectedIncomeTextBox.Text);
+            double projectedIncome = double.Parse(ProjectedIncomeTextBox.Text); // Попередньо перевірте правильність введення
 
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            int userId = currentUser.UserId;
-            IncomeQueries.AddIncome(userId, incomeTitle, (int)projectedIncome);
+            int userId = UserManager.CurrentUser.Id;
+            MainPageLogic.AddIncome(userId, incomeTitle, (int)projectedIncome);
 
             // Створіть новий об'єкт доходу
             IncomeUI newIncome = new IncomeUI(incomeTitle, projectedIncome);

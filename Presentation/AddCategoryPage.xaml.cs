@@ -24,10 +24,9 @@ namespace MYB_NEW
         {
             string categoryTitle = CategoryTitleTextBox.Text;
 
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            int userId = currentUser.UserId;
+            int userId = UserManager.CurrentUser.Id;
 
-            ExpenseQueries.AddExpenseCategory(userId, categoryTitle);
+            MainPageLogic.AddExpenseCategory(userId, categoryTitle);
 
 
             // Create a new category block
@@ -44,7 +43,9 @@ namespace MYB_NEW
             TextBlock categoryHeader = new TextBlock
             {
                 Text = categoryTitle,
+
                 FontSize = 40,
+
                 FontWeight = FontWeights.Bold,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 Height = 100,

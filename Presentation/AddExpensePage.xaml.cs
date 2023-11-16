@@ -41,8 +41,7 @@ namespace MYB_NEW
             string expenseTitle = ExpenseTitleTextBox.Text;
             double plannedBudget = double.Parse(PlannedBudgetTextBox.Text);
 
-            //category.
-         
+            //category. 
             ExpenseQueries.AddExpense(categoryId, expenseTitle, (int)plannedBudget);
 
             // Створіть новий об'єкт "Expense"
@@ -98,7 +97,7 @@ namespace MYB_NEW
             }
            
             // Закрийте сторінку "AddExpensePage"
-            this.Close();
+            Close();
         }
     }
 }
