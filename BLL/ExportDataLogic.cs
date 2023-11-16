@@ -1,12 +1,10 @@
-﻿using DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL
+﻿namespace BLL
 {
+    using DAL;
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class ExportDataLogic
     {
         static public string GetExportDataByUserId(int expenseCategoryId, DateTime from, DateTime to)

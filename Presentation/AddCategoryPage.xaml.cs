@@ -1,14 +1,12 @@
-﻿using BLL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-
-namespace MYB_NEW
+﻿namespace MYB_NEW
 {
+    using BLL;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+
     public partial class AddCategoryPage : Window
     {
         private Main mainPage;

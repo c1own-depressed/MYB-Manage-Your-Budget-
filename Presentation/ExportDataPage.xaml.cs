@@ -1,27 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Data.SqlClient;
-using Microsoft.Win32;
-
-using System.IO;
-using MYB_NEW;
-using BLL;
-using DAL;
-
-namespace OtherPages
+﻿namespace OtherPages
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using BLL;
+    using Microsoft.Win32;
+    using MYB_NEW;
+
     /// <summary>
     /// Interaction logic for ExportDataPage.xaml
     /// </summary>
@@ -36,7 +24,7 @@ namespace OtherPages
             categoriesWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId);
             foreach (var categoryWithExpenses in categoriesWithExpenses)
             {
-                CategoryComboBox.Items.Add(categoryWithExpenses.expenseCategory.CategoryName);
+                CategoryComboBox.Items.Add(categoryWithExpenses.ExpenseCategory.CategoryName);
             }
         }
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -46,8 +34,8 @@ namespace OtherPages
         }
         private void ExportButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            string selectedCategory = CategoryComboBox.SelectedItem?.ToString();
+            ComboBoxItem category = (ComboBoxItem)CategoryComboBox.SelectedItem;
+            string selectedCategory = (category?.Content?.ToString() ?? "Unknown");
 
 
             if (string.IsNullOrEmpty(selectedCategory))
@@ -71,10 +59,10 @@ namespace OtherPages
             {
            
                 var expensesAndCategory = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId)
-                    .FirstOrDefault(category => category.expenseCategory.CategoryName == selectedCategory); 
+                    .FirstOrDefault(category => category.ExpenseCategory.CategoryName == selectedCategory); 
 
 
-                MemoryStream memoryStream = ExportDataLogic.GetCSVMemoryStream(expensesAndCategory.expenseCategory.Id, from.Value, to.Value);
+                MemoryStream memoryStream = ExportDataLogic.GetCSVMemoryStream(expensesAndCategory.ExpenseCategory.Id, from.Value, to.Value);
                
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";

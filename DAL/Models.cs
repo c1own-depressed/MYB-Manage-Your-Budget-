@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace DAL
+﻿namespace DAL
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class User
     {
         [Key]
@@ -53,7 +53,7 @@ namespace DAL
         public int Id { get; set; }
         public string ExpenseName { get; set; } = "";
         public int Amount { get; set; }
-        public int ExpenseCategoryId { get; set; } 
+        public int ExpenseCategoryId { get; set; }
     }
     public class Transaction
     {
@@ -61,7 +61,7 @@ namespace DAL
         public string TransactionName { get; set; } = "";
         public int Amount { get; set; }
         public DateTime Date { get; set; }
-        public int ExpenseId { get; set; } 
+        public int ExpenseId { get; set; }
 
     }
 

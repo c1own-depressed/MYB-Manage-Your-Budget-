@@ -1,18 +1,11 @@
-﻿using Microsoft.VisualBasic;
-using MySql.Data.MySqlClient;
-using System;
-using System.Configuration;
-using System.Data;
-using System.Diagnostics.Metrics;
-using MYB.DAL;
-using DAL;
-using BLL;
-
-namespace MYB
+﻿namespace MYB
 {
+    using MySql.Data.MySqlClient;
+    using System;
+
     internal class Program
     {
-        static string connectionString = "server=127.0.0.1;uid=root;pwd=1234;database=mybdb";
+        private static readonly string ConnectionString = "server=127.0.0.1;uid=root;pwd=1234;database=mybdb";
 
         static void Main(string[] args)
         {
@@ -40,9 +33,7 @@ namespace MYB
 
         static void DisplayUserData()
         {
-            
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -58,11 +49,10 @@ namespace MYB
                 }
             }
         }
+
         static void DisplayExpenseData()
         {
-            
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -78,11 +68,12 @@ namespace MYB
                 }
             }
         }
+
         static void DisplayIncomeData()
         {
-           
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -98,11 +89,12 @@ namespace MYB
                 }
             }
         }
+
         static void DisplaySavingData()
         {
-           
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -118,11 +110,10 @@ namespace MYB
                 }
             }
         }
+
         static void DisplayExpenseCategoryData()
         {
-         
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -138,11 +129,10 @@ namespace MYB
                 }
             }
         }
+
         static void DisplayTransactionData()
         {
-           
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -158,10 +148,10 @@ namespace MYB
                 }
             }
         }
+
         static void FillDatabaseWithTestData()
         {
-   
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -169,11 +159,8 @@ namespace MYB
 
                 for (int i = 0; i < 50; i++)
                 {
-
                     using (MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection))
                     {
-
-                    
                         insertCommand.Parameters.AddWithValue("@username", $"username {i}");
                         insertCommand.Parameters.AddWithValue("@password", $"password {i}");
                         insertCommand.Parameters.AddWithValue("@email", $"user{i}@gmail.com");
@@ -182,21 +169,20 @@ namespace MYB
                         insertCommand.Parameters.AddWithValue("@currency", "uan");
                         insertCommand.ExecuteNonQuery();
                     }
-                        
-                    }
+
+                }
 
                 string insertQuery1 = "INSERT INTO Income (income_name, amount, user_id) VALUES (@income_name, @amount, @user_id)";
 
                 for (int i = 0; i < 50; i++)
                 {
-
                     using (MySqlCommand insertCommand = new MySqlCommand(insertQuery1, connection))
                     {
 
 
                         insertCommand.Parameters.AddWithValue("@income_name", $"income {i}");
-                        insertCommand.Parameters.AddWithValue("@amount", i*100+1);
-                        insertCommand.Parameters.AddWithValue("@user_id", i+1 );
+                        insertCommand.Parameters.AddWithValue("@amount", i * 100 + 1);
+                        insertCommand.Parameters.AddWithValue("@user_id", i + 1);
                         insertCommand.ExecuteNonQuery();
                     }
 
@@ -242,7 +228,7 @@ namespace MYB
 
 
                         insertCommand.Parameters.AddWithValue("@expense_name", $"expense {i}");
-                        insertCommand.Parameters.AddWithValue("@amount", i * 100+1);
+                        insertCommand.Parameters.AddWithValue("@amount", i * 100 + 1);
                         insertCommand.Parameters.AddWithValue("@expense_category_id", i + 1);
                         insertCommand.ExecuteNonQuery();
                     }
@@ -258,7 +244,7 @@ namespace MYB
 
 
                         insertCommand.Parameters.AddWithValue("@transaction_name", $"transaction {i}");
-                        insertCommand.Parameters.AddWithValue("@amount", i * 100+1);
+                        insertCommand.Parameters.AddWithValue("@amount", i * 100 + 1);
                         insertCommand.Parameters.AddWithValue("@date", DateTime.Now);
                         insertCommand.Parameters.AddWithValue("@expense_id", i + 1);
                         insertCommand.ExecuteNonQuery();
@@ -266,8 +252,8 @@ namespace MYB
 
                 }
             }
-            }
-        
+        }
+
 
 
 
@@ -275,13 +261,13 @@ namespace MYB
         static public void CreateDatabase()
         {
 
-        
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
 
-                
+
                 string createTableUser =
                 @"CREATE TABLE IF NOT EXISTS User(
 	                id INT AUTO_INCREMENT NOT NULL,
@@ -358,7 +344,7 @@ namespace MYB
                     FOREIGN KEY (expense_id) REFERENCES Expense(id)
                 );";
 
-             
+
                 using (MySqlCommand command = new MySqlCommand(createTableUser, connection))
                 {
                     command.ExecuteNonQuery();

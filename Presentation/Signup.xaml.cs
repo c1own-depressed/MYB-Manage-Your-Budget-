@@ -1,23 +1,9 @@
-﻿using BLL;
-using MYB.DAL;
-using MYB_NEW;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace Presentation
+﻿namespace Presentation
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using BLL;
+
     /// <summary>
     /// Interaction logic for Signup.xaml
     /// </summary>
@@ -33,7 +19,7 @@ namespace Presentation
             
             string username = UsernameTextBox.Text;
             string email = EmailTextBox.Text;
-            string password = PasswordTextBox.Text;
+            string password = PasswordTextBox.Password;
 
             if (LoginSignupLogic.EmailExists(email))
             {

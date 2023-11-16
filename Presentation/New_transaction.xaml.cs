@@ -23,7 +23,7 @@ namespace OtherPages
     public partial class New_transaction : Page
     {
         private int userId;
-        private ExpenseCategoryWithExpenses selectedCategoryWithExpenses;
+        private ExpenseCategoryWithExpenses? selectedCategoryWithExpenses;
         public New_transaction()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace OtherPages
             List<ExpenseCategoryWithExpenses> categoriesWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId);
             foreach (var categoryWithExpenses in categoriesWithExpenses)
             {
-                CategoryComboBox.Items.Add(categoryWithExpenses.expenseCategory.CategoryName);
+                CategoryComboBox.Items.Add(categoryWithExpenses.ExpenseCategory.CategoryName);
             }
 
           
@@ -52,16 +52,16 @@ namespace OtherPages
             if (CategoryComboBox.SelectedItem != null)
             {
                 
-                string selectedCategory = CategoryComboBox.SelectedItem.ToString();
+                string selectedCategory = (CategoryComboBox?.SelectedItem?.ToString() ?? "Unknown");
 
 
                 selectedCategoryWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId)
-                    .FirstOrDefault(category => category.expenseCategory.CategoryName == selectedCategory);
+                    .FirstOrDefault(category => category.ExpenseCategory.CategoryName == selectedCategory);
 
               
                 if (selectedCategoryWithExpenses != null)
                 {
-                    foreach (var expense in selectedCategoryWithExpenses.expenses)
+                    foreach (var expense in selectedCategoryWithExpenses.Expenses)
                     {
                         ComboBoxItem comboBoxItem = new ComboBoxItem();
                         comboBoxItem.Content = expense.ExpenseName;
@@ -87,8 +87,8 @@ namespace OtherPages
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem expenseItem = (ComboBoxItem)ExpenseComboBox.SelectedItem;
-            string expenseName = expenseItem.Content.ToString();
-            var expense = selectedCategoryWithExpenses.expenses.FirstOrDefault(expense => expense.ExpenseName == expenseName);
+            string expenseName = (expenseItem?.Content?.ToString() ?? "Unknown");
+            var expense = selectedCategoryWithExpenses.Expenses.FirstOrDefault(expense => expense.ExpenseName == expenseName);
             int cost = Convert.ToInt32(CostTextBox.Text);
             string transactionName = TransactionTextBox.Text;
             NewTransactionLogic.AddTransaction(transactionName, cost, expense.Id);
