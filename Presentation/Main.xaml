@@ -1,7 +1,7 @@
 ﻿<Page x:Class="MYB_NEW.Main"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="Main Page" Height="Auto" Width="1440" Background="#d3d3d3">
+      Title="Main Page" MinHeight="600" MinWidth="1200" Background="#d3d3d3">
     <Page.Resources>
         <Style x:Key="VisibleButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -28,6 +28,10 @@
     </Page.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid Background="LightGray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <Grid.ContextMenu>
                 <ContextMenu>
                     <!--<MenuItem Header="Save"></MenuItem>-->
@@ -35,9 +39,9 @@
                 </ContextMenu>
             </Grid.ContextMenu>
             <!-- Block: Income -->
-            <Border BorderBrush="Black" BorderThickness="0" Margin="70,30,15,0" Width="360" HorizontalAlignment="Left">
+            <Border BorderBrush="Black" BorderThickness="0" Margin="70,30,15,0" Width="240" HorizontalAlignment="Left">
                 <StackPanel>
-                    <TextBlock Text="Income" FontSize="64" FontWeight="Bold" HorizontalAlignment="Left" Height="100" />
+                    <TextBlock Text="Income" FontSize="48" FontWeight="Bold" HorizontalAlignment="Left" />
                     <StackPanel x:Name="IncomeListView" Background="LightGray">
                         <!--<StackPanel Orientation="Horizontal">
                             <TextBlock x:Name="IncomeTextBlock1" Text="" FontSize="40" FontWeight="DemiBold" Width="Auto" HorizontalAlignment="Left"/>
@@ -67,15 +71,15 @@
                             </Button>
                         </StackPanel>-->
                     </StackPanel>
-                    <Button  Content="Add Income" Click="AddIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="258" FontWeight="Bold" FontSize="40"/>
+                    <Button  Content="Add Income" Click="AddIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="258" FontWeight="Bold" FontSize="30"/>
                 </StackPanel>
             </Border>
 
 
             <!-- Block: Savings -->
-            <Border BorderBrush="Black" BorderThickness="0" Margin="70,200,15,0" Width="360" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0" Margin="70,0,15,0" Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,20px,0,0">
                 <StackPanel>
-                    <TextBlock Text="Savings" FontSize="64" FontWeight="Bold" HorizontalAlignment="Left"/>
+                    <TextBlock Text="Savings" FontSize="48" FontWeight="Bold" HorizontalAlignment="Left"/>
                     <StackPanel x:Name="SavingsListView" Background="LightGray">
                         <!--<StackPanel Orientation="Horizontal">
                             <TextBlock Text="Savings 1" FontSize="40" FontWeight="DemiBold" Width="Auto" HorizontalAlignment="Left"/>
@@ -105,14 +109,14 @@
                             </Button>
                         </StackPanel>-->
                     </StackPanel>
-                    <Button  Content="Add Savings" Click="AddSavings_Click" Style="{StaticResource InvisibleButtonStyle}" Width="250" FontWeight="Bold" FontSize="40"/>
+                    <Button  Content="Add Savings" Click="AddSavings_Click" Style="{StaticResource InvisibleButtonStyle}" Width="250" FontWeight="Bold" FontSize="30"/>
                 </StackPanel>
             </Border>
 
             <!-- Block: Expenses -->
-            <Border BorderBrush="Black" BorderThickness="0" Margin="0,30,0,10" Width="Auto" HorizontalAlignment="Center">
+            <Border BorderBrush="Black" BorderThickness="0" Margin="0,30,15,10" Width="Auto" HorizontalAlignment="Center">
                 <StackPanel>
-                    <TextBlock Text="Expenses" FontSize="64" FontWeight="Bold"/>
+                    <TextBlock Text="Expenses" FontSize="48" FontWeight="Bold"/>
                     <StackPanel x:Name="CategoriesListView" Background="LightGray" Width="500">
                         <!-- Category 1 -->
                         <!--<StackPanel Orientation="Horizontal">
@@ -186,19 +190,23 @@
                             <Button x:Name="AddExpenseCategory2" Content="Add Expense" Click="AddExpense_Click" Style="{StaticResource InvisibleButtonStyle}" Width="360" HorizontalAlignment="Left" FontWeight="Bold" FontSize="40"/>
                         </StackPanel>-->
                     </StackPanel>
-                    <Button Content="Add Category" Click="AddCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="360" HorizontalAlignment="Left" FontWeight="Bold" FontSize="50"/>
+                    <Button Content="Add Category" Click="AddCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="360" HorizontalAlignment="Left" FontWeight="Bold" FontSize="35"/>
                 </StackPanel>
             </Border>
 
-            <Border BorderBrush="Black" BorderThickness="0" Margin="10,10,15,0" Width="Auto" HorizontalAlignment="Right">
+            <Border BorderBrush="Black" BorderThickness="0" Margin="10,30,45,0" Width="Auto" HorizontalAlignment="Right">
                 <StackPanel>
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="11*"/>
+                            <RowDefinition Height="13*"/>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="UsernameTextBlock" Text="User_name" FontSize="40" FontWeight="Bold" HorizontalAlignment="Right" Padding="0,3,5,0" Margin="-94,0,0,22" Width="209" />
-                        <Border BorderBrush="Black" BorderThickness="0" Margin="10,10,15,0" Width="Auto" HorizontalAlignment="Right">
+                        <TextBlock x:Name="UsernameTextBlock" Text="User_name" FontSize="35" FontWeight="Bold" HorizontalAlignment="Right" Padding="0,3,5,0" Margin="0,10,76,12" Width="209" Grid.RowSpan="2" />
+                        <Border BorderBrush="Black" BorderThickness="0" Margin="0,10,15,0" Width="Auto" HorizontalAlignment="Right" Grid.RowSpan="2">
                             <StackPanel>
                                 <Grid Height="47">
                                     <Grid.ColumnDefinitions>
@@ -222,9 +230,9 @@
                 </StackPanel>
             </Border>
 
-            <Border BorderBrush="Black" BorderThickness="0"  Width="396" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0"  Width="396" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="70" Margin="0,0,45,-302">
                 <StackPanel>
-                    <Button Click="TransactionButton_Click" Content="Add Transaction" Style="{StaticResource InvisibleButtonStyle}"  Width="415" FontWeight="Bold"  FontSize="48" />
+                    <Button Click="TransactionButton_Click" Content="Add Transaction" Style="{StaticResource InvisibleButtonStyle}"  Width="397" FontWeight="Bold"  FontSize="48" />
                 </StackPanel>
             </Border>
         </Grid>

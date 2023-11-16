@@ -31,7 +31,7 @@ namespace MYB_NEW
             // Додайте новий "Savings" до списку на головній сторінці (SavingsListView)
             if (savingsListView != null)
             {
-                savingsListView.Children.Add(new TextBlock() { Text = newSavings.Title, FontSize = 40, FontWeight = FontWeights.DemiBold });
+                savingsListView.Children.Add(new TextBlock() { Text = newSavings.Title, FontSize = 30, FontWeight = FontWeights.DemiBold });
             }
 
             // Закрийте сторінку "AddSavingsPage"

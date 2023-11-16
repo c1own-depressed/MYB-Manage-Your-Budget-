@@ -32,7 +32,7 @@ namespace MYB_NEW
             // Додайте новий дохід до списку доходів на головній сторінці (IncomeListView)
             if (incomeListView != null)
             {
-                incomeListView.Children.Add(new TextBlock() { Text = newIncome.Title, FontSize = 40, FontWeight = FontWeights.DemiBold });
+                incomeListView.Children.Add(new TextBlock() { Text = newIncome.Title, FontSize = 30, FontWeight = FontWeights.DemiBold });
             }
 
             // Закрийте сторінку "AddIncomePage"

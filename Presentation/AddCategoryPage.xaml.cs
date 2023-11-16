@@ -44,7 +44,7 @@ namespace MYB_NEW
             TextBlock categoryHeader = new TextBlock
             {
                 Text = categoryTitle,
-                FontSize = 64,
+                FontSize = 48,
                 FontWeight = FontWeights.Bold,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 Height = 100,
@@ -58,7 +58,7 @@ namespace MYB_NEW
                 Style = (Style)mainPage.Resources["InvisibleButtonStyle"],
                 Width = 360,
                 FontWeight = FontWeights.Bold,
-                FontSize = 40,
+                FontSize = 35,
             };
 
             addCategoryExpenseButton.Click += AddCategoryExpenseButton_Click;

@@ -52,7 +52,7 @@ namespace MYB_NEW
                 TextBlock newExpenseTitle = new TextBlock
                 {
                     Text = newExpense.Title,
-                    FontSize = 40,
+                    FontSize = 30,
                     FontWeight = FontWeights.DemiBold
                 };
 
@@ -69,7 +69,7 @@ namespace MYB_NEW
                 TextBlock newExpenseBudget = new TextBlock
                 {
                     Text = $"0/{newExpense.Amount} $",
-                    FontSize = 32,
+                    FontSize = 24,
                     FontWeight = FontWeights.DemiBold,
                     Foreground = Brushes.Gray,
                     Height = 35
