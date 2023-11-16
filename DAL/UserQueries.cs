@@ -21,6 +21,7 @@ namespace DAL
             {
                 return users[0];
             }
+
             throw new Exception("User is not found");
         }
 
@@ -33,6 +34,7 @@ namespace DAL
             {
                 return users[0];
             }
+
             throw new Exception("User is not found");
         }
 
@@ -45,7 +47,8 @@ namespace DAL
             {
                 return users[0];
             }
-            //throw new Exception("User is not found");
+
+            // throw new Exception("User is not found");
             return null;
         }
 

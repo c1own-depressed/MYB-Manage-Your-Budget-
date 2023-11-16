@@ -11,15 +11,14 @@
     {
         public Signup()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            string username = UsernameTextBox.Text;
-            string email = EmailTextBox.Text;
-            string password = PasswordTextBox.Password;
+            string username = this.UsernameTextBox.Text;
+            string email = this.EmailTextBox.Text;
+            string password = this.PasswordTextBox.Password;
 
             if (LoginSignupLogic.EmailExists(email))
             {

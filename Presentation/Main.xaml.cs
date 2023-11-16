@@ -15,7 +15,7 @@
     {
         public Main()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             int userId = UserManager.CurrentUser.Id;
 
             List<Income> incomes = MainPageLogic.GetIncomesByUserId(userId);
@@ -24,17 +24,17 @@
 
             for (int i = 0; i < incomes.Count; i++)
             {
-                IncomeListView.Children.Add(new TextBlock() { Text = incomes[i].IncomeName, FontSize = 40, FontWeight = FontWeights.DemiBold });
+                this.IncomeListView.Children.Add(new TextBlock() { Text = incomes[i].IncomeName, FontSize = 40, FontWeight = FontWeights.DemiBold });
             }
+
             for (int i = 0; i < savings.Count; i++)
             {
-                SavingsListView.Children.Add(new TextBlock() { Text = savings[i].SavingName, FontSize = 40, FontWeight = FontWeights.DemiBold });
+                this.SavingsListView.Children.Add(new TextBlock() { Text = savings[i].SavingName, FontSize = 40, FontWeight = FontWeights.DemiBold });
             }
 
-           
-            UsernameTextBlock.Text = UserManager.CurrentUser.Username;
+            this.UsernameTextBlock.Text = UserManager.CurrentUser.Username;
 
-            SetCategoriesList(expenses);
+            this.SetCategoriesList(expenses);
         }
 
         private void SetCategoriesList(List<ExpenseCategoryWithExpenses> expenses)
@@ -72,7 +72,7 @@
                     {
                         Text = expense.ExpenseName,
                         FontSize = 20,
-                        FontWeight = FontWeights.DemiBold
+                        FontWeight = FontWeights.DemiBold,
                     };
 
                     TextBlock spaceText = new TextBlock
@@ -80,7 +80,7 @@
                         Text = " ",
                         FontSize = 10,
                         FontWeight = FontWeights.DemiBold,
-                        Foreground = Brushes.Gray
+                        Foreground = Brushes.Gray,
                     };
 
                     TextBlock newExpenseBudget = new TextBlock
@@ -89,7 +89,7 @@
                         FontSize = 20,
                         FontWeight = FontWeights.DemiBold,
                         Foreground = Brushes.Gray,
-                        Height = 20
+                        Height = 20,
                     };
 
                     newExpensePanel.Children.Add(newExpenseTitle);
@@ -102,7 +102,7 @@
                 Button addCategoryExpenseButton = new Button
                 {
                     Content = "Add Expense",
-                    Style = (Style)Resources["InvisibleButtonStyle"],
+                    Style = (Style)this.Resources["InvisibleButtonStyle"],
                     Width = 360,
                     FontWeight = FontWeights.Bold,
                     FontSize = 30,
@@ -115,7 +115,6 @@
                     if (categoryExpenseButtonMap.ContainsKey(clickedButton))
                     {
                         StackPanel expenseCategory = categoryExpenseButtonMap[clickedButton];
-                        
                         AddExpensePage addExpensePage = new AddExpensePage(expenseCategory, categoryID);
                         addExpensePage.ShowDialog();
                     }
@@ -129,15 +128,15 @@
                 newCategoryBlock.Child = newCategoryStackPanel;
 
                 // Find the last category and insert the new one below it
-                var lastCategory = CategoriesListView.Children.OfType<Border>().LastOrDefault();
+                var lastCategory = this.CategoriesListView.Children.OfType<Border>().LastOrDefault();
                 if (lastCategory != null)
                 {
-                    int insertIndex = CategoriesListView.Children.IndexOf(lastCategory) + 1;
-                    CategoriesListView.Children.Insert(insertIndex, newCategoryBlock);
+                    int insertIndex = this.CategoriesListView.Children.IndexOf(lastCategory) + 1;
+                    this.CategoriesListView.Children.Insert(insertIndex, newCategoryBlock);
                 }
                 else
                 {
-                    CategoriesListView.Children.Add(newCategoryBlock);
+                    this.CategoriesListView.Children.Add(newCategoryBlock);
                 }
 
 
@@ -157,7 +156,7 @@
                         {
                             Text = newExpense.Title,
                             FontSize = 30,
-                            FontWeight = FontWeights.DemiBold
+                            FontWeight = FontWeights.DemiBold,
                         };
 
                         // Пробіл
@@ -166,7 +165,7 @@
                             Text = " ",
                             FontSize = 10,
                             FontWeight = FontWeights.DemiBold,
-                            Foreground = Brushes.Gray
+                            Foreground = Brushes.Gray,
                         };
 
                         // Бюджет
@@ -176,7 +175,7 @@
                             FontSize = 32,
                             FontWeight = FontWeights.DemiBold,
                             Foreground = Brushes.Gray,
-                            Height = 32
+                            Height = 32,
                         };
 
                         // Додайте назву витрати, пробіл і бюджет в StackPanel
@@ -185,14 +184,14 @@
                         newExpensePanel.Children.Add(newExpenseBudget);
 
                         // Знайдіть кнопку "Add Expense" та вставте нову витрату перед нею
-                        //for (int i = 0; i < expenseCategory.Children.Count; i++)
-                        //{
+                        // for (int i = 0; i < expenseCategory.Children.Count; i++)
+                        // {
                         //    if (expenseCategory.Children[i] is Button addExpenseButton)
                         //    {
                         //        expenseCategory.Children.Insert(i, newExpensePanel);
                         //        break;
                         //    }
-                        //}
+                        // }
                     }
                 }
             }
@@ -200,33 +199,15 @@
 
         private void AddIncome_Click(object sender, RoutedEventArgs e)
         {
-            AddIncomePage addIncomePage = new AddIncomePage(IncomeListView);
+            AddIncomePage addIncomePage = new AddIncomePage(this.IncomeListView);
             addIncomePage.ShowDialog();
         }
 
         private void AddSavings_Click(object sender, RoutedEventArgs e)
         {
-            AddSavingsPage addSavingsPage = new AddSavingsPage(SavingsListView);
+            AddSavingsPage addSavingsPage = new AddSavingsPage(this.SavingsListView);
             addSavingsPage.ShowDialog();
         }
-
-
-        //public void AddExpense_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Button clickedButton = (Button)sender; // Отримайте посилання на кнопку, яка спричинила подію
-
-        //    if (clickedButton == AddExpenseCategory1)
-        //    {
-        //        AddExpensePage addExpensePage = new AddExpensePage(Category1ExpensesListView);
-        //        addExpensePage.ShowDialog();
-        //    }
-        //    else if (clickedButton == AddExpenseCategory2)
-        //    {
-        //        AddExpensePage addExpensePage = new AddExpensePage(Category2ExpensesListView);
-        //        addExpensePage.ShowDialog();
-        //    }
-        //}
-
 
         private void AddCategory_Click(object sender, RoutedEventArgs e)
         {
@@ -237,38 +218,40 @@
         public void AddCategory(Border newCategory)
         {
             // Додайте нову категорію на сторінку "Main" над кнопкою "Add Category"
-            CategoriesListView.Children.Insert(CategoriesListView.Children.Count - 1, newCategory);
+            this.CategoriesListView.Children.Insert(this.CategoriesListView.Children.Count - 1, newCategory);
         }
 
         private void AddTransaction_Click(object sender, RoutedEventArgs e)
         {
             // Тут ви можете додати функціональність для кнопки "Add Transaction"
         }
+
         private bool buttonsVisible = false;
 
         private void Toggle_Click(object sender, RoutedEventArgs e)
         {
-            if (buttonsVisible)
+            if (this.buttonsVisible)
             {
                 // Приховати кнопки "Statistic", "Data export", "Tips and Tricks", "Settings" і "Sign out"
-                StatisticButton.Visibility = Visibility.Collapsed;
-                DataExportButton.Visibility = Visibility.Collapsed;
-                TipsAndTricksButton.Visibility = Visibility.Collapsed;
-                SettingsButton.Visibility = Visibility.Collapsed;
-                SignOutButton.Visibility = Visibility.Collapsed;
+                this.StatisticButton.Visibility = Visibility.Collapsed;
+                this.DataExportButton.Visibility = Visibility.Collapsed;
+                this.TipsAndTricksButton.Visibility = Visibility.Collapsed;
+                this.SettingsButton.Visibility = Visibility.Collapsed;
+                this.SignOutButton.Visibility = Visibility.Collapsed;
             }
             else
             {
                 // Показати кнопки "Statistic", "Data export", "Tips and Tricks", "Settings" і "Sign out"
-                StatisticButton.Visibility = Visibility.Visible;
-                DataExportButton.Visibility = Visibility.Visible;
-                TipsAndTricksButton.Visibility = Visibility.Visible;
-                SettingsButton.Visibility = Visibility.Visible;
-                SignOutButton.Visibility = Visibility.Visible;
+                this.StatisticButton.Visibility = Visibility.Visible;
+                this.DataExportButton.Visibility = Visibility.Visible;
+                this.TipsAndTricksButton.Visibility = Visibility.Visible;
+                this.SettingsButton.Visibility = Visibility.Visible;
+                this.SignOutButton.Visibility = Visibility.Visible;
             }
 
-            buttonsVisible = !buttonsVisible;
+            this.buttonsVisible = !this.buttonsVisible;
         }
+
         private void EditIncome_Click(object sender, RoutedEventArgs e)
         {
             // Додайте реалізацію для обробки події редагування доходів
@@ -278,26 +261,32 @@
         {
             // Додайте реалізацію для обробки події редагування доходів
         }
+
         private void EditSavings_Click(object sender, RoutedEventArgs e)
         {
             // Додайте реалізацію для обробки події редагування доходів
         }
+
         private void DeleteSavings_Click(object sender, RoutedEventArgs e)
         {
             // Додайте реалізацію для обробки події редагування доходів
         }
+
         private void EditCategory_Click(object sender, RoutedEventArgs e)
         {
             // Додайте реалізацію для обробки події редагування доходів
         }
+
         private void DeleteCategory_Click(object sender, RoutedEventArgs e)
         {
             // Додайте реалізацію для обробки події редагування доходів
         }
+
         private void EditExpense_Click(object sender, RoutedEventArgs e)
         {
             // Додайте реалізацію для обробки події редагування доходів
         }
+
         private void DeleteExpense_Click(object sender, RoutedEventArgs e)
         {
             // Додайте реалізацію для обробки події редагування доходів
@@ -310,7 +299,7 @@
 
         private void SignOutButton_Click(object sender, RoutedEventArgs e)
         {
-            //UserManager.Instance.LogOutUser();
+            // UserManager.Instance.LogOutUser();
             Login login = new Login();
             Window.GetWindow(this).Content = login;
         }

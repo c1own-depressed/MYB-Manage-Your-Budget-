@@ -11,19 +11,21 @@
 
         public ExpenseCategoryWithExpenses()
         {
-            ExpenseCategory = new ExpenseCategory();
-            Expenses = new List<Expense>();
+            this.ExpenseCategory = new ExpenseCategory();
+            this.Expenses = new List<Expense>();
         }
+
         public ExpenseCategoryWithExpenses(ExpenseCategory expenseCategory, List<Expense> expenses)
         {
             this.ExpenseCategory = expenseCategory;
             this.Expenses = expenses;
-        } 
+        }
+
     }
 
     public class NewTransactionLogic
     {
-        static public List<ExpenseCategoryWithExpenses> GetCategoriesAndExpensesByUserId(int userId)
+        public static List<ExpenseCategoryWithExpenses> GetCategoriesAndExpensesByUserId(int userId)
         {
             List<ExpenseCategory> expenseCategories = ExpenseCategoryQueries.GetExpenseCategoriesByUserId(userId);
 
@@ -42,14 +44,14 @@
             return categoriesWithExpenses;
         }
 
-        static public Transaction AddTransaction(string transactionName, int amount, int expenseId)
+        public static Transaction AddTransaction(string transactionName, int amount, int expenseId)
         {
             Transaction transaction = new Transaction
             {
                 TransactionName = transactionName,
                 Amount = amount,
                 Date = DateTime.Now,
-                ExpenseId = expenseId
+                ExpenseId = expenseId,
             };
 
             DAL.TransactionQueries.AddTransaction(transaction);

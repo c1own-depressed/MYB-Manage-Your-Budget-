@@ -34,10 +34,10 @@
             MainPageLogic.AddExpense(this.categoryId, expenseTitle, (int)plannedBudget);
 
             // Створіть новий об'єкт "Expense"
-            Expense newExpense = new Expense(expenseTitle, plannedBudget, expenseCategory);
+            Expense newExpense = new Expense(expenseTitle, plannedBudget, this.expenseCategory);
 
             // Додайте новий "Expense" до категорії витрат (StackPanel)
-            if (expenseCategory != null)
+            if (this.expenseCategory != null)
             {
                 StackPanel newExpensePanel = new StackPanel();
                 newExpensePanel.Orientation = Orientation.Horizontal;
@@ -47,7 +47,7 @@
                 {
                     Text = newExpense.Title,
                     FontSize = 30,
-                    FontWeight = FontWeights.DemiBold
+                    FontWeight = FontWeights.DemiBold,
                 };
 
                 // Пробіл
@@ -56,7 +56,7 @@
                     Text = " ",
                     FontSize = 10,
                     FontWeight = FontWeights.DemiBold,
-                    Foreground = Brushes.Gray
+                    Foreground = Brushes.Gray,
                 };
 
                 // Бюджет
@@ -66,7 +66,7 @@
                     FontSize = 24,
                     FontWeight = FontWeights.DemiBold,
                     Foreground = Brushes.Gray,
-                    Height = 35
+                    Height = 35,
                 };
 
                 // Додайте назву витрати, пробіл і бюджет в StackPanel
@@ -75,18 +75,18 @@
                 newExpensePanel.Children.Add(newExpenseBudget);
 
                 // Знайдіть кнопку "Add Expense" та вставте нову витрату перед нею
-                for (int i = 0; i < expenseCategory.Children.Count; i++)
+                for (int i = 0; i < this.expenseCategory.Children.Count; i++)
                 {
-                    if (expenseCategory.Children[i] is Button addExpenseButton)
+                    if (this.expenseCategory.Children[i] is Button addExpenseButton)
                     {
-                        expenseCategory.Children.Insert(i, newExpensePanel);
+                        this.expenseCategory.Children.Insert(i, newExpensePanel);
                         break;
                     }
                 }
             }
 
             // Закрийте сторінку "AddExpensePage"
-            Close();
+            this.Close();
         }
     }
 }
