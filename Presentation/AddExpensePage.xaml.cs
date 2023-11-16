@@ -22,22 +22,27 @@ namespace MYB_NEW
     public partial class AddExpensePage : Window
     {
         private StackPanel expenseCategory;
-
+        private int categoryId;
         public AddExpensePage(StackPanel category)
         {
             InitializeComponent();
             this.expenseCategory = category;
-            
+
+        }
+        public AddExpensePage(StackPanel category, int categoryId)
+        {
+            InitializeComponent();
+            this.expenseCategory = category;
+            this.categoryId = categoryId;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             string expenseTitle = ExpenseTitleTextBox.Text;
             double plannedBudget = double.Parse(PlannedBudgetTextBox.Text);
-         
-            //category.
-            int categoryId = 1;
-            MainPageLogic.AddExpense(categoryId, expenseTitle, (int)plannedBudget);
+
+            //category. 
+            ExpenseQueries.AddExpense(categoryId, expenseTitle, (int)plannedBudget);
 
             // Створіть новий об'єкт "Expense"
             Expense newExpense = new Expense(expenseTitle, plannedBudget, expenseCategory);
@@ -90,7 +95,7 @@ namespace MYB_NEW
                     }
                 }
             }
-
+           
             // Закрийте сторінку "AddExpensePage"
             Close();
         }

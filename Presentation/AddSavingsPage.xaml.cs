@@ -33,6 +33,7 @@ namespace MYB_NEW
                 savingsListView.Children.Add(new TextBlock() { Text = newSavings.Title, FontSize = 30, FontWeight = FontWeights.DemiBold });
             }
 
+
             // Закрийте сторінку "AddSavingsPage"
             this.Close();
         }
