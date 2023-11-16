@@ -9,7 +9,7 @@
       Height="800" Width="1200"
       Title="Signup">
 
-    <Grid Background="LightGray">
+    <Grid Background="#d9d9d9">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
             <RowDefinition Height="400"/>
@@ -31,7 +31,7 @@
         <TextBox x:Name="EmailTextBox" Grid.Row="1" Width="500" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" Margin="0,200,0,0"  />
 
         <Label Grid.Row="1" Margin="0,255,0,0" Width="500" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Create your Password" FontSize="22" FontWeight="Bold" />
-        <TextBox x:Name="PasswordTextBox" Grid.Row="1" Margin="0,300,0,0" Width="500" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32"   />
+        <PasswordBox x:Name="PasswordTextBox" Grid.Row="1" Margin="0,300,0,0" Width="500" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32"   />
 
         <Button  Grid.Row="2" Content="Sign up" Width="475" Height="104" VerticalAlignment="Top" FontSize="64" Foreground="White" Background="#6E6E6E" Margin="375,0,350,0" Click="Button_Click" />
     </Grid>

@@ -21,6 +21,7 @@ namespace DAL
             {
                 return users[0];
             }
+
             throw new Exception("User is not found");
         }
 
@@ -33,10 +34,11 @@ namespace DAL
             {
                 return users[0];
             }
+
             throw new Exception("User is not found");
         }
 
-        public static User GetUserByEmail(string email)
+        public static User? GetUserByEmail(string email)
         {
             List<User> users = (from user in _context.Users
                                 where user.Email == email
@@ -45,7 +47,9 @@ namespace DAL
             {
                 return users[0];
             }
-            throw new Exception("User is not found");
+
+            // throw new Exception("User is not found");
+            return null;
         }
 
         public static void AddUser(User user)

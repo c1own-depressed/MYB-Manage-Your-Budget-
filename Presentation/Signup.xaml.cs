@@ -1,23 +1,9 @@
-﻿using BLL;
-using MYB.DAL;
-using MYB_NEW;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace Presentation
+﻿namespace Presentation
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using BLL;
+
     /// <summary>
     /// Interaction logic for Signup.xaml
     /// </summary>
@@ -25,15 +11,14 @@ namespace Presentation
     {
         public Signup()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            string username = UsernameTextBox.Text;
-            string email = EmailTextBox.Text;
-            string password = PasswordTextBox.Text;
+            string username = this.UsernameTextBox.Text;
+            string email = this.EmailTextBox.Text;
+            string password = this.PasswordTextBox.Password;
 
             if (LoginSignupLogic.EmailExists(email))
             {

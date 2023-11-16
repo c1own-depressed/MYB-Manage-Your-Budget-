@@ -26,7 +26,7 @@
             <Setter Property="Margin" Value="0"/>
         </Style>
     </Page.Resources>
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+ 
         <Grid Background="LightGray">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -114,86 +114,20 @@
             </Border>
 
             <!-- Block: Expenses -->
+        <ScrollViewer  VerticalScrollBarVisibility="Auto" Width="500" Height="500" >
+         
             <Border BorderBrush="Black" BorderThickness="0" Margin="0,30,15,10" Width="Auto" HorizontalAlignment="Center">
                 <StackPanel>
+                    
                     <TextBlock Text="Expenses" FontSize="48" FontWeight="Bold"/>
                     <StackPanel x:Name="CategoriesListView" Background="LightGray" Width="500">
-                        <!-- Category 1 -->
-                        <!--<StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Category 1" FontSize="64" FontWeight="Bold" Width="Auto" HorizontalAlignment="Left"/>
-                            <Button x:Name="EditCatogoryButton1" Click="EditCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="65" Height="65">
-                                <Image Source="Edit.png" Height="64" Width="64" />
-                            </Button>
-                            <Button x:Name="DeleteCategoryButton1" Click="DeleteCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="65" Height="65" BorderThickness="0">
-                                <Image Source="Delete.png" Height="64" Width="64" />
-                            </Button>
-                        </StackPanel>
-                        <StackPanel x:Name="Category1ExpensesListView" Background="LightGray">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Expense 1" FontSize="40" FontWeight="DemiBold"/>
-                                <TextBlock Text=" " FontSize="10" FontWeight="DemiBold" Foreground="Gray"/>
-                                <TextBlock Text="25/100 $" FontSize="32" FontWeight="DemiBold" Foreground="Gray" Height="36"/>
-                                <Button x:Name="EditCategory1ExpenseButton1" Click="EditExpense_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41">
-                                    <Image Source="Edit.png" Height="40" Width="40" />
-                                </Button>
-                                <Button x:Name="DeleteCategory1ExpenseButton1" Click="DeleteExpense_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41" BorderThickness="0">
-                                    <Image Source="Delete.png" Height="40" Width="40" />
-                                </Button>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Expense 2" FontSize="40" FontWeight="DemiBold"/>
-                                <TextBlock Text=" " FontSize="10" FontWeight="DemiBold" Foreground="Gray"/>
-                                <TextBlock Text="50/100 $" FontSize="32" FontWeight="DemiBold" Foreground="Gray" Height="36"/>
-                                <Button x:Name="EditCategory1ExpenseButton2" Click="EditExpense_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41">
-                                    <Image Source="Edit.png" Height="40" Width="40" />
-                                </Button>
-                                <Button x:Name="DeleteCategory1ExpenseButton2" Click="DeleteExpense_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41" BorderThickness="0">
-                                    <Image Source="Delete.png" Height="40" Width="40" />
-                                </Button>
-                            </StackPanel>
-                            <Button x:Name="AddExpenseCategory1"  Content="Add Expense" Click="AddExpense_Click" Style="{StaticResource InvisibleButtonStyle}" Width="360" HorizontalAlignment="Left" FontWeight="Bold" FontSize="40"/>
-                        </StackPanel>-->
-
-                        <!-- Category 2 -->
-                        <!-- <StackPanel Orientation="Horizontal">
-                            <TextBlock x:Name="test" Text="Category 2" FontSize="64" FontWeight="Bold" Width="Auto" HorizontalAlignment="Left"/>
-                            <Button x:Name="EditCatogoryButton2" Click="EditCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="65" Height="65">
-                                <Image Source="Edit.png" Height="64" Width="64" />
-                            </Button>
-                            <Button x:Name="DeleteCategoryButton2" Click="DeleteCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="65" Height="65" BorderThickness="0">
-                                <Image Source="Delete.png" Height="64" Width="64" />
-                            </Button>
-                        </StackPanel>
-                        <StackPanel x:Name="Category2ExpensesListView" Background="LightGray">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Expense 1" FontSize="40" FontWeight="DemiBold"/>
-                                <TextBlock Text=" " FontSize="10" FontWeight="DemiBold" Foreground="Gray"/>
-                                <TextBlock Text="10/100 $"  FontSize="32" FontWeight="DemiBold" Foreground="Gray" Height="35"/>
-                                <Button x:Name="EditCategory2ExpenseButton1" Click="EditIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41">
-                                    <Image Source="Edit.png" Height="40" Width="40" />
-                                </Button>
-                                <Button x:Name="DeleteCategory2ExpenseButton1" Click="EditIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41" BorderThickness="0">
-                                    <Image Source="Delete.png" Height="40" Width="40" />
-                                </Button>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Expense 2" FontSize="40" FontWeight="DemiBold"/>
-                                <TextBlock Text=" " FontSize="10" FontWeight="DemiBold" Foreground="Gray"/>
-                                <TextBlock Text="20/100 $"  FontSize="32" FontWeight="DemiBold" Foreground="Gray" Height="35"/>
-                                <Button x:Name="EditCategory2ExpenseButton2" Click="EditIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41">
-                                    <Image Source="Edit.png" Height="40" Width="40" />
-                                </Button>
-                                <Button x:Name="DeleteCategory2ExpenseButton2" Click="EditIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="41" Height="41" BorderThickness="0">
-                                    <Image Source="Delete.png" Height="40" Width="40" />
-                                </Button>
-                            </StackPanel
-                            <Button x:Name="AddExpenseCategory2" Content="Add Expense" Click="AddExpense_Click" Style="{StaticResource InvisibleButtonStyle}" Width="360" HorizontalAlignment="Left" FontWeight="Bold" FontSize="40"/>
-                        </StackPanel>-->
+                        
                     </StackPanel>
                     <Button Content="Add Category" Click="AddCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="360" HorizontalAlignment="Left" FontWeight="Bold" FontSize="35"/>
                 </StackPanel>
             </Border>
-
+            
+            </ScrollViewer>
             <Border BorderBrush="Black" BorderThickness="0" Margin="10,30,45,0" Width="Auto" HorizontalAlignment="Right">
                 <StackPanel>
                     <Grid>
@@ -236,5 +170,5 @@
                 </StackPanel>
             </Border>
         </Grid>
-    </ScrollViewer>
+   
 </Page>

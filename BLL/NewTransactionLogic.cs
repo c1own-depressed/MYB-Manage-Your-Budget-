@@ -1,32 +1,31 @@
-﻿using DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL
+﻿namespace BLL
 {
+    using System;
+    using System.Collections.Generic;
+    using DAL;
+
     public class ExpenseCategoryWithExpenses
     {
-        public ExpenseCategory expenseCategory;
-        public List<Expense> expenses;
+        public ExpenseCategory ExpenseCategory;
+        public List<Expense> Expenses;
 
         public ExpenseCategoryWithExpenses()
         {
-            expenseCategory = new ExpenseCategory();
-            expenses = new List<Expense>();
+            this.ExpenseCategory = new ExpenseCategory();
+            this.Expenses = new List<Expense>();
         }
+
         public ExpenseCategoryWithExpenses(ExpenseCategory expenseCategory, List<Expense> expenses)
         {
-            this.expenseCategory = expenseCategory;
-            this.expenses = expenses;
-        } 
+            this.ExpenseCategory = expenseCategory;
+            this.Expenses = expenses;
+        }
+
     }
 
     public class NewTransactionLogic
     {
-        static public List<ExpenseCategoryWithExpenses> GetCategoriesAndExpensesByUserId(int userId)
+        public static List<ExpenseCategoryWithExpenses> GetCategoriesAndExpensesByUserId(int userId)
         {
             List<ExpenseCategory> expenseCategories = ExpenseCategoryQueries.GetExpenseCategoriesByUserId(userId);
 
@@ -37,22 +36,22 @@ namespace BLL
                 List<Expense> expenses = ExpenseQueries.GetExpensesByExpenseCategoryId(category.Id);
                 categoriesWithExpenses.Add(new ExpenseCategoryWithExpenses
                 {
-                    expenseCategory = category,
-                    expenses = expenses
+                    ExpenseCategory = category,
+                    Expenses = expenses,
                 });
             }
 
             return categoriesWithExpenses;
         }
 
-        static public Transaction AddTransaction(string transactionName, int amount, int expenseId)
+        public static Transaction AddTransaction(string transactionName, int amount, int expenseId)
         {
             Transaction transaction = new Transaction
             {
                 TransactionName = transactionName,
                 Amount = amount,
                 Date = DateTime.Now,
-                ExpenseId = expenseId
+                ExpenseId = expenseId,
             };
 
             DAL.TransactionQueries.AddTransaction(transaction);

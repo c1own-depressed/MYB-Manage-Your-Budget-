@@ -1,19 +1,15 @@
-﻿using DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL
+﻿namespace BLL
 {
     public class StatisticsLogic
     {
         public class DataRecord
         {
             public string Date { get; set; }
+
             public int Income { get; set; }
+
             public int SummaryExpenses { get; set; }
+
             public int Saved { get; set; }
         }
 
@@ -43,7 +39,7 @@ namespace BLL
         //    foreach (var transaction in allTransactions)
         //    {
         //        records.Add(new DataRecord { 
-                    
+
         //        });
         //    }
         //}

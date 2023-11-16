@@ -1,17 +1,15 @@
-﻿using DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL
+﻿namespace BLL
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using DAL;
+
     public class ExportDataLogic
     {
-        static public string GetExportDataByUserId(int expenseCategoryId, DateTime from, DateTime to)
+        public static string GetExportDataByUserId(int expenseCategoryId, DateTime from, DateTime to)
         {
-            string exportData = "";
+            string exportData = string.Empty;
             List<Expense> expenses = DAL.ExpenseQueries.GetExpensesByExpenseCategoryId(expenseCategoryId);
             ExpenseCategory expenseCategory = DAL.ExpenseCategoryQueries.GetExpenseCategoryById(expenseCategoryId);
             foreach (var expense in expenses)
@@ -26,10 +24,11 @@ namespace BLL
                     }
                 }
             }
+
             return exportData;
         }
 
-        static public MemoryStream GetCSVMemoryStream(int expenseCategoryId, DateTime from, DateTime to)
+        public static MemoryStream GetCSVMemoryStream(int expenseCategoryId, DateTime from, DateTime to)
         {
             string data = GetExportDataByUserId(expenseCategoryId, from, to);
 
