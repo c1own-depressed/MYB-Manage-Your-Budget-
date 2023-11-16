@@ -1,30 +1,19 @@
-﻿using MYB_NEW;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace Presentation
+﻿namespace Presentation
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Navigation;
+    using MYB_NEW;
+
     /// <summary>
-    /// Interaction logic for TipsAndTricksPage.xaml
+    /// Interaction logic for TipsAndTricksPage.xaml.
     /// </summary>
     public partial class TipsAndTricksPage : Page
     {
         public TipsAndTricksPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -32,6 +21,7 @@ namespace Presentation
             Main main = new Main();
             Window.GetWindow(this).Content = main;
         }
+
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             try
@@ -46,5 +36,4 @@ namespace Presentation
         }
 
     }
-
 }

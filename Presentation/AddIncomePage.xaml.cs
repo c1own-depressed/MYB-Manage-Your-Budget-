@@ -1,25 +1,24 @@
-﻿using BLL;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using System.Windows;
-using System;
-
-namespace MYB_NEW
+﻿namespace MYB_NEW
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+    using BLL;
+
     public partial class AddIncomePage : Window
     {
         private StackPanel incomeListView;
 
         public AddIncomePage(StackPanel listView)
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.incomeListView = listView;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            string incomeTitle = IncomeTitleTextBox.Text;
-            double projectedIncome = double.Parse(ProjectedIncomeTextBox.Text); // Попередньо перевірте правильність введення
+            string incomeTitle = this.IncomeTitleTextBox.Text;
+            double projectedIncome = double.Parse(this.ProjectedIncomeTextBox.Text); // Попередньо перевірте правильність введення
 
             int userId = UserManager.CurrentUser.Id;
             MainPageLogic.AddIncome(userId, incomeTitle, (int)projectedIncome);
@@ -30,24 +29,22 @@ namespace MYB_NEW
             // Створіть кнопки "Edit" та "Delete" для нового доходу
             Button editButton = new Button
             {
-                Style = (Style)Resources["InvisibleButtonStyle"],
+                Style = (Style)this.Resources["InvisibleButtonStyle"],
                 Width = 41,
                 Height = 41,
-                Name = $"EditIncomeButton_{Guid.NewGuid().ToString("N")}",
+                Name = $"EditIncomeButton_{Guid.NewGuid():N}",
                 Content = new TextBlock
                 {
                     Text = "E",
                     FontSize = 16,
-                    FontWeight = FontWeights.Bold
-                }
-            }; ;
+                    FontWeight = FontWeights.Bold,
+                },
+            };
 
-            editButton.Click += EditIncome_Click;
-
-
+            editButton.Click += this.EditIncome_Click;
             Button deleteButton = new Button
             {
-                Style = (Style)Resources["InvisibleButtonStyle"],
+                Style = (Style)this.Resources["InvisibleButtonStyle"],
                 Width = 41,
                 Height = 41,
                 Name = $"DeleteIncomeButton_{Guid.NewGuid().ToString("N")}",
@@ -55,15 +52,15 @@ namespace MYB_NEW
                 {
                     Text = "D",
                     FontSize = 16,
-                    FontWeight = FontWeights.Bold
-                }
+                    FontWeight = FontWeights.Bold,
+                },
             };
 
-            deleteButton.Click += DeleteIncome_Click;
+            deleteButton.Click += this.DeleteIncome_Click;
 
 
             // Додайте новий дохід разом із кнопками "Edit" та "Delete" до списку доходів на головній сторінці
-            if (incomeListView != null)
+            if (this.incomeListView != null)
             {
                 StackPanel incomePanel = new StackPanel();
                 incomePanel.Orientation = Orientation.Horizontal;
@@ -71,12 +68,12 @@ namespace MYB_NEW
                 {
                     Text = newIncome.Title,
                     FontSize = 40,
-                    FontWeight = FontWeights.DemiBold
+                    FontWeight = FontWeights.DemiBold,
                 };
                 incomePanel.Children.Add(incomeTextBlock);
                 incomePanel.Children.Add(editButton);
                 incomePanel.Children.Add(deleteButton);
-                incomeListView.Children.Add(incomePanel);
+                this.incomeListView.Children.Add(incomePanel);
             }
 
             // Закрийте сторінку "AddIncomePage"

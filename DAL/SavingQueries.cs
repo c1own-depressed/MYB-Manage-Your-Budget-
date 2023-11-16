@@ -1,13 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MYB.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAL
+﻿namespace DAL
 {
+    using MYB.DAL;
+
     public static class SavingQueries
     {
         private static readonly AppDBContext _context;

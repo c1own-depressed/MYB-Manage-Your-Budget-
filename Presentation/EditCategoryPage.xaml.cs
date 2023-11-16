@@ -1,27 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-namespace MYB_NEW
+﻿namespace MYB_NEW
 {
+    using System.Windows;
+
     /// <summary>
-    /// Interaction logic for EditCategoryPage.xaml
+    /// Interaction logic for EditCategoryPage.xaml.
     /// </summary>
     public partial class EditCategoryPage : Window
     {
         public EditCategoryPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

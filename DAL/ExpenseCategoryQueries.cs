@@ -1,40 +1,35 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MYB.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAL
+﻿namespace DAL
 {
+    using MYB.DAL;
+
     public static class ExpenseCategoryQueries
     {
 
-        private static readonly AppDBContext _context;
+        private static readonly AppDBContext context;
 
         static ExpenseCategoryQueries()
         {
-            _context = new AppDBContext();
+            context = new AppDBContext();
         }
+
         public static ExpenseCategory GetExpenseCategoryById(int expenseCategoryId)
         {
-            return (from expenseCat in _context.ExpenseCategories
+            return (from expenseCat in context.ExpenseCategories
                     where expenseCat.Id == expenseCategoryId
                     select expenseCat).First();
         }
 
         public static List<ExpenseCategory> GetExpenseCategoriesByUserId(int userID)
         {
-            return (from expenseCat in _context.ExpenseCategories
+            return (from expenseCat in context.ExpenseCategories
                     where expenseCat.UserId == userID
                     select expenseCat).ToList();
         }
 
         public static void AddExpenseCategory(ExpenseCategory expenseCategory)
         {
-            _context.ExpenseCategories.Add(expenseCategory);
-            _context.SaveChanges();
+            context.ExpenseCategories.Add(expenseCategory);
+            context.SaveChanges();
         }
     }
 }

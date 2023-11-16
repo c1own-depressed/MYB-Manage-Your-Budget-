@@ -1,37 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MYB_NEW;
-using BLL;
-
-namespace reg
+﻿namespace reg
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using MYB_NEW;
+
     /// <summary>
-    /// Interaction logic for Statistic1.xaml
+    /// Interaction logic for Statistic1.xaml.
     /// </summary>
     public partial class Statistic1 : Page
     {
         public Statistic1()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
+
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Main main = new Main();
             Window.GetWindow(this).Content = main;
         }
-        
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //List<StatisticsLogic.DataRecord> records = StatisticsLogic.GetRecordsFromDatabase();

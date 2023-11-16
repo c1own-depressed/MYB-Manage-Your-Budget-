@@ -1,7 +1,7 @@
 ﻿namespace MYB
 {
-    using MySql.Data.MySqlClient;
     using System;
+    using MySql.Data.MySqlClient;
 
     internal class Program
     {
@@ -10,7 +10,8 @@
         static void Main(string[] args)
         {
             CreateDatabase();
-            //FillDatabaseWithTestData();
+
+            // FillDatabaseWithTestData();
             Console.WriteLine("Displaying User Table Data:");
             DisplayUserData();
             Console.WriteLine();
@@ -71,8 +72,6 @@
 
         static void DisplayIncomeData()
         {
-
-
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
@@ -92,8 +91,6 @@
 
         static void DisplaySavingData()
         {
-
-
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
@@ -178,96 +175,72 @@
                 {
                     using (MySqlCommand insertCommand = new MySqlCommand(insertQuery1, connection))
                     {
-
-
                         insertCommand.Parameters.AddWithValue("@income_name", $"income {i}");
-                        insertCommand.Parameters.AddWithValue("@amount", i * 100 + 1);
+                        insertCommand.Parameters.AddWithValue("@amount", (i * 100) + 1);
                         insertCommand.Parameters.AddWithValue("@user_id", i + 1);
                         insertCommand.ExecuteNonQuery();
                     }
-
                 }
+
                 string insertQuery2 = "INSERT INTO Saving (saving_name, amount, user_id) VALUES (@saving_name, @amount, @user_id)";
 
                 for (int i = 0; i < 50; i++)
                 {
-
                     using (MySqlCommand insertCommand = new MySqlCommand(insertQuery2, connection))
                     {
-
-
                         insertCommand.Parameters.AddWithValue("@saving_name", $"saving {i}");
-                        insertCommand.Parameters.AddWithValue("@amount", i * 100 + 1);
+                        insertCommand.Parameters.AddWithValue("@amount", (i * 100) + 1);
                         insertCommand.Parameters.AddWithValue("@user_id", i + 1);
                         insertCommand.ExecuteNonQuery();
                     }
-
                 }
+
                 string insertQuery3 = "INSERT INTO ExpenseCategory (category_name, user_id) VALUES (@category_name, @user_id)";
 
                 for (int i = 0; i < 50; i++)
                 {
-
                     using (MySqlCommand insertCommand = new MySqlCommand(insertQuery3, connection))
                     {
-
-
                         insertCommand.Parameters.AddWithValue("@category_name", $"category {i}");
                         insertCommand.Parameters.AddWithValue("@user_id", i + 1);
                         insertCommand.ExecuteNonQuery();
                     }
-
                 }
+
                 string insertQuery4 = "INSERT INTO Expense (expense_name,amount, expense_category_id) VALUES (@expense_name,@amount, @expense_category_id)";
 
                 for (int i = 0; i < 50; i++)
                 {
-
                     using (MySqlCommand insertCommand = new MySqlCommand(insertQuery4, connection))
                     {
-
-
                         insertCommand.Parameters.AddWithValue("@expense_name", $"expense {i}");
-                        insertCommand.Parameters.AddWithValue("@amount", i * 100 + 1);
+                        insertCommand.Parameters.AddWithValue("@amount", (i * 100) + 1);
                         insertCommand.Parameters.AddWithValue("@expense_category_id", i + 1);
                         insertCommand.ExecuteNonQuery();
                     }
-
                 }
+
                 string insertQuery5 = "INSERT INTO Transaction (transaction_name,amount,date, expense_id) VALUES (@transaction_name,@amount,@date, @expense_id)";
 
                 for (int i = 0; i < 50; i++)
                 {
-
                     using (MySqlCommand insertCommand = new MySqlCommand(insertQuery5, connection))
                     {
-
-
                         insertCommand.Parameters.AddWithValue("@transaction_name", $"transaction {i}");
-                        insertCommand.Parameters.AddWithValue("@amount", i * 100 + 1);
+                        insertCommand.Parameters.AddWithValue("@amount", (i * 100) + 1);
                         insertCommand.Parameters.AddWithValue("@date", DateTime.Now);
                         insertCommand.Parameters.AddWithValue("@expense_id", i + 1);
                         insertCommand.ExecuteNonQuery();
                     }
-
                 }
             }
         }
 
-
-
-
-
-        static public void CreateDatabase()
+        public static void CreateDatabase()
         {
-
-
-
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
-
-
                 string createTableUser =
                 @"CREATE TABLE IF NOT EXISTS User(
 	                id INT AUTO_INCREMENT NOT NULL,
@@ -343,33 +316,35 @@
                     PRIMARY KEY (id),
                     FOREIGN KEY (expense_id) REFERENCES Expense(id)
                 );";
-
-
                 using (MySqlCommand command = new MySqlCommand(createTableUser, connection))
                 {
                     command.ExecuteNonQuery();
                 }
+
                 using (MySqlCommand command = new MySqlCommand(createTableIncome, connection))
                 {
                     command.ExecuteNonQuery();
                 }
+
                 using (MySqlCommand command = new MySqlCommand(createTableSaving, connection))
                 {
                     command.ExecuteNonQuery();
                 }
+
                 using (MySqlCommand command = new MySqlCommand(createTableExpenseCategory, connection))
                 {
                     command.ExecuteNonQuery();
                 }
+
                 using (MySqlCommand command = new MySqlCommand(createTableExpense, connection))
                 {
                     command.ExecuteNonQuery();
                 }
+
                 using (MySqlCommand command = new MySqlCommand(createTableTransaction, connection))
                 {
                     command.ExecuteNonQuery();
                 }
-
             }
         }
     }
