@@ -44,11 +44,7 @@ namespace Presentation
                 int userId = LoginSignupLogic.CheckCredentials(username, password);
                 if (Convert.ToBoolean(userId))
                 {
-                    InnerUser user = new InnerUser
-                    {
-                        UserId = userId,
-                    };
-                    UserManager.Instance.CurrentUser = user;
+                    UserManager.LogInUser(userId);
 
                     Main main = new Main();
                     Window.GetWindow(this).Content = main;

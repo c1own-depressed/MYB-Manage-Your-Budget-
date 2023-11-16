@@ -1,10 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MYB.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MYB.DAL;
+
 
 namespace DAL
 {
@@ -19,25 +14,38 @@ namespace DAL
 
         public static User GetUserById(int userId)
         {
-            //return _context.Users.FirstOrDefault(u => u.Id == userId);
-            return (from user in _context.Users
-                    where user.Id == userId
-                    select user).FirstOrDefault();
+            List<User> users = (from user in _context.Users
+                                where user.Id == userId
+                                select user).ToList();
+            if (users.Count == 1)
+            {
+                return users[0];
+            }
+            throw new Exception("User is not found");
         }
 
         public static User GetUserByUsername(string username)
         {
-            return _context.Users.FirstOrDefault(u => u.Username == username);
-            //return (from user in _context.Users
-            //        where user.Username == username
-            //        select user).FirstOrDefault();
+            List<User> users = (from user in _context.Users
+                                where user.Username == username
+                                select user).ToList();
+            if (users.Count == 1)
+            {
+                return users[0];
+            }
+            throw new Exception("User is not found");
         }
 
         public static User GetUserByEmail(string email)
         {
-            return (from user in _context.Users
-                    where user.Email == email
-                    select user).FirstOrDefault();
+            List<User> users = (from user in _context.Users
+                                where user.Email == email
+                                select user).ToList();
+            if (users.Count == 1)
+            {
+                return users[0];
+            }
+            throw new Exception("User is not found");
         }
 
         public static void AddUser(User user)

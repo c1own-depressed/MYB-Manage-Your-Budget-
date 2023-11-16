@@ -11,19 +11,30 @@ namespace BLL
     {
         public ExpenseCategory expenseCategory;
         public List<Expense> expenses;
+
+        public ExpenseCategoryWithExpenses()
+        {
+            expenseCategory = new ExpenseCategory();
+            expenses = new List<Expense>();
+        }
+        public ExpenseCategoryWithExpenses(ExpenseCategory expenseCategory, List<Expense> expenses)
+        {
+            this.expenseCategory = expenseCategory;
+            this.expenses = expenses;
+        } 
     }
 
     public class NewTransactionLogic
     {
         static public List<ExpenseCategoryWithExpenses> GetCategoriesAndExpensesByUserId(int userId)
         {
-            List<ExpenseCategory> expenseCategoryies = DAL.ExpenseCategoryQueries.GetExpenseCategoriesByUserId(userId);
+            List<ExpenseCategory> expenseCategories = ExpenseCategoryQueries.GetExpenseCategoriesByUserId(userId);
 
             List<ExpenseCategoryWithExpenses> categoriesWithExpenses = new List<ExpenseCategoryWithExpenses>();
 
-            foreach (var category in expenseCategoryies)
+            foreach (var category in expenseCategories)
             {
-                List<Expense> expenses = DAL.ExpenseQueries.GetExpensesByExpenseCategoryId(category.Id);
+                List<Expense> expenses = ExpenseQueries.GetExpensesByExpenseCategoryId(category.Id);
                 categoriesWithExpenses.Add(new ExpenseCategoryWithExpenses
                 {
                     expenseCategory = category,

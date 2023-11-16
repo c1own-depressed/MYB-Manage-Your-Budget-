@@ -32,8 +32,7 @@ namespace OtherPages
         public ExportDataPage()
         {
             InitializeComponent();
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            userId = currentUser.UserId;
+            userId = UserManager.CurrentUser.Id;
             categoriesWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId);
             foreach (var categoryWithExpenses in categoriesWithExpenses)
             {

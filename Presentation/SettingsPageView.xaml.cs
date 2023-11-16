@@ -28,8 +28,8 @@ namespace OtherPages
         {
 
             InitializeComponent();
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            userId = currentUser.UserId;
+
+            userId = UserManager.CurrentUser.Id;
             User user = SettingsLogic.GetUser(userId);
             LanguageComboBox.Text = (user.Language == "ua") ? "Ukrainian" : (user.Language == "en") ? "English" : "Unknown";
             ThemeComboBox.SelectedIndex = user.LightTheme? 1 : 0;

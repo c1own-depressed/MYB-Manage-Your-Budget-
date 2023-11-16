@@ -14,34 +14,26 @@ namespace BLL
             // Install-Package BCrypt.Net
             //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
             string hashedPassword = password;
-            User newUser = new User
-            {
-                Username = username,
-                Email = email,
-                HashedPassword = hashedPassword,
-                LightTheme = true,
-                Language = "ua",
-                Currency = "uah",
-            };
+            User newUser = new User(username, email, hashedPassword, true, "ua", "uah");
 
-            DAL.UserQueries.AddUser(newUser);
+            UserQueries.AddUser(newUser);
 
             return newUser;
         }
 
         static public User UpdateUser(int userId, string language, bool isLightTheme, string currency)
         {
-            return DAL.UserQueries.UpdateUser(userId, language, isLightTheme, currency);
+            return UserQueries.UpdateUser(userId, language, isLightTheme, currency);
         }
 
         static public User GetUser(int userId)
         {
-            return DAL.UserQueries.GetUserById(userId);
+            return UserQueries.GetUserById(userId);
         }
 
         static public User GetUserByUsername(string username)
         {
-            return DAL.UserQueries.GetUserByUsername(username);
+            return UserQueries.GetUserByUsername(username);
         }
 
         static public int CheckCredentials(string username, string password)
@@ -54,7 +46,7 @@ namespace BLL
             //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
             string hashedPassword = password;
 
-            User user = DAL.UserQueries.GetUserByUsername(username);
+            User user = UserQueries.GetUserByUsername(username);
             if (user == null || user.HashedPassword != hashedPassword)
             {
                 return 0;
@@ -67,7 +59,7 @@ namespace BLL
 
         static public bool EmailExists(string email)
         {
-            User user = DAL.UserQueries.GetUserByEmail(email);
+            User user = UserQueries.GetUserByEmail(email);
             if (user == null)
             {
                 return false;

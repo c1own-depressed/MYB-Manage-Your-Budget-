@@ -21,9 +21,8 @@ namespace MYB_NEW
             // Отримайте дані з текстових полів
             string incomeTitle = IncomeTitleTextBox.Text;
             double projectedIncome = double.Parse(ProjectedIncomeTextBox.Text); // Попередньо перевірте правильність введення
-            
-            InnerUser currentUser = UserManager.Instance.CurrentUser;
-            int userId = currentUser.UserId;
+
+            int userId = UserManager.CurrentUser.Id;
             MainPageLogic.AddIncome(userId, incomeTitle, (int)projectedIncome);
 
             // Створіть новий об'єкт доходу
