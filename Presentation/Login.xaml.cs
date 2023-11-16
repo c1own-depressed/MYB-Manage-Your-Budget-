@@ -32,7 +32,7 @@ namespace Presentation
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string username = UsernameTextBox.Text;
-            string password = PasswordTextBox.Text;
+            string password = PasswordTextBox.Password;
             //bool rememberMe = checkBox.IsChecked == true;
 
             if (username.Length == 0 || password.Length == 0)

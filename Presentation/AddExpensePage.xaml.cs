@@ -1,48 +1,37 @@
-﻿using BLL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace MYB_NEW
+﻿namespace MYB_NEW
 {
+    using BLL;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+
     /// <summary>
-    /// Interaction logic for AddExpensePage.xaml
+    /// Interaction logic for AddExpensePage.xaml.
     /// </summary>
     public partial class AddExpensePage : Window
     {
         private StackPanel expenseCategory;
         private int categoryId;
+
         public AddExpensePage(StackPanel category)
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.expenseCategory = category;
 
         }
+
         public AddExpensePage(StackPanel category, int categoryId)
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.expenseCategory = category;
             this.categoryId = categoryId;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            string expenseTitle = ExpenseTitleTextBox.Text;
-            double plannedBudget = double.Parse(PlannedBudgetTextBox.Text);
-
-            //category. 
-            ExpenseQueries.AddExpense(categoryId, expenseTitle, (int)plannedBudget);
+            string expenseTitle = this.ExpenseTitleTextBox.Text;
+            double plannedBudget = double.Parse(this.PlannedBudgetTextBox.Text);
+            MainPageLogic.AddExpense(this.categoryId, expenseTitle, (int)plannedBudget);
 
             // Створіть новий об'єкт "Expense"
             Expense newExpense = new Expense(expenseTitle, plannedBudget, expenseCategory);
@@ -95,7 +84,7 @@ namespace MYB_NEW
                     }
                 }
             }
-           
+
             // Закрийте сторінку "AddExpensePage"
             Close();
         }

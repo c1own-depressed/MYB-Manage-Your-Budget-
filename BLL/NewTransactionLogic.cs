@@ -1,26 +1,23 @@
-﻿using DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL
+﻿namespace BLL
 {
+    using System;
+    using System.Collections.Generic;
+    using DAL;
+
     public class ExpenseCategoryWithExpenses
     {
-        public ExpenseCategory expenseCategory;
-        public List<Expense> expenses;
+        public ExpenseCategory ExpenseCategory;
+        public List<Expense> Expenses;
 
         public ExpenseCategoryWithExpenses()
         {
-            expenseCategory = new ExpenseCategory();
-            expenses = new List<Expense>();
+            ExpenseCategory = new ExpenseCategory();
+            Expenses = new List<Expense>();
         }
         public ExpenseCategoryWithExpenses(ExpenseCategory expenseCategory, List<Expense> expenses)
         {
-            this.expenseCategory = expenseCategory;
-            this.expenses = expenses;
+            this.ExpenseCategory = expenseCategory;
+            this.Expenses = expenses;
         } 
     }
 
@@ -37,8 +34,8 @@ namespace BLL
                 List<Expense> expenses = ExpenseQueries.GetExpensesByExpenseCategoryId(category.Id);
                 categoriesWithExpenses.Add(new ExpenseCategoryWithExpenses
                 {
-                    expenseCategory = category,
-                    expenses = expenses
+                    ExpenseCategory = category,
+                    Expenses = expenses,
                 });
             }
 

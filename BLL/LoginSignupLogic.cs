@@ -1,15 +1,10 @@
-﻿using DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL
+﻿namespace BLL
 {
+    using DAL;
+
     public class LoginSignupLogic
     {
-        static public User AddUser(string username, string email, string password)
+        public static User AddUser(string username, string email, string password)
         {
             // Install-Package BCrypt.Net
             //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
@@ -21,29 +16,29 @@ namespace BLL
             return newUser;
         }
 
-        static public User UpdateUser(int userId, string language, bool isLightTheme, string currency)
+        public static User UpdateUser(int userId, string language, bool isLightTheme, string currency)
         {
             return UserQueries.UpdateUser(userId, language, isLightTheme, currency);
         }
 
-        static public User GetUser(int userId)
+        public static User GetUser(int userId)
         {
             return UserQueries.GetUserById(userId);
         }
 
-        static public User GetUserByUsername(string username)
+        public static User GetUserByUsername(string username)
         {
             return UserQueries.GetUserByUsername(username);
         }
 
-        static public int CheckCredentials(string username, string password)
+        public static int CheckCredentials(string username, string password)
         {
             if (password.Length == 0 || username.Length == 0)
             {
                 return 0;
             }
 
-            //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
+
             string hashedPassword = password;
 
             User user = UserQueries.GetUserByUsername(username);
@@ -57,7 +52,7 @@ namespace BLL
             }
         }
 
-        static public bool EmailExists(string email)
+        public static bool EmailExists(string email)
         {
             User user = UserQueries.GetUserByEmail(email);
             if (user == null)

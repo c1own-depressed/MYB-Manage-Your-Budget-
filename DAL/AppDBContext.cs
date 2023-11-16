@@ -1,10 +1,4 @@
 ﻿using DAL;
-using System;
-using System.Collections.Generic;
-//using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -23,8 +17,8 @@ namespace MYB.DAL
         public DbSet<ExpenseCategory> ExpenseCategories { get; set; }
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-    
-    
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = "server=localhost;user=root;password=1234;database=mybdb";

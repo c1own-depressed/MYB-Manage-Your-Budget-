@@ -39,16 +39,16 @@ namespace OtherPages
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem selectedLanguage = (ComboBoxItem)LanguageComboBox.SelectedItem;
-            string language = selectedLanguage.Content.ToString();
+            string language = (selectedLanguage?.Content?.ToString() ?? "Unknown");
             string dblanguage = (language == "Ukrainian") ? "ua" : (language == "English") ? "en" : "Unknown";
             ComboBoxItem selectedTheme = (ComboBoxItem)ThemeComboBox.SelectedItem;
-            string theme = selectedTheme.Content.ToString();
+            string theme = (selectedTheme?.Content?.ToString() ?? "Unknown");
             bool isLight = theme == "Light";
 
 
 
             ComboBoxItem selectedCurrency = (ComboBoxItem)CurrencyComboBox.SelectedItem;
-            string currency = selectedCurrency.Content.ToString().ToLower();
+            string currency = (selectedCurrency?.Content?.ToString() ?? "Unknown").ToLower();
             SettingsLogic.UpdateUser(userId, dblanguage, isLight, currency);
             MessageBox.Show("Success!");
         }

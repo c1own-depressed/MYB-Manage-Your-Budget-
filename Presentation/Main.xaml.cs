@@ -1,17 +1,16 @@
-﻿using BLL;
-using DAL;
-using OtherPages;
-using Presentation;
-using reg;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-
-
-namespace MYB_NEW
+﻿namespace MYB_NEW
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using BLL;
+    using DAL;
+    using OtherPages;
+    using Presentation;
+    using reg;
+
     public partial class Main : Page
     {
         public Main()
@@ -32,9 +31,8 @@ namespace MYB_NEW
                 SavingsListView.Children.Add(new TextBlock() { Text = savings[i].SavingName, FontSize = 40, FontWeight = FontWeights.DemiBold });
             }
 
-            // TODO: username by innerUser (UserManager)
-            //User user = MainPageLogic.GetUser(userId);
-            //UsernameTextBlock.Text = user.Username;
+           
+            UsernameTextBlock.Text = UserManager.CurrentUser.Username;
 
             SetCategoriesList(expenses);
         }
@@ -43,7 +41,7 @@ namespace MYB_NEW
         {
             for (int i = 0; i < expenses.Count; i++)
             {
-                int categoryID = expenses[i].expenseCategory.Id;
+                int categoryID = expenses[i].ExpenseCategory.Id;
                 Dictionary<Button, StackPanel> categoryExpenseButtonMap = new Dictionary<Button, StackPanel>();
                 Border newCategoryBlock = new Border
                 {
@@ -57,7 +55,7 @@ namespace MYB_NEW
 
                 TextBlock categoryHeader = new TextBlock
                 {
-                    Text = expenses[i].expenseCategory.CategoryName,
+                    Text = expenses[i].ExpenseCategory.CategoryName,
                     FontSize = 40,
                     FontWeight = FontWeights.Bold,
                     HorizontalAlignment = HorizontalAlignment.Left,
@@ -65,7 +63,7 @@ namespace MYB_NEW
                 };
 
                 StackPanel categoryListView = new StackPanel();
-                foreach (var expense in expenses[i].expenses)
+                foreach (var expense in expenses[i].Expenses)
                 {
                     StackPanel newExpensePanel = new StackPanel();
                     newExpensePanel.Orientation = Orientation.Horizontal;
@@ -143,10 +141,10 @@ namespace MYB_NEW
                 }
 
 
-                for (int j = 0; j < expenses[i].expenses.Count; j++)
+                for (int j = 0; j < expenses[i].Expenses.Count; j++)
                 {
                     // Створіть новий об'єкт "Expense"
-                    Expense newExpense = new Expense(expenses[i].expenses[j].ExpenseName, expenses[i].expenses[j].Amount, categoryListView);
+                    Expense newExpense = new Expense(expenses[i].Expenses[j].ExpenseName, expenses[i].Expenses[j].Amount, categoryListView);
 
                     // Додайте новий "Expense" до категорії витрат (StackPanel)
                     if (categoryListView != null)
