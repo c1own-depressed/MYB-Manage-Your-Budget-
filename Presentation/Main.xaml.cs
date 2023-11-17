@@ -233,7 +233,7 @@
             if (this.buttonsVisible)
             {
                 // Приховати кнопки "Statistic", "Data export", "Tips and Tricks", "Settings" і "Sign out"
-                this.StatisticButton.Visibility = Visibility.Collapsed;
+                // this.StatisticButton.Visibility = Visibility.Collapsed;
                 this.DataExportButton.Visibility = Visibility.Collapsed;
                 this.TipsAndTricksButton.Visibility = Visibility.Collapsed;
                 this.SettingsButton.Visibility = Visibility.Collapsed;
@@ -242,7 +242,7 @@
             else
             {
                 // Показати кнопки "Statistic", "Data export", "Tips and Tricks", "Settings" і "Sign out"
-                this.StatisticButton.Visibility = Visibility.Visible;
+                // this.StatisticButton.Visibility = Visibility.Visible;
                 this.DataExportButton.Visibility = Visibility.Visible;
                 this.TipsAndTricksButton.Visibility = Visibility.Visible;
                 this.SettingsButton.Visibility = Visibility.Visible;

@@ -29,17 +29,9 @@
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
-            string expenseTitle = ExpenseTitleTextBox.Text;
-            double plannedBudget = double.Parse(PlannedBudgetTextBox.Text);
-
-            //category. 
-            MainPageLogic.AddExpense(categoryId, expenseTitle, (int)plannedBudget);
-=======
             string expenseTitle = this.ExpenseTitleTextBox.Text;
             double plannedBudget = double.Parse(this.PlannedBudgetTextBox.Text);
             MainPageLogic.AddExpense(this.categoryId, expenseTitle, (int)plannedBudget);
->>>>>>> e14a813c7f02be884ba09394ec197439f51c67fe
 
             // Створіть новий об'єкт "Expense"
             Expense newExpense = new Expense(expenseTitle, plannedBudget, this.expenseCategory);

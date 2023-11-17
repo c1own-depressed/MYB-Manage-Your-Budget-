@@ -1,19 +1,36 @@
 ﻿namespace BLL
 {
+    using System.Security.Cryptography;
+    using System.Text;
     using DAL;
 
     public class LoginSignupLogic
     {
         public static User AddUser(string username, string email, string password)
         {
-            // Install-Package BCrypt.Net
-            //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
-            string hashedPassword = password;
+            string hashedPassword = HashString(password);
             User newUser = new User(username, email, hashedPassword, true, "ua", "uah");
 
             UserQueries.AddUser(newUser);
 
             return newUser;
+        }
+
+        public static string HashString(string input)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+
+                return sb.ToString();
+            }
         }
 
         public static User UpdateUser(int userId, string language, bool isLightTheme, string currency)
@@ -38,8 +55,7 @@
                 return 0;
             }
 
-
-            string hashedPassword = password;
+            string hashedPassword = HashString(password);
 
             User user = UserQueries.GetUserByUsername(username);
             if (user == null || user.HashedPassword != hashedPassword)

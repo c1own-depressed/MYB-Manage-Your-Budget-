@@ -6,7 +6,7 @@
     {
         public static List<Income> GetIncomesByUserId(int userId)
         {
-            List<Income> incomes = DAL.IncomeQueries.GetIncomeByUserId(userId);
+            List<Income> incomes = IncomeQueries.GetIncomeByUserId(userId);
             return incomes;
         }
 
@@ -18,7 +18,7 @@
                 IncomeName = incomeName,
                 Amount = amount,
             };
-            DAL.IncomeQueries.AddIncome(income);
+            IncomeQueries.AddIncome(income);
         }
 
         public static List<Saving> GetSavingsByUserId(int userId)
@@ -35,7 +35,7 @@
                 SavingName = savingName,
                 Amount = amount,
             };
-            DAL.SavingQueries.AddSaving(saving);
+            SavingQueries.AddSaving(saving);
         }
 
         public static List<ExpenseCategoryWithExpenses> GetCategoriesAndExpensesByUserId(int userId)
@@ -64,7 +64,7 @@
                 UserId = userId,
                 CategoryName = expenseCategoryName,
             };
-            DAL.ExpenseCategoryQueries.AddExpenseCategory(expenseCategory);
+            ExpenseCategoryQueries.AddExpenseCategory(expenseCategory);
         }
 
         public static void AddExpense(int expenseCategoryId, string expenseName, int amount)
@@ -75,7 +75,7 @@
                 ExpenseName = expenseName,
                 Amount = amount,
             };
-            DAL.ExpenseQueries.AddExpense(expense);
+            ExpenseQueries.AddExpense(expense);
         }
     }
 }
