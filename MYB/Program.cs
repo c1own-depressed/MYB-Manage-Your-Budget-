@@ -2,10 +2,11 @@
 {
     using System;
     using MySql.Data.MySqlClient;
+    using static BLL.LoginSignupLogic;
 
-    internal class Program
+    public class Program
     {
-        private static readonly string ConnectionString = "server=127.0.0.1;uid=root;pwd=1234;database=mybdb";
+        public static readonly string ConnectionString = "server=127.0.0.1;uid=root;pwd=uTnw0PIh65_!;database=mybdb";
 
         static void Main(string[] args)
         {
@@ -32,7 +33,7 @@
             Console.WriteLine();
         }
 
-        static void DisplayUserData()
+        public static void DisplayUserData()
         {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
@@ -51,7 +52,7 @@
             }
         }
 
-        static void DisplayExpenseData()
+        public static void DisplayExpenseData()
         {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
@@ -70,7 +71,7 @@
             }
         }
 
-        static void DisplayIncomeData()
+        public static void DisplayIncomeData()
         {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
@@ -89,7 +90,7 @@
             }
         }
 
-        static void DisplaySavingData()
+        public static void DisplaySavingData()
         {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
@@ -108,7 +109,7 @@
             }
         }
 
-        static void DisplayExpenseCategoryData()
+        public static void DisplayExpenseCategoryData()
         {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
@@ -127,7 +128,7 @@
             }
         }
 
-        static void DisplayTransactionData()
+        public static void DisplayTransactionData()
         {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
@@ -146,7 +147,7 @@
             }
         }
 
-        static void FillDatabaseWithTestData()
+        public static void FillDatabaseWithTestData()
         {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
@@ -154,12 +155,12 @@
 
                 string insertQuery = "INSERT INTO User (username, password, email,light_theme, language, currency) VALUES (@username, @password, @email,@light_theme,@language,@currency)";
 
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < 50; i += 20)
                 {
                     using (MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection))
                     {
-                        insertCommand.Parameters.AddWithValue("@username", $"username {i}");
-                        insertCommand.Parameters.AddWithValue("@password", $"password {i}");
+                        insertCommand.Parameters.AddWithValue("@username", $"username{i}");
+                        insertCommand.Parameters.AddWithValue("@password", HashString($"password{i}"));
                         insertCommand.Parameters.AddWithValue("@email", $"user{i}@gmail.com");
                         insertCommand.Parameters.AddWithValue("@light_theme", false);
                         insertCommand.Parameters.AddWithValue("@language", "ua");

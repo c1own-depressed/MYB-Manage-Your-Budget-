@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj" />
+    <ProjectReference Include="..\MYB\MYB.csproj" />
   </ItemGroup>
 
 </Project>
