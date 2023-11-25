@@ -1,5 +1,7 @@
 ﻿using DAL;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 namespace MYB.DAL
 {
     public class AppDBContext : DbContext
@@ -22,7 +24,13 @@ namespace MYB.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "server=localhost;user=root;password=1234;database=mybdb";
+            //IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            //.Build();
+            //string connectionString = configuration.GetConnectionString("DefaultConnection"); // ConfigurationBuilder is not found
+
+            var connectionString = "server=localhost;database=mybdb2;user=root;password=uTnw0PIh65_!;";
+
+            //var connectionString = "server=localhost;user=root;password=1234;database=mybdb";
 
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 32));
 
