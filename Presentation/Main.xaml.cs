@@ -1,10 +1,12 @@
 ﻿namespace MYB_NEW
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
+    using System.Xml.Linq;
     using BLL;
     using DAL;
     using OtherPages;
@@ -13,34 +15,29 @@
 
     public partial class Main : Page
     {
+        List<Saving> savings;
+        List<Income> incomes;
+        List<ExpenseCategoryWithExpenses> expenses;
+
         public Main()
         {
             this.InitializeComponent();
             int userId = UserManager.CurrentUser.Id;
 
-            List<Income> incomes = MainPageLogic.GetIncomesByUserId(userId);
-            List<Saving> savings = MainPageLogic.GetSavingsByUserId(userId);
-            List<ExpenseCategoryWithExpenses> expenses = MainPageLogic.GetCategoriesAndExpensesByUserId(userId);
-
-            for (int i = 0; i < incomes.Count; i++)
-            {
-                this.IncomeListView.Children.Add(new TextBlock() { Text = incomes[i].IncomeName, FontSize = 40, FontWeight = FontWeights.DemiBold });
-            }
-
-            for (int i = 0; i < savings.Count; i++)
-            {
-                this.SavingsListView.Children.Add(new TextBlock() { Text = savings[i].SavingName, FontSize = 40, FontWeight = FontWeights.DemiBold });
-            }
-
+            this.incomes = MainPageLogic.GetIncomesByUserId(userId);
+            this.savings = MainPageLogic.GetSavingsByUserId(userId);
+            this.expenses = MainPageLogic.GetCategoriesAndExpensesByUserId(userId);
             this.UsernameTextBlock.Text = UserManager.CurrentUser.Username;
-
-            this.SetCategoriesList(expenses);
+            this.SetIncomeList(this.incomes);
+            this.SetCategoriesList(this.expenses);
+            this.SetSavingsList(this.savings);
         }
 
         private void SetCategoriesList(List<ExpenseCategoryWithExpenses> expenses)
         {
             for (int i = 0; i < expenses.Count; i++)
             {
+                int currentCategoryIndex = i;
                 int categoryID = expenses[i].ExpenseCategory.Id;
                 Dictionary<Button, StackPanel> categoryExpenseButtonMap = new Dictionary<Button, StackPanel>();
                 Border newCategoryBlock = new Border
@@ -63,8 +60,11 @@
                 };
 
                 StackPanel categoryListView = new StackPanel();
-                foreach (var expense in expenses[i].Expenses)
+                for (int j = 0; j < expenses[i].Expenses.Count; j++)
                 {
+                    int currentIndexExpense = j;
+                    var expense = expenses[i].Expenses[j];
+
                     StackPanel newExpensePanel = new StackPanel();
                     newExpensePanel.Orientation = Orientation.Horizontal;
 
@@ -89,15 +89,49 @@
                         FontSize = 20,
                         FontWeight = FontWeights.DemiBold,
                         Foreground = Brushes.Gray,
-                        Height = 20,
+                        Height = 30,
+                        VerticalAlignment = VerticalAlignment.Top,
                     };
+
+                    Button editExpenseButton = new Button
+                    {
+                        Style = (Style)this.Resources["InvisibleButtonStyle"],
+                        Width = 30,
+                        Name = $"EditIncomeButton_{Guid.NewGuid():N}",
+                        VerticalAlignment = VerticalAlignment.Top,
+                        Content = new TextBlock
+                        {
+                            Text = "E",
+                            FontSize = 20,
+                            FontWeight = FontWeights.Bold,
+                        },
+                    };
+                    editExpenseButton.Click += (sender, e) => this.EditExpense_Click(sender, e, currentCategoryIndex, currentIndexExpense);
+
+                    Button deleteExpenseButton = new Button
+                    {
+                        Style = (Style)this.Resources["InvisibleButtonStyle"],
+                        Height = 30,
+                        Name = $"DeleteIncomeButton_{Guid.NewGuid():N}",
+                        VerticalAlignment = VerticalAlignment.Top,
+                        Content = new TextBlock
+                        {
+                            Text = "D",
+                            FontSize = 20,
+                            FontWeight = FontWeights.Bold,
+                        },
+                    };
+                    deleteExpenseButton.Click += (sender, e) => this.DeleteExpense_Click(sender, e, currentCategoryIndex, currentIndexExpense);
 
                     newExpensePanel.Children.Add(newExpenseTitle);
                     newExpensePanel.Children.Add(spaceText);
                     newExpensePanel.Children.Add(newExpenseBudget);
+                    newExpensePanel.Children.Add(editExpenseButton);
+                    newExpensePanel.Children.Add(deleteExpenseButton);
 
                     categoryListView.Children.Add(newExpensePanel);
                 }
+
 
                 Button addCategoryExpenseButton = new Button
                 {
@@ -122,8 +156,45 @@
                 categoryExpenseButtonMap.Add(addCategoryExpenseButton, categoryListView);
 
                 categoryListView.Children.Add(addCategoryExpenseButton);
+                Button editCategoryButton = new Button
+                {
+                    Style = (Style)this.Resources["InvisibleButtonStyle"],
+                    Width = 50,
+                    Height = 50,
+                    Name = $"EditIncomeButton_{Guid.NewGuid():N}",
+                    VerticalAlignment = VerticalAlignment.Top,
+                    Content = new TextBlock
+                    {
+                        Text = "E",
+                        FontSize = 40,
+                        FontWeight = FontWeights.Bold,
+                    },
+                };
+                editCategoryButton.Click += (sender, e) => this.EditCategory_Click(sender, e, currentCategoryIndex);
 
-                newCategoryStackPanel.Children.Add(categoryHeader);
+                Button deleteCategoryButton = new Button
+                {
+                    Style = (Style)this.Resources["InvisibleButtonStyle"],
+                    Width = 50,
+                    Height = 50,
+                    Name = $"DeleteIncomeButton_{Guid.NewGuid().ToString("N")}",
+                    VerticalAlignment = VerticalAlignment.Top,
+                    Content = new TextBlock
+                    {
+                        Text = "D",
+                        FontSize = 40,
+                        FontWeight = FontWeights.Bold,
+                    },
+                };
+                deleteCategoryButton.Click += (sender, e) => this.DeleteCategory_Click(sender, e, currentCategoryIndex);
+                StackPanel categoryHeaderPanel = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                };
+                categoryHeaderPanel.Children.Add(categoryHeader);
+                categoryHeaderPanel.Children.Add(editCategoryButton);
+                categoryHeaderPanel.Children.Add(deleteCategoryButton);
+                newCategoryStackPanel.Children.Add(categoryHeaderPanel);
                 newCategoryStackPanel.Children.Add(categoryListView);
                 newCategoryBlock.Child = newCategoryStackPanel;
 
@@ -138,7 +209,6 @@
                 {
                     this.CategoriesListView.Children.Add(newCategoryBlock);
                 }
-
 
                 for (int j = 0; j < expenses[i].Expenses.Count; j++)
                 {
@@ -155,7 +225,7 @@
                         TextBlock newExpenseTitle = new TextBlock
                         {
                             Text = newExpense.Title,
-                            FontSize = 30,
+                            FontSize = 20,
                             FontWeight = FontWeights.DemiBold,
                         };
 
@@ -172,10 +242,11 @@
                         TextBlock newExpenseBudget = new TextBlock
                         {
                             Text = $"0/{newExpense.Amount} $",
-                            FontSize = 32,
+                            FontSize = 20,
                             FontWeight = FontWeights.DemiBold,
                             Foreground = Brushes.Gray,
-                            Height = 32,
+                            Height = 30,
+                            VerticalAlignment = VerticalAlignment.Center,
                         };
 
                         // Додайте назву витрати, пробіл і бюджет в StackPanel
@@ -252,44 +323,153 @@
             this.buttonsVisible = !this.buttonsVisible;
         }
 
-        private void EditIncome_Click(object sender, RoutedEventArgs e)
+        private void SetIncomeList(List<Income> incomes)
         {
-            // Додайте реалізацію для обробки події редагування доходів
+            for (int i = 0; i < incomes.Count; i++)
+            {
+                int currentIndex = i;
+                StackPanel incomePanel = new StackPanel();
+                incomePanel.Orientation = Orientation.Horizontal;
+
+                TextBlock incomeTextBlock = new TextBlock()
+                {
+                    Text = incomes[i].IncomeName,
+                    FontSize = 40,
+                    FontWeight = FontWeights.DemiBold,
+                };
+
+                Button editIncomeButton = new Button
+                {
+                    Style = (Style)this.Resources["InvisibleButtonStyle"],
+                    Width = 41,
+                    Height = 41,
+                    Name = $"EditIncomeButton_{Guid.NewGuid():N}",
+                    Content = new TextBlock
+                    {
+                        Text = "E",
+                        FontSize = 16,
+                        FontWeight = FontWeights.Bold,
+                    },
+                };
+                editIncomeButton.Click += (sender, e) => this.EditIncome_Click(sender, e, currentIndex);
+
+                Button deleteIncomeButton = new Button
+                {
+                    Style = (Style)this.Resources["InvisibleButtonStyle"],
+                    Width = 41,
+                    Height = 41,
+                    Name = $"DeleteIncomeButton_{Guid.NewGuid().ToString("N")}",
+                    Content = new TextBlock
+                    {
+                        Text = "D",
+                        FontSize = 16,
+                        FontWeight = FontWeights.Bold,
+                    },
+                };
+                deleteIncomeButton.Click += (sender, e) => this.DeleteIncome_Click(sender, e, currentIndex);
+
+                incomePanel.Children.Add(incomeTextBlock);
+                incomePanel.Children.Add(editIncomeButton);
+                incomePanel.Children.Add(deleteIncomeButton);
+
+                this.IncomeListView.Children.Add(incomePanel);
+            }
         }
 
-        private void DeleteIncome_Click(object sender, RoutedEventArgs e)
+        private void SetSavingsList(List<Saving> savings)
         {
-            // Додайте реалізацію для обробки події редагування доходів
+            for (int i = 0; i < savings.Count; i++)
+            {
+                // Create a local variable inside the loop
+                int currentIndex = i;
+
+                StackPanel savingsPanel = new StackPanel();
+                savingsPanel.Orientation = Orientation.Horizontal;
+
+                TextBlock savingsTextBlock = new TextBlock()
+                {
+                    Text = savings[i].SavingName,
+                    FontSize = 40,
+                    FontWeight = FontWeights.DemiBold,
+                };
+
+                Button editSavingsButton = new Button
+                {
+                    Style = (Style)this.Resources["InvisibleButtonStyle"],
+                    Width = 41,
+                    Height = 41,
+                    Name = $"EditSavingsButton_{Guid.NewGuid():N}",
+                    Content = new TextBlock
+                    {
+                        Text = "E",
+                        FontSize = 16,
+                        FontWeight = FontWeights.Bold,
+                    },
+                };
+                editSavingsButton.Click += (sender, e) => this.EditSavings_Click(sender, e, currentIndex);
+
+                Button deleteSavingsButton = new Button
+                {
+                    Style = (Style)this.Resources["InvisibleButtonStyle"],
+                    Width = 41,
+                    Height = 41,
+                    Name = $"DeleteSavingsButton_{Guid.NewGuid().ToString("N")}",
+                    Content = new TextBlock
+                    {
+                        Text = "D",
+                        FontSize = 16,
+                        FontWeight = FontWeights.Bold,
+                    },
+                };
+                deleteSavingsButton.Click += (sender, e) => this.DeleteSavings_Click(sender, e, currentIndex);
+
+                savingsPanel.Children.Add(savingsTextBlock);
+                savingsPanel.Children.Add(editSavingsButton);
+                savingsPanel.Children.Add(deleteSavingsButton);
+
+                this.SavingsListView.Children.Add(savingsPanel);
+            }
         }
 
-        private void EditSavings_Click(object sender, RoutedEventArgs e)
+
+        private void EditIncome_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            // Додайте реалізацію для обробки події редагування доходів
+            MessageBox.Show($"Edit clicked for {this.incomes[currentIndex].IncomeName}");
         }
 
-        private void DeleteSavings_Click(object sender, RoutedEventArgs e)
+        private void DeleteIncome_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            // Додайте реалізацію для обробки події редагування доходів
+            MessageBox.Show($"Delete clicked for {this.incomes[currentIndex].IncomeName}");
         }
 
-        private void EditCategory_Click(object sender, RoutedEventArgs e)
+        private void EditSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            // Додайте реалізацію для обробки події редагування доходів
+            MessageBox.Show($"Edit clicked for {this.savings[currentIndex].SavingName}");
         }
 
-        private void DeleteCategory_Click(object sender, RoutedEventArgs e)
+        private void DeleteSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            // Додайте реалізацію для обробки події редагування доходів
+            MessageBox.Show($"Delete clicked for {this.savings[currentIndex].SavingName}");
         }
 
-        private void EditExpense_Click(object sender, RoutedEventArgs e)
+        private void EditCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            // Додайте реалізацію для обробки події редагування доходів
+            MessageBox.Show($"Edit clicked for {this.expenses[currentIndex].ExpenseCategory.CategoryName}");
         }
 
-        private void DeleteExpense_Click(object sender, RoutedEventArgs e)
+        private void DeleteCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            // Додайте реалізацію для обробки події редагування доходів
+            MessageBox.Show($"Delete clicked for {this.expenses[currentIndex].ExpenseCategory.CategoryName}");
+        }
+
+        private void EditExpense_Click(object sender, RoutedEventArgs e, int currentCategoryIndex, int currentIndexExpense)
+        {
+            MessageBox.Show($"Edit clicked for {this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].ExpenseName}");
+        }
+
+        private void DeleteExpense_Click(object sender, RoutedEventArgs e, int currentCategoryIndex, int currentIndexExpense)
+        {
+            MessageBox.Show($"Delete clicked for {this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].ExpenseName}");
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
