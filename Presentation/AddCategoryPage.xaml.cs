@@ -9,6 +9,7 @@
 
     public partial class AddCategoryPage : Window
     {
+        private int categoryID;
         private Main mainPage;
         private Dictionary<Button, StackPanel> categoryExpenseButtonMap = new Dictionary<Button, StackPanel>();
 
@@ -25,7 +26,9 @@
             int userId = UserManager.CurrentUser.Id;
 
             MainPageLogic.AddExpenseCategory(userId, categoryTitle);
-
+            ExpenseCategoryWithExpenses? temp = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId)
+                    .FirstOrDefault(category => category.ExpenseCategory.CategoryName == categoryTitle);
+            this.categoryID = temp.ExpenseCategory.Id;
             // Create a new category block
             Border newCategoryBlock = new Border
             {
@@ -57,7 +60,7 @@
                 FontSize = 30,
             };
 
-            addCategoryExpenseButton.Click += this.AddCategoryExpenseButton_Click;
+            addCategoryExpenseButton.Click += (sender, e) => this.AddCategoryExpenseButton_Click(sender, e, this.categoryID);
             this.categoryExpenseButtonMap.Add(addCategoryExpenseButton, categoryListView);
 
             categoryListView.Children.Add(addCategoryExpenseButton);
@@ -81,14 +84,14 @@
             this.Close();
         }
 
-        private void AddCategoryExpenseButton_Click(object sender, RoutedEventArgs e)
+        private void AddCategoryExpenseButton_Click(object sender, RoutedEventArgs e, int categoryID)
         {
             Button clickedButton = (Button)sender;
 
             if (this.categoryExpenseButtonMap.ContainsKey(clickedButton))
             {
                 StackPanel expenseCategory = this.categoryExpenseButtonMap[clickedButton];
-                AddExpensePage addExpensePage = new AddExpensePage(expenseCategory);
+                AddExpensePage addExpensePage = new AddExpensePage(expenseCategory,categoryID);
                 addExpensePage.ShowDialog();
             }
         }

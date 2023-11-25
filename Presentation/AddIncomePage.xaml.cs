@@ -1,6 +1,7 @@
 ﻿namespace MYB_NEW
 {
     using System;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using BLL;
@@ -19,10 +20,10 @@
         {
             string incomeTitle = this.IncomeTitleTextBox.Text;
             double projectedIncome = double.Parse(this.ProjectedIncomeTextBox.Text); // Попередньо перевірте правильність введення
-
             int userId = UserManager.CurrentUser.Id;
             MainPageLogic.AddIncome(userId, incomeTitle, (int)projectedIncome);
-
+            var temp = MainPageLogic.GetIncomesByUserId(userId).FirstOrDefault(x => x.IncomeName == incomeTitle);
+            int id = temp.Id;
             // Створіть новий об'єкт доходу
             IncomeUI newIncome = new IncomeUI(incomeTitle, projectedIncome);
 
@@ -41,7 +42,7 @@
                 },
             };
 
-            editButton.Click += this.EditIncome_Click;
+            editButton.Click += (sender, e) => this.EditIncome_Click(sender, e, id);
             Button deleteButton = new Button
             {
                 Style = (Style)this.Resources["InvisibleButtonStyle"],
@@ -80,9 +81,10 @@
             this.Close();
         }
 
-        private void EditIncome_Click(object sender, RoutedEventArgs e)
+        private void EditIncome_Click(object sender, RoutedEventArgs e, int incomeId)
         {
-            // Додайте реалізацію для редагування доходу
+            EditncomePage addCategoryPage = new EditncomePage(this, incomeId);
+            addCategoryPage.ShowDialog();
         }
 
         private void DeleteIncome_Click(object sender, RoutedEventArgs e)

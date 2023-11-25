@@ -282,7 +282,7 @@
 
         private void AddCategory_Click(object sender, RoutedEventArgs e)
         {
-            AddCategoryPage addCategoryPage = new AddCategoryPage(this); // Pass 'this' as the 'mainPage' argument
+            AddCategoryPage addCategoryPage = new AddCategoryPage(this); 
             addCategoryPage.ShowDialog();
         }
 
@@ -431,10 +431,10 @@
             }
         }
 
-
         private void EditIncome_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            MessageBox.Show($"Edit clicked for {this.incomes[currentIndex].IncomeName}");
+            EditncomePage addCategoryPage = new EditncomePage(this, this.incomes[currentIndex].Id);
+            addCategoryPage.ShowDialog();
         }
 
         private void DeleteIncome_Click(object sender, RoutedEventArgs e, int currentIndex)
@@ -444,7 +444,8 @@
 
         private void EditSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            MessageBox.Show($"Edit clicked for {this.savings[currentIndex].SavingName}");
+            EditSavingsPage addCategoryPage = new EditSavingsPage(this, this.savings[currentIndex].Id);
+            addCategoryPage.ShowDialog();
         }
 
         private void DeleteSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
@@ -454,7 +455,8 @@
 
         private void EditCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            MessageBox.Show($"Edit clicked for {this.expenses[currentIndex].ExpenseCategory.CategoryName}");
+            EditCategoryPage addCategoryPage = new EditCategoryPage(this, this.expenses[currentIndex].ExpenseCategory.Id);
+            addCategoryPage.ShowDialog();
         }
 
         private void DeleteCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
