@@ -1,6 +1,7 @@
 ﻿namespace MYB_NEW
 {
     using BLL;
+    using DAL;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
@@ -46,7 +47,7 @@
                 TextBlock newExpenseTitle = new TextBlock
                 {
                     Text = newExpense.Title,
-                    FontSize = 30,
+                    FontSize = 20,
                     FontWeight = FontWeights.DemiBold,
                 };
 
@@ -63,10 +64,11 @@
                 TextBlock newExpenseBudget = new TextBlock
                 {
                     Text = $"0/{newExpense.Amount} $",
-                    FontSize = 24,
+                    FontSize = 20,
                     FontWeight = FontWeights.DemiBold,
                     Foreground = Brushes.Gray,
-                    Height = 35,
+                    Height = 30,
+                    VerticalAlignment = VerticalAlignment.Center,
                 };
 
                 // Додайте назву витрати, пробіл і бюджет в StackPanel
