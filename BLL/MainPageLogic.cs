@@ -77,5 +77,20 @@
             };
             ExpenseQueries.AddExpense(expense);
         }
+
+        public static void DeleteExpense(int expenseId)
+        {
+            ExpenseQueries.DeleteExpense(expenseId);
+        }
+
+        public static void EditExpense(int expenseId, string expenseName)
+        {
+            ExpenseQueries.EditExpense(expenseId, expenseName);
+        }
+
+        public static void DeleteCategory(int expenseCategoryId)
+        {
+            ExpenseCategoryQueries.DeleteExpenseCategory(expenseCategoryId);
+        }
     }
 }

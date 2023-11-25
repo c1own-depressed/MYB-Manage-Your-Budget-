@@ -455,23 +455,39 @@
 
         private void EditCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
+            //string expenseName = "new expense name";
+            //int expenseId = this.expenses[currentIndex].ExpenseCategory.Id;
+            //MainPageLogic.EditExpense(expenseId, expenseName);
             EditCategoryPage addCategoryPage = new EditCategoryPage(this, this.expenses[currentIndex].ExpenseCategory.Id);
             addCategoryPage.ShowDialog();
         }
 
         private void DeleteCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
+            int categoryId = this.expenses[currentIndex].ExpenseCategory.Id;
             MessageBox.Show($"Delete clicked for {this.expenses[currentIndex].ExpenseCategory.CategoryName}");
+            MainPageLogic.DeleteCategory(categoryId);
+
+            // TODO: redraw MainPage
         }
 
         private void EditExpense_Click(object sender, RoutedEventArgs e, int currentCategoryIndex, int currentIndexExpense)
         {
-            MessageBox.Show($"Edit clicked for {this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].ExpenseName}");
+            string expenseName = "new expense name";
+            int expenseId = this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].Id;
+            MainPageLogic.EditExpense(expenseId, expenseName);
+            MessageBox.Show($"Edit clicked for {this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].Id}");
+
+            // TODO: redraw MainPage
         }
 
         private void DeleteExpense_Click(object sender, RoutedEventArgs e, int currentCategoryIndex, int currentIndexExpense)
         {
-            MessageBox.Show($"Delete clicked for {this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].ExpenseName}");
+            int expenseId = this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].Id;
+            MainPageLogic.DeleteExpense(expenseId);
+            MessageBox.Show($"{this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].ExpenseName} is successfully deleted");
+
+            // TODO: redraw MainPage
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
