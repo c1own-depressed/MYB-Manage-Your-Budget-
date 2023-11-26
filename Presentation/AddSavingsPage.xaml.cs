@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
     using BLL;
 
     public partial class AddSavingsPage : Window
@@ -64,6 +65,7 @@
                 savingsPanel.Orientation = Orientation.Horizontal;
                 TextBlock savingTextBlock = new TextBlock
                 {
+                    Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = newSavings.Title,
                     FontSize = 30,
                     FontWeight = FontWeights.DemiBold,

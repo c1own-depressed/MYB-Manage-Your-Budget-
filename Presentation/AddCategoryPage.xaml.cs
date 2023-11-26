@@ -42,6 +42,7 @@
 
             TextBlock categoryHeader = new TextBlock
             {
+                Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                 Text = categoryTitle,
                 FontSize = 40,
                 FontWeight = FontWeights.Bold,

@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
     using BLL;
 
     public partial class AddIncomePage : Window
@@ -67,6 +68,8 @@
                 incomePanel.Orientation = Orientation.Horizontal;
                 TextBlock incomeTextBlock = new TextBlock
                 {
+
+                    Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = newIncome.Title,
                     FontSize = 40,
                     FontWeight = FontWeights.DemiBold,

@@ -7,6 +7,7 @@
     using BLL;
     using DAL;
     using MYB_NEW;
+    using Presentation;
     using static System.Net.Mime.MediaTypeNames;
 
     /// <summary>
@@ -34,7 +35,13 @@
             this.LanguageComboBox.Text = (user.Language == "ua") ? "Ukrainian" : (user.Language == "en") ? "English" : "Unknown";
             this.ThemeComboBox.SelectedIndex = user.LightTheme? 1 : 0;
             this.CurrencyComboBox.Text = user.Currency.ToUpper();
-
+            if (UserManager.CurrentUser.LightTheme == true) {
+                AppTheme.ChangeTheme(new Uri("Themes/Light.xaml", UriKind.Relative));
+            }
+            else
+            {
+                AppTheme.ChangeTheme(new Uri("Themes/Dark.xaml", UriKind.Relative));
+            }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

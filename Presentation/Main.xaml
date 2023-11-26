@@ -27,7 +27,7 @@
         </Style>
     </Page.Resources>
     <ScrollViewer  VerticalScrollBarVisibility="Auto"  >
-        <Grid Background="LightGray">
+        <Grid Background="{DynamicResource Back}" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -42,8 +42,8 @@
 
             <Border BorderBrush="Black" BorderThickness="0" Margin="70,30,15,0" Width="240" HorizontalAlignment="Left">
                 <StackPanel>
-                    <TextBlock Text="Income" FontSize="48" FontWeight="Bold" HorizontalAlignment="Left" />
-                    <StackPanel x:Name="IncomeListView" Background="LightGray">
+                    <TextBlock Text="Income" FontSize="48" FontWeight="Bold" HorizontalAlignment="Left" Foreground="{DynamicResource Text}" />
+                    <StackPanel x:Name="IncomeListView" Background="{DynamicResource Back}">
 
                     </StackPanel>
                     <Button  Content="Add Income" Click="AddIncome_Click" Style="{StaticResource InvisibleButtonStyle}" Width="258" FontWeight="Bold" FontSize="30"/>
@@ -55,8 +55,8 @@
             
                 <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0" Margin="70,0,15,0" Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,20px,0,0">
                     <StackPanel>
-                        <TextBlock Text="Savings" FontSize="48" FontWeight="Bold" HorizontalAlignment="Left"/>
-                        <StackPanel x:Name="SavingsListView" Background="LightGray">
+                    <TextBlock Text="Savings" FontSize="48" FontWeight="Bold" HorizontalAlignment="Left" Foreground="{DynamicResource Text}"/>
+                    <StackPanel x:Name="SavingsListView" Background="{DynamicResource Back}">
 
                         </StackPanel>
                         <Button  Content="Add Savings" Click="AddSavings_Click" Style="{StaticResource InvisibleButtonStyle}" Width="250" FontWeight="Bold" FontSize="30"/>
@@ -69,8 +69,8 @@
                 <Border BorderBrush="Black" BorderThickness="0" Margin="0,30,15,10" Width="Auto" HorizontalAlignment="Center">
                     <StackPanel>
 
-                        <TextBlock Text="Expenses" FontSize="48" FontWeight="Bold"/>
-                        <StackPanel x:Name="CategoriesListView" Background="LightGray" Width="500">
+                        <TextBlock Text="Expenses" FontSize="48" FontWeight="Bold" Foreground="{DynamicResource Text}"/>
+                        <StackPanel x:Name="CategoriesListView" Background="{DynamicResource Back}"  Width="500">
 
                         </StackPanel>
                         <Button Content="Add Category" Click="AddCategory_Click" Style="{StaticResource InvisibleButtonStyle}" Width="360" HorizontalAlignment="Left" FontWeight="Bold" FontSize="35"/>
@@ -89,7 +89,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="UsernameTextBlock" Text="User_name" FontSize="35" FontWeight="Bold" HorizontalAlignment="Right" Padding="0,3,5,0" Margin="0,10,76,12" Width="209" Grid.RowSpan="2" />
+                        <TextBlock x:Name="UsernameTextBlock" Foreground="{DynamicResource Text}" Text="User_name" FontSize="35" FontWeight="Bold" HorizontalAlignment="Right" Padding="0,3,5,0" Margin="0,10,76,12" Width="209" Grid.RowSpan="2"  />
                         <Border BorderBrush="Black" BorderThickness="0" Margin="0,10,15,0" Width="Auto" HorizontalAlignment="Right" Grid.RowSpan="2">
                             <StackPanel>
                                 <Grid Height="47">
@@ -98,10 +98,10 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <!--<Button x:Name="StatisticButton" Content="Statistic" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="0,66,0,-79" BorderBrush="Black" BorderThickness="1" Click="StatisticButton_Click" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="276" />-->
-                                    <Button x:Name="DataExportButton" Content="Data export" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,117,0,-130" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="DataExportButton_Click" />
-                                    <Button x:Name="TipsAndTricksButton" Content="Tips and tricks" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,177,0,-190" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="TipsAndTricksButton_Click" />
-                                    <Button x:Name="SettingsButton" Content="Settings" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,237,0,-250" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="SettingsButton_Click" />
-                                    <Button x:Name="SignOutButton" Content="Sign out" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="#888484" Foreground="White" Margin="-105,297,0,-310" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="SignOutButton_Click" />
+                                    <Button x:Name="DataExportButton" Content="Data export" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="-105,117,0,-130" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="DataExportButton_Click" />
+                                    <Button x:Name="TipsAndTricksButton" Content="Tips and tricks" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="-105,177,0,-190" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="TipsAndTricksButton_Click" />
+                                    <Button x:Name="SettingsButton" Content="Settings" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="-105,237,0,-250" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="SettingsButton_Click" />
+                                    <Button x:Name="SignOutButton" Content="Sign out" Style="{StaticResource InvisibleButtonStyle}" Height="60" FontSize="40" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="-105,297,0,-310" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Click="SignOutButton_Click" />
 
                                     <Button x:Name="ToggleButton" Click="Toggle_Click" Height="40" Foreground="White" Margin="118,0,0,0" Width="40" BorderThickness="0">
                                         <Image Source="menu.png" Width="40" Height="40"/>

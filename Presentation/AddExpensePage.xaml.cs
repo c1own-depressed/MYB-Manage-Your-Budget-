@@ -53,6 +53,7 @@
                 // Назва витрати
                 TextBlock newExpenseTitle = new TextBlock
                 {
+                    Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = newExpense.Title,
                     FontSize = 20,
                     FontWeight = FontWeights.DemiBold,
