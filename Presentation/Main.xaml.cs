@@ -21,6 +21,14 @@
 
         public Main()
         {
+            if (UserManager.CurrentUser.LightTheme == true)
+            {
+                AppTheme.ChangeTheme(new Uri("Themes/Light.xaml", UriKind.Relative));
+            }
+            else
+            {
+                AppTheme.ChangeTheme(new Uri("Themes/Dark.xaml", UriKind.Relative));
+            }
             this.InitializeComponent();
             int userId = UserManager.CurrentUser.Id;
 
@@ -42,6 +50,7 @@
                 Dictionary<Button, StackPanel> categoryExpenseButtonMap = new Dictionary<Button, StackPanel>();
                 Border newCategoryBlock = new Border
                 {
+
                     BorderBrush = Brushes.Black,
                     BorderThickness = new Thickness(0),
                     Width = 360,
@@ -52,6 +61,7 @@
 
                 TextBlock categoryHeader = new TextBlock
                 {
+                    Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = expenses[i].ExpenseCategory.CategoryName,
                     FontSize = 40,
                     FontWeight = FontWeights.Bold,
@@ -70,6 +80,7 @@
 
                     TextBlock newExpenseTitle = new TextBlock
                     {
+                        Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                         Text = expense.ExpenseName,
                         FontSize = 20,
                         FontWeight = FontWeights.DemiBold,
@@ -224,6 +235,7 @@
                         // Назва витрати
                         TextBlock newExpenseTitle = new TextBlock
                         {
+                            Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                             Text = newExpense.Title,
                             FontSize = 20,
                             FontWeight = FontWeights.DemiBold,
@@ -333,6 +345,7 @@
 
                 TextBlock incomeTextBlock = new TextBlock()
                 {
+                    Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = incomes[i].IncomeName,
                     FontSize = 40,
                     FontWeight = FontWeights.DemiBold,
@@ -388,6 +401,7 @@
 
                 TextBlock savingsTextBlock = new TextBlock()
                 {
+                    Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = savings[i].SavingName,
                     FontSize = 40,
                     FontWeight = FontWeights.DemiBold,
