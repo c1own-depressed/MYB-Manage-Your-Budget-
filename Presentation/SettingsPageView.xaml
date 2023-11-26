@@ -4,6 +4,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:OtherPages"
+    xmlns:rs="clr-namespace:Presentation"
     mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800"
     Title="Settings" Background="#D9D9D9">
@@ -17,12 +18,12 @@
                     </DataTemplate>
                 </Button.ContentTemplate>
             </Button>
-            <TextBlock Text="Back" FontWeight="Bold" FontSize="18"   TextAlignment="Left" VerticalAlignment="Top" />
+            <TextBlock Text="{x:Static rs:Resources.Btn_back}" FontWeight="Bold" FontSize="18"   TextAlignment="Left" VerticalAlignment="Top" />
         </StackPanel>
         <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <TextBlock Text="Settings" FontWeight="Bold" FontSize="28" Margin="0 0 0 10" TextAlignment="Center" />
+            <TextBlock x:Name="SettingsTextBlock" Text="{x:Static rs:Resources.SettingsLabel}" FontWeight="Bold" FontSize="28" Margin="0 0 0 10" TextAlignment="Center" />
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Center" Width="178">
-                <TextBlock Text="Language:" Margin="0 5 20 5" Width="54" TextAlignment="Center"/>
+                <TextBlock Text="{x:Static rs:Resources.LanguageLabel}" Margin="0 5 20 5" Width="54" TextAlignment="Center"/>
                 <ComboBox x:Name="LanguageComboBox" Width="100" Height="25">
                     <ComboBoxItem Content="Ukrainian"/>
                     <ComboBoxItem Content="English"/>
@@ -30,7 +31,7 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Stretch" Width="231">
-                <TextBlock Text="Choose theme:" Width="80" HorizontalAlignment="Left" TextAlignment="Center" Margin="0 5 20 5"/>
+                <TextBlock Text="{x:Static rs:Resources.ChooseThemeLabel}" Width="80" HorizontalAlignment="Left" TextAlignment="Center" Margin="0 5 20 5"/>
                 <ComboBox x:Name="ThemeComboBox" Width="100" Height="25">
                     
                     <ComboBoxItem Content="Dark"/>
@@ -38,7 +39,7 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Center">
-                <TextBlock Text="Currency:" Margin="0 5 20 5" />
+                <TextBlock Text="{x:Static rs:Resources.CurencyLabel}" Margin="0 5 20 5" />
                 <ComboBox Name="CurrencyComboBox" Width="100" Height="25">
                     <ComboBoxItem Content="UAH"/>
                     <ComboBoxItem Content="USD"/>
@@ -46,7 +47,7 @@
                 </ComboBox>
             </StackPanel>
 
-            <Button Content="Save" Width="100" Height="30" Margin="0 20 0 0" Click="SaveButton_Click" Background="#474747" Foreground="Black" />
+            <Button Content="{x:Static rs:Resources.Btn_save}" Width="100" Height="30" Margin="0 20 0 0" Click="SaveButton_Click" Background="#474747" Foreground="Black" />
         </StackPanel>
  
     </Grid>

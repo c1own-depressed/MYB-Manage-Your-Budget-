@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Presentation"
+      xmlns:rs="clr-namespace:Presentation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TipsAndTricksPage" d:Background="#D9D9D9">
@@ -13,22 +14,22 @@
             <Button Name="btnBack" Content="Back" Click="btnBack_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#D9D9D9" BorderThickness="0">
                 <Button.ContentTemplate>
                     <DataTemplate>
-                        <Image Source="back_icon.png" Width="24" Height="24" />
+                        <Image x:Name="myImage" Source="back_icon.png" Width="24" Height="24" />
                     </DataTemplate>
                 </Button.ContentTemplate>
             </Button>
-            <TextBlock Text="Back" FontWeight="Bold" FontSize="18"   TextAlignment="Left" VerticalAlignment="Top" />
+            <TextBlock Text="{x:Static rs:Resources.Btn_back}" FontWeight="Bold" FontSize="18"   TextAlignment="Left" VerticalAlignment="Top" />
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" >
-            
-            <TextBlock FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Text="Tips &#38; Tricks" HorizontalAlignment="Center" />
+
+            <TextBlock FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Text="{x:Static rs:Resources.TipsTricks}" HorizontalAlignment="Center" />
             <StackPanel Orientation="Horizontal">
             <StackPanel HorizontalAlignment="Left">
                
-                <TextBlock FontSize="18" Margin="0,0,0,10" Text="1. Create a Detailed Budget."/>
-                <TextBlock FontSize="18" Margin="0,0,0,10" Text="2. Set Realistic Goals."/>
-                <TextBlock FontSize="18" Margin="0,0,0,10" Text="3. Track Daily Expenses."/>
-                <TextBlock FontSize="18" Margin="0,0,0,10" Text="4. Check statistic of your transactions."/>
+                <TextBlock FontSize="18" Margin="0,0,0,10" Text="{x:Static rs:Resources.Tip1}"/>
+                <TextBlock FontSize="18" Margin="0,0,0,10" Text="{x:Static rs:Resources.Tip2}"/>
+                <TextBlock FontSize="18" Margin="0,0,0,10" Text="{x:Static rs:Resources.Tip3}"/>
+                <TextBlock FontSize="18" Margin="0,0,0,10" Text="{x:Static rs:Resources.Tip4}"/>
             </StackPanel>
                 <StackPanel HorizontalAlignment="Right">
                     <StackPanel Orientation="Horizontal">
@@ -36,7 +37,7 @@
                         <TextBlock FontSize="18" Margin="0,0,0,10" Text="1. " />
                         <TextBlock FontSize="18" Margin="0,0,0,10" >
                         <Hyperlink NavigateUri="https://www.anaplan.com/blog/zbb-zero-based-budgeting-guide/" RequestNavigate="Hyperlink_RequestNavigate">
-                             <Run Text="Useful link 1" />
+                             <Run Text="{x:Static rs:Resources.Link1}" />
                          </Hyperlink>
                         </TextBlock>
                     </StackPanel>
@@ -45,14 +46,14 @@
                         <TextBlock FontSize="18" Margin="0,0,0,10" Text="2. " />
                         <TextBlock FontSize="18" Margin="0,0,0,10" TextWrapping="Wrap" >
                             <Hyperlink NavigateUri="https://www.nerdwallet.com/article/finance/zero-based-budgeting-explained" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <Run Text="Useful link 2" />
+                                    <Run Text="{x:Static rs:Resources.Link2}" />
                                 </Hyperlink>
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
 
                         <TextBlock FontSize="18" Margin="0,0,0,10" Text="3. " />
-                        <TextBlock FontSize="18" TextWrapping="Wrap" Height="84"><Hyperlink NavigateUri="https://www.indeed.com/career-advice/career-development/zero-based-budgeting" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="Useful link 3" /></Hyperlink></TextBlock>
+                        <TextBlock FontSize="18" TextWrapping="Wrap" Height="84"><Hyperlink NavigateUri="https://www.indeed.com/career-advice/career-development/zero-based-budgeting" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="{x:Static rs:Resources.Link3}" /></Hyperlink></TextBlock>
 
                     </StackPanel>
                 </StackPanel>

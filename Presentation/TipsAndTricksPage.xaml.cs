@@ -3,8 +3,11 @@
     using System;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media.Imaging;
     using System.Windows.Navigation;
+    using BLL;
     using MYB_NEW;
+    using static System.Net.Mime.MediaTypeNames;
 
     /// <summary>
     /// Interaction logic for TipsAndTricksPage.xaml.
@@ -13,6 +16,15 @@
     {
         public TipsAndTricksPage()
         {
+            if (UserManager.CurrentUser.Language == "ua")
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
+
             this.InitializeComponent();
         }
 
