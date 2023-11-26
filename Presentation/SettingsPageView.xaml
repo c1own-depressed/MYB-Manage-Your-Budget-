@@ -47,7 +47,7 @@
                 </ComboBox>
             </StackPanel>
 
-            <Button Content="{x:Static rs:Resources.Btn_save}" Width="100" Height="30" Margin="0 20 0 0" Click="SaveButton_Click" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" />
+            <Button Content="{x:Static rs:Resources.Btn_save}" x:Name="SaveButton" Width="100" Height="30" Margin="0 20 0 0" Click="SaveButton_Click" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" />
         </StackPanel>
  
     </Grid>
