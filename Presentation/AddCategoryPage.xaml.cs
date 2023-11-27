@@ -63,9 +63,9 @@ namespace MYB_NEW
 
             Button addCategoryExpenseButton = new Button
             {
-                Content = "Add Expense",
+                Content = Presentation.Resources.Btn_AddExpense,
                 Style = (Style)this.mainPage.Resources["InvisibleButtonStyle"],
-                Width = 140,
+                Width = 160,
                 FontWeight = FontWeights.Bold,
                 FontSize = 20,
             };

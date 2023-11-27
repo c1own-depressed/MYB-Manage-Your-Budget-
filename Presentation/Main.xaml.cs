@@ -154,9 +154,9 @@ namespace MYB_NEW
 
                 Button addCategoryExpenseButton = new Button
                 {
-                    Content = "Add Expense",
+                    Content = Presentation.Resources.Btn_AddExpense,
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 140,
+                    Width = 160,
                     FontWeight = FontWeights.Bold,
                     FontSize = 20,
                 };
@@ -495,11 +495,10 @@ namespace MYB_NEW
 
         private void EditExpense_Click(object sender, RoutedEventArgs e, int currentCategoryIndex, int currentIndexExpense)
         {
-            string expenseName = "new expense name";
             int expenseId = this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].Id;
-            MainPageLogic.EditExpense(expenseId, expenseName);
-            MessageBox.Show($"Edit clicked for {this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].Id}");
-
+            int categoryId = this.expenses[currentCategoryIndex].ExpenseCategory.Id;
+            EditExpensePage editExpensePage = new EditExpensePage(this,categoryId, expenseId);
+            editExpensePage.ShowDialog();
             // TODO: redraw MainPage
         }
 
@@ -553,5 +552,6 @@ namespace MYB_NEW
             Statistic1 statisticPage = new Statistic1();
             Window.GetWindow(this).Content = statisticPage;
         }
+
     }
 }
