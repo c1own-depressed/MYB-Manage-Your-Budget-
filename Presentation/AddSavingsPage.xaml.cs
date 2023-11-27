@@ -1,9 +1,10 @@
-﻿namespace MYB_NEW
+namespace MYB_NEW
 {
     using System;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
     using BLL;
 
     public partial class AddSavingsPage : Window
@@ -12,6 +13,14 @@
 
         public AddSavingsPage(StackPanel listView)
         {
+            if (UserManager.CurrentUser.Language == "ua")
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
             this.InitializeComponent();
             this.savingsListView = listView;
         }
@@ -30,13 +39,13 @@
             Button editButton = new Button
             {
                 Style = (Style)this.Resources["InvisibleButtonStyle"],
-                Width = 41,
-                Height = 41,
+                Width = 20,
+                Height = 20,
                 Name = $"EditIncomeButton_{Guid.NewGuid():N}",
                 Content = new TextBlock
                 {
                     Text = "E",
-                    FontSize = 16,
+                    FontSize = 14,
                     FontWeight = FontWeights.Bold,
                 },
             };
@@ -45,13 +54,13 @@
             Button deleteButton = new Button
             {
                 Style = (Style)this.Resources["InvisibleButtonStyle"],
-                Width = 41,
-                Height = 41,
+                Width = 20,
+                Height = 20,
                 Name = $"DeleteIncomeButton_{Guid.NewGuid().ToString("N")}",
                 Content = new TextBlock
                 {
                     Text = "D",
-                    FontSize = 16,
+                    FontSize = 14,
                     FontWeight = FontWeights.Bold,
                 },
             };
@@ -64,8 +73,9 @@
                 savingsPanel.Orientation = Orientation.Horizontal;
                 TextBlock savingTextBlock = new TextBlock
                 {
+                    Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = newSavings.Title,
-                    FontSize = 30,
+                    FontSize = 16,
                     FontWeight = FontWeights.DemiBold,
                 };
                 savingsPanel.Children.Add(savingTextBlock);

@@ -1,4 +1,4 @@
-﻿namespace MYB_NEW
+namespace MYB_NEW
 {
     using System;
     using System.Collections.Generic;
@@ -20,6 +20,14 @@
 
         public AddExpensePage(StackPanel category)
         {
+            if (UserManager.CurrentUser.Language == "ua")
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
             this.InitializeComponent();
             this.expenseCategory = category;
 
@@ -53,8 +61,9 @@
                 // Назва витрати
                 TextBlock newExpenseTitle = new TextBlock
                 {
+                    Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = newExpense.Title,
-                    FontSize = 20,
+                    FontSize = 16,
                     FontWeight = FontWeights.DemiBold,
                 };
 
@@ -71,22 +80,22 @@
                 TextBlock newExpenseBudget = new TextBlock
                 {
                     Text = $"0/{newExpense.Amount} $",
-                    FontSize = 20,
+                    FontSize = 12,
                     FontWeight = FontWeights.DemiBold,
                     Foreground = Brushes.Gray,
-                    Height = 30,
+                    Height = 15,
                     VerticalAlignment = VerticalAlignment.Center,
                 };
                 Button editExpenseButton = new Button
                 {
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 30,
+                    Width = 20,
                     Name = $"EditIncomeButton_{Guid.NewGuid():N}",
                     VerticalAlignment = VerticalAlignment.Top,
                     Content = new TextBlock
                     {
                         Text = "E",
-                        FontSize = 20,
+                        FontSize = 16,
                         FontWeight = FontWeights.Bold,
                     },
                 };
@@ -95,13 +104,13 @@
                 Button deleteExpenseButton = new Button
                 {
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 30,
+                    Width = 20,
                     Name = $"EditIncomeButton_{Guid.NewGuid():N}",
                     VerticalAlignment = VerticalAlignment.Top,
                     Content = new TextBlock
                     {
                         Text = "D",
-                        FontSize = 20,
+                        FontSize = 16,
                         FontWeight = FontWeights.Bold,
                     },
                 };

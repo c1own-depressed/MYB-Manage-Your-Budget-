@@ -4,50 +4,50 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OtherPages"
+      xmlns:rs="clr-namespace:Presentation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="New_transaction" d:Background="#D9D9D9">
-
-    <Grid>
+      Title="New_transaction" >
+   
+    <Grid Background="{DynamicResource Back}">
         <StackPanel Orientation="Horizontal"  Margin="20">
             <Button Name="btnBack" Content="Back" Click="btnBack_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#D9D9D9" BorderThickness="0">
                 <Button.ContentTemplate>
-                    <DataTemplate>
-                        <Image Source="back_icon.png" Width="24" Height="24" />
+                    <DataTemplate >
+                        <TextBlock Background="{DynamicResource Back}" Text="{x:Static rs:Resources.Btn_back}" Foreground="{DynamicResource Text}" FontWeight="Bold" FontSize="18"   TextAlignment="Left" VerticalAlignment="Top" />
                     </DataTemplate>
                 </Button.ContentTemplate>
             </Button>
-            <TextBlock Text="Back" FontWeight="Bold" FontSize="18"   TextAlignment="Left" VerticalAlignment="Top" />
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="314" >
 
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Center" Width="178">
-                <TextBlock Text="Category:" Margin="0 5 20 5" Width="54" TextAlignment="Center"/>
+                <TextBlock Text="{x:Static rs:Resources.CategoryLabel}" Foreground="{DynamicResource Text}" Margin="0 5 20 5" Width="54" TextAlignment="Center"/>
                 <ComboBox x:Name="CategoryComboBox" Width="100" Height="20">
 
 
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Center" Width="178">
-                <TextBlock Text="Expense:" Margin="0 5 20 5" Width="54" TextAlignment="Center"/>
+                <TextBlock Text="{x:Static rs:Resources.ExpenseLabel}" Foreground="{DynamicResource Text}" Margin="0 5 20 5" Width="54" TextAlignment="Center"/>
                 <ComboBox x:Name="ExpenseComboBox" Width="100" Height="20">
 
 
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Width="231">
-                <TextBlock Text="Transaction Name:" Width="105" TextAlignment="Center" Margin="0 5 -3.7 5" Padding="0 0 10 0"/>
+                <TextBlock Text="{x:Static rs:Resources.TransactionNameLabel}" Foreground="{DynamicResource Text}" Width="105" TextAlignment="Center" Margin="0 5 -3.7 5" Padding="0 0 10 0"/>
                 <TextBox x:Name="TransactionTextBox" Width="100" Height="20"/>
 
 
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Center">
-                <TextBlock Text="Cost:" Margin="0 5 45 5" />
+            <StackPanel Orientation="Horizontal" Margin="0 8 0 5" HorizontalAlignment="Center">
+                <TextBlock Text="{x:Static rs:Resources.CostLabel}" Foreground="{DynamicResource Text}" Margin="0 5 40 5" />
                 <TextBox TextWrapping="Wrap" x:Name="CostTextBox"  Width="100" Height="20"/>
 
             </StackPanel>
 
-            <Button Content="Save" Width="100" Height="30" Margin="0 20 0 0" Click="SaveButton_Click" Background="#474747" Foreground="Black" />
+            <Button Content="{x:Static rs:Resources.Btn_save}" Width="100" Height="30" Margin="0 20 0 0" Click="SaveButton_Click" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" />
         </StackPanel>
     </Grid>
 </Page>

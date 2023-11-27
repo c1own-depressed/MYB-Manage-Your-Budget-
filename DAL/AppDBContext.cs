@@ -28,9 +28,10 @@ namespace MYB.DAL
             //.Build();
             //string connectionString = configuration.GetConnectionString("DefaultConnection"); // ConfigurationBuilder is not found
 
-            var connectionString = "server=localhost;database=mybdb2;user=root;password=uTnw0PIh65_!;";
+            //var connectionString = "server=localhost;database=mybdb2;user=root;password=uTnw0PIh65_!;";
 
             //var connectionString = "server=localhost;user=root;password=1234;database=mybdb";
+            var connectionString = "server=localhost;user=root;password=sireza42;database=mybdb2";
 
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 32));
 
