@@ -26,13 +26,14 @@
             _context.SaveChanges();
         }
 
-        public static void EditExpense(int expenseId, string expenseName)
+        public static void EditExpense(int expenseId, string expenseName, int expenseAmount)
         {
             var dbExpense = _context.Expenses.Find(expenseId);
 
             if (dbExpense != null)
             {
                 dbExpense.ExpenseName = expenseName;
+                dbExpense.Amount = expenseAmount;
 
                 _context.SaveChanges();
             }

@@ -444,29 +444,39 @@
 
         private void EditSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
+            string savingName = "new saving name";
+            int amount = 3000;
+            int savingId = this.savings[currentIndex].Id;
+            MainPageLogic.EditSaving(savingId, savingName, amount);
             EditSavingsPage addCategoryPage = new EditSavingsPage(this, this.savings[currentIndex].Id);
             addCategoryPage.ShowDialog();
         }
 
         private void DeleteSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
+            int savingId = this.savings[currentIndex].Id;
+            MainPageLogic.DeleteSaving(savingId);
             MessageBox.Show($"Delete clicked for {this.savings[currentIndex].SavingName}");
+
         }
 
+        // git commit -m "Added Delete and Edit logic for expense and expenseCategories"
         private void EditCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            //string expenseName = "new expense name";
-            //int expenseId = this.expenses[currentIndex].ExpenseCategory.Id;
-            //MainPageLogic.EditExpense(expenseId, expenseName);
+            string expenseCategoryName = "new expense category name";
+            int expenseCategoryId = this.expenses[currentIndex].ExpenseCategory.Id;
+            MainPageLogic.EditExpenseCategory(expenseCategoryId, expenseCategoryName);
             EditCategoryPage addCategoryPage = new EditCategoryPage(this, this.expenses[currentIndex].ExpenseCategory.Id);
             addCategoryPage.ShowDialog();
+
+            // TODO: redraw MainPage
         }
 
         private void DeleteCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
             int categoryId = this.expenses[currentIndex].ExpenseCategory.Id;
             MessageBox.Show($"Delete clicked for {this.expenses[currentIndex].ExpenseCategory.CategoryName}");
-            MainPageLogic.DeleteCategory(categoryId);
+            MainPageLogic.DeleteExpenseCategory(categoryId);
 
             // TODO: redraw MainPage
         }
@@ -474,8 +484,9 @@
         private void EditExpense_Click(object sender, RoutedEventArgs e, int currentCategoryIndex, int currentIndexExpense)
         {
             string expenseName = "new expense name";
+            int expenseAmount = 1000;
             int expenseId = this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].Id;
-            MainPageLogic.EditExpense(expenseId, expenseName);
+            MainPageLogic.EditExpense(expenseId, expenseName, expenseAmount);
             MessageBox.Show($"Edit clicked for {this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].Id}");
 
             // TODO: redraw MainPage
