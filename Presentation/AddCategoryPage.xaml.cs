@@ -16,6 +16,14 @@ namespace MYB_NEW
 
         public AddCategoryPage(Main mainPage)
         {
+            if (UserManager.CurrentUser.Language == "ua")
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
             this.InitializeComponent();
             this.mainPage = mainPage;
         }

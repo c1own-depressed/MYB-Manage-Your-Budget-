@@ -305,6 +305,69 @@ namespace Presentation {
                 return ResourceManager.GetString("Btn_AddExpense", resourceCulture);
             }
         }
+        public static string TitleOfCategory
+        {
+            get
+            {
+                return ResourceManager.GetString("TitleOfCategory", resourceCulture);
+            }
+        }
+        public static string Btn_add
+        {
+            get
+            {
+                return ResourceManager.GetString("Btn_add", resourceCulture);
+            }
+        }
+        public static string TitleOfExpense
+        {
+            get
+            {
+                return ResourceManager.GetString("TitleOfExpense", resourceCulture);
+            }
+        }
+        public static string PlannedBudget
+        {
+            get
+            {
+                return ResourceManager.GetString("PlannedBudget", resourceCulture);
+            }
+        }
+        public static string TitleOfIncome
+        {
+            get
+            {
+                return ResourceManager.GetString("TitleOfIncome", resourceCulture);
+            }
+        }
+        public static string ProjectedIncome
+        {
+            get
+            {
+                return ResourceManager.GetString("ProjectedIncome", resourceCulture);
+            }
+        }
+        public static string TitleOfSavings
+        {
+            get
+            {
+                return ResourceManager.GetString("TitleOfSavings", resourceCulture);
+            }
+        }
+        public static string AmountOfSavings
+        {
+            get
+            {
+                return ResourceManager.GetString("AmountOfSavings", resourceCulture);
+            }
+        }
+        public static string Btn_edit
+        {
+            get
+            {
+                return ResourceManager.GetString("Btn_edit", resourceCulture);
+            }
+        }
 
     }
 }

@@ -16,6 +16,14 @@
 
         public EditCategoryPage(Main main, int expenseCategoryId)
         {
+            if (UserManager.CurrentUser.Language == "ua")
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
             int userId = UserManager.CurrentUser.Id;
             this.InitializeComponent();
             this.expenseCategoryId = expenseCategoryId;

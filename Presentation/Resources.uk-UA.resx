@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AmountOfSavings" xml:space="preserve">
+    <value>Сума заощадження</value>
+  </data>
+  <data name="Btn_add" xml:space="preserve">
+    <value>Додати</value>
+  </data>
   <data name="Btn_AddCategory" xml:space="preserve">
     <value>Додати Категорію</value>
   </data>
@@ -134,6 +140,9 @@
   </data>
   <data name="Btn_back" xml:space="preserve">
     <value>Назад</value>
+  </data>
+  <data name="Btn_edit" xml:space="preserve">
+    <value>Редагувати</value>
   </data>
   <data name="Btn_export" xml:space="preserve">
     <value>Експортувати</value>
@@ -180,6 +189,12 @@
   <data name="Link3" xml:space="preserve">
     <value>Корисне посилання 3</value>
   </data>
+  <data name="PlannedBudget" xml:space="preserve">
+    <value>             Бюджет</value>
+  </data>
+  <data name="ProjectedIncome" xml:space="preserve">
+    <value>                  Дохід</value>
+  </data>
   <data name="SavingsLabel" xml:space="preserve">
     <value>Заощадження</value>
   </data>
@@ -215,6 +230,18 @@
   </data>
   <data name="TipsTricks" xml:space="preserve">
     <value>Поради &amp; Підказки</value>
+  </data>
+  <data name="TitleOfCategory" xml:space="preserve">
+    <value>Назва категорії</value>
+  </data>
+  <data name="TitleOfExpense" xml:space="preserve">
+    <value>Назва витрати</value>
+  </data>
+  <data name="TitleOfIncome" xml:space="preserve">
+    <value>Назва доходу</value>
+  </data>
+  <data name="TitleOfSavings" xml:space="preserve">
+    <value>Заощадження</value>
   </data>
   <data name="TransactionNameLabel" xml:space="preserve">
     <value>Назва транзакції:</value>
