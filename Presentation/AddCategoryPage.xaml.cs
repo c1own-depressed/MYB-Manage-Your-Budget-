@@ -1,5 +1,6 @@
-﻿namespace MYB_NEW
+namespace MYB_NEW
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
@@ -44,10 +45,10 @@
             {
                 Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                 Text = categoryTitle,
-                FontSize = 40,
+                FontSize = 25,
                 FontWeight = FontWeights.Bold,
                 HorizontalAlignment = HorizontalAlignment.Left,
-                Height = 100,
+                Height = 50,
             };
 
             StackPanel categoryListView = new StackPanel();
@@ -56,17 +57,50 @@
             {
                 Content = "Add Expense",
                 Style = (Style)this.mainPage.Resources["InvisibleButtonStyle"],
-                Width = 360,
+                Width = 140,
                 FontWeight = FontWeights.Bold,
-                FontSize = 30,
+                FontSize = 20,
+            };
+            Button editCategoryButton = new Button
+            {
+                Style = (Style)this.Resources["InvisibleButtonStyle"],
+                Width = 30,
+                Height = 30,
+                Name = $"EditIncomeButton_{Guid.NewGuid():N}",
+                VerticalAlignment = VerticalAlignment.Top,
+                Content = new TextBlock
+                {
+                    Text = "E",
+                    FontSize = 25,
+                    FontWeight = FontWeights.Bold,
+                },
+            };
+
+            Button deleteCategoryButton = new Button
+            {
+                Style = (Style)this.Resources["InvisibleButtonStyle"],
+                Width = 30,
+                Height = 30,
+                Name = $"DeleteIncomeButton_{Guid.NewGuid().ToString("N")}",
+                VerticalAlignment = VerticalAlignment.Top,
+                Content = new TextBlock
+                {
+                    Text = "D",
+                    FontSize = 25,
+                    FontWeight = FontWeights.Bold,
+                },
             };
 
             addCategoryExpenseButton.Click += (sender, e) => this.AddCategoryExpenseButton_Click(sender, e, this.categoryID);
             this.categoryExpenseButtonMap.Add(addCategoryExpenseButton, categoryListView);
+            StackPanel  categorypanel= new StackPanel { Orientation = Orientation.Horizontal, };
 
             categoryListView.Children.Add(addCategoryExpenseButton);
 
-            newCategoryStackPanel.Children.Add(categoryHeader);
+            categorypanel.Children.Add(categoryHeader);
+            categorypanel.Children.Add(editCategoryButton);
+            categorypanel.Children.Add(deleteCategoryButton);
+            newCategoryStackPanel.Children.Add(categorypanel);
             newCategoryStackPanel.Children.Add(categoryListView);
             newCategoryBlock.Child = newCategoryStackPanel;
 
