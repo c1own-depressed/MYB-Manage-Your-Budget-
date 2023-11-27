@@ -133,7 +133,7 @@
     <value>Choose theme:</value>
   </data>
   <data name="CostLabel" xml:space="preserve">
-    <value>Cost:</value>
+    <value>Cost: </value>
   </data>
   <data name="CurencyLabel" xml:space="preserve">
     <value>Currency:</value>

@@ -29,6 +29,7 @@
             {
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
             }
+
             this.userLangage = UserManager.CurrentUser.Language;
             this.InitializeComponent();
             this.userId = UserManager.CurrentUser.Id;
