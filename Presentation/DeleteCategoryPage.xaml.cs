@@ -23,7 +23,15 @@ namespace Presentation
         private int categoryId;
 
         public DeleteCategoryPage(object main, int categoryId)
-        {            
+        {
+            if (UserManager.CurrentUser.Language == "ua")
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
             InitializeComponent();            
             this.categoryId = categoryId;
             int userId=UserManager.CurrentUser.Id;
@@ -33,7 +41,7 @@ namespace Presentation
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainPageLogic.DeleteCategory(this.categoryId);
+            MainPageLogic.DeleteExpenseCategory(this.categoryId);
             this.Close();
         }
 

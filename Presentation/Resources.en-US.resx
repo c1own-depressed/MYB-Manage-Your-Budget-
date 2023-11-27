@@ -120,6 +120,9 @@
   <data name="AmountOfSavings" xml:space="preserve">
     <value>Amount of savings</value>
   </data>
+  <data name="AYS" xml:space="preserve">
+    <value>Are you sure you want to delete </value>
+  </data>
   <data name="Btn_add" xml:space="preserve">
     <value>Add</value>
   </data>
@@ -140,6 +143,12 @@
   </data>
   <data name="Btn_back" xml:space="preserve">
     <value>Back</value>
+  </data>
+  <data name="Btn_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Btn_Delete" xml:space="preserve">
+    <value>Delete</value>
   </data>
   <data name="Btn_edit" xml:space="preserve">
     <value>Edit</value>

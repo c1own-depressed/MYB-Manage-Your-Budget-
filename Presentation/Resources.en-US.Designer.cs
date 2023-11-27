@@ -368,6 +368,27 @@ namespace Presentation {
                 return ResourceManager.GetString("Btn_edit", resourceCulture);
             }
         }
+        public static string Btn_Cancel
+        {
+            get
+            {
+                return ResourceManager.GetString("Btn_Cancel", resourceCulture);
+            }
+        }
+        public static string Btn_Delete
+        {
+            get
+            {
+                return ResourceManager.GetString("Btn_Delete", resourceCulture);
+            }
+        }
+        public static string AYS
+        {
+            get
+            {
+                return ResourceManager.GetString("AYS", resourceCulture);
+            }
+        }
 
     }
 }

@@ -2,6 +2,7 @@
 {
     using BLL;
     using DAL;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
@@ -31,6 +32,14 @@
             Saving? temp = this.savingList.FirstOrDefault(saving => saving.Id == this.savingId);
             this.TitleOfSavingsTextBox.Text = temp.SavingName;
             this.AmmountOfSavingsTextBox.Text = temp.Amount.ToString();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int AmountOfSaving = Convert.ToInt32(this.AmmountOfSavingsTextBox.Text);
+            string TitleOfSavings = this.TitleOfSavingsTextBox.Text;
+            MainPageLogic.EditSaving(this.savingId, TitleOfSavings, AmountOfSaving);
+            this.Close();
         }
     }
 }

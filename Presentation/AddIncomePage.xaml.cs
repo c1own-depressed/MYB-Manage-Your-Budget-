@@ -6,6 +6,8 @@ namespace MYB_NEW
     using System.Windows.Controls;
     using System.Windows.Media;
     using BLL;
+    using DAL;
+    using Presentation;
 
     public partial class AddIncomePage : Window
     {
@@ -66,7 +68,7 @@ namespace MYB_NEW
                 },
             };
 
-            deleteButton.Click += this.DeleteIncome_Click;
+            deleteButton.Click += (sender, e) => this.DeleteIncome_Click(sender, e, id);
 
 
             // Додайте новий дохід разом із кнопками "Edit" та "Delete" до списку доходів на головній сторінці
@@ -98,9 +100,10 @@ namespace MYB_NEW
             addCategoryPage.ShowDialog();
         }
 
-        private void DeleteIncome_Click(object sender, RoutedEventArgs e)
+        private void DeleteIncome_Click(object sender, RoutedEventArgs e, int incomeId)
         {
-            // Додайте реалізацію для видалення доходу
+            DeleteIncomePage deleteIncomePage = new DeleteIncomePage(this, incomeId);
+            deleteIncomePage.ShowDialog();
         }
     }
 }
