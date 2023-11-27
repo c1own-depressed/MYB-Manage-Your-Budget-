@@ -136,7 +136,7 @@
     <value>Сума:</value>
   </data>
   <data name="CurencyLabel" xml:space="preserve">
-    <value>Валюта:</value>
+    <value>Валюта:  </value>
   </data>
   <data name="EndDataLabel" xml:space="preserve">
     <value>Кінцева дата:</value>
