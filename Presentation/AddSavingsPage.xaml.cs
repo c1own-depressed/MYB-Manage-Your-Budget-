@@ -1,4 +1,4 @@
-﻿namespace MYB_NEW
+namespace MYB_NEW
 {
     using System;
     using System.Linq;
@@ -31,13 +31,13 @@
             Button editButton = new Button
             {
                 Style = (Style)this.Resources["InvisibleButtonStyle"],
-                Width = 41,
-                Height = 41,
+                Width = 20,
+                Height = 20,
                 Name = $"EditIncomeButton_{Guid.NewGuid():N}",
                 Content = new TextBlock
                 {
                     Text = "E",
-                    FontSize = 16,
+                    FontSize = 14,
                     FontWeight = FontWeights.Bold,
                 },
             };
@@ -46,13 +46,13 @@
             Button deleteButton = new Button
             {
                 Style = (Style)this.Resources["InvisibleButtonStyle"],
-                Width = 41,
-                Height = 41,
+                Width = 20,
+                Height = 20,
                 Name = $"DeleteIncomeButton_{Guid.NewGuid().ToString("N")}",
                 Content = new TextBlock
                 {
                     Text = "D",
-                    FontSize = 16,
+                    FontSize = 14,
                     FontWeight = FontWeights.Bold,
                 },
             };
@@ -67,7 +67,7 @@
                 {
                     Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = newSavings.Title,
-                    FontSize = 30,
+                    FontSize = 16,
                     FontWeight = FontWeights.DemiBold,
                 };
                 savingsPanel.Children.Add(savingTextBlock);
