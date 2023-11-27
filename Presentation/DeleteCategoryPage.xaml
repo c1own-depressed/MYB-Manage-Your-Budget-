@@ -1,4 +1,4 @@
-﻿<Window x:Class="MYB_NEW.DeletePage"
+﻿<Window x:Class="Presentation.DeleteCategoryPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Background="LightGray" Title="Income Page" Height="170" Width="280">
@@ -9,10 +9,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Are you sure you want to delete (name of something)?"
+        <TextBlock x:Name="DeleteCategoryPageTextBlock" Text="Are you sure you want to delete "
            Grid.Row="2" Margin="0,31,0,-24" FontWeight="DemiBold" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center" Width="126" Foreground="{DynamicResource Text}"/>
 
-        <Button Content="Cancel" Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="33,101,0,-56" BorderThickness="0" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" FontWeight="DemiBold"/>
-        <Button Content="Delete" Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="162,101,0,-56" BorderThickness="0" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" FontWeight="DemiBold"/>
+        <Button Content="Cancel" Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="33,101,0,-56" BorderThickness="0" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" FontWeight="DemiBold" Click="Button_Click_1"/>
+        <Button Content="Delete" Grid.Row="2" Width="100" HorizontalAlignment="Left" Margin="162,101,0,-56" BorderThickness="0" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" FontWeight="DemiBold" Click="Button_Click"/>
     </Grid>
 </Window>

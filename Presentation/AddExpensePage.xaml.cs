@@ -8,6 +8,7 @@ namespace MYB_NEW
     using System.Windows.Media;
     using BLL;
     using DAL;
+    using Presentation;
 
     /// <summary>
     /// Interaction logic for AddExpensePage.xaml.
@@ -139,18 +140,18 @@ namespace MYB_NEW
 
         private void EditExpense_Click(object sender, RoutedEventArgs e,  string currentIndexExpense)
         {
-            int? name = this.expenses.Expenses
+            int Id = this.expenses.Expenses
                 .Where(expense => expense.ExpenseName == currentIndexExpense).Select(expense => expense.Id).FirstOrDefault();
-
-            MessageBox.Show($"Edit clicked for {name}");
+            EditExpensePage editExpensePage = new EditExpensePage(this, this.categoryId, Id);
+            editExpensePage.ShowDialog();
         }
 
         private void DeleteExpense_Click(object sender, RoutedEventArgs e, string currentIndexExpense)
         {
-            int? name = this.expenses.Expenses
+            int Id = this.expenses.Expenses
                .Where(expense => expense.ExpenseName == currentIndexExpense).Select(expense => expense.Id).FirstOrDefault();
-
-            MessageBox.Show($"Delete clicked for {name}");
+            DeleteExpensesPage deleteExpenses = new DeleteExpensesPage(this, this.categoryId, Id);
+            deleteExpenses.ShowDialog();
         }
     }
 }
