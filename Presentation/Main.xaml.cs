@@ -1,4 +1,4 @@
-﻿namespace MYB_NEW
+namespace MYB_NEW
 {
     using System;
     using System.Collections.Generic;
@@ -63,10 +63,10 @@
                 {
                     Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = expenses[i].ExpenseCategory.CategoryName,
-                    FontSize = 40,
+                    FontSize = 25,
                     FontWeight = FontWeights.Bold,
                     HorizontalAlignment = HorizontalAlignment.Left,
-                    Height = 100,
+                    Height = 30,
                 };
 
                 StackPanel categoryListView = new StackPanel();
@@ -82,7 +82,7 @@
                     {
                         Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                         Text = expense.ExpenseName,
-                        FontSize = 20,
+                        FontSize = 16,
                         FontWeight = FontWeights.DemiBold,
                     };
 
@@ -97,23 +97,23 @@
                     TextBlock newExpenseBudget = new TextBlock
                     {
                         Text = $"0/{expense.Amount} $",
-                        FontSize = 20,
+                        FontSize = 12,
                         FontWeight = FontWeights.DemiBold,
                         Foreground = Brushes.Gray,
-                        Height = 30,
-                        VerticalAlignment = VerticalAlignment.Top,
+                        Height = 15,
+                        VerticalAlignment = VerticalAlignment.Center,
                     };
 
                     Button editExpenseButton = new Button
                     {
                         Style = (Style)this.Resources["InvisibleButtonStyle"],
-                        Width = 30,
+                        Width = 20,
                         Name = $"EditIncomeButton_{Guid.NewGuid():N}",
                         VerticalAlignment = VerticalAlignment.Top,
                         Content = new TextBlock
                         {
                             Text = "E",
-                            FontSize = 20,
+                            FontSize = 16,
                             FontWeight = FontWeights.Bold,
                         },
                     };
@@ -122,13 +122,13 @@
                     Button deleteExpenseButton = new Button
                     {
                         Style = (Style)this.Resources["InvisibleButtonStyle"],
-                        Height = 30,
+                        Height = 20,
                         Name = $"DeleteIncomeButton_{Guid.NewGuid():N}",
                         VerticalAlignment = VerticalAlignment.Top,
                         Content = new TextBlock
                         {
                             Text = "D",
-                            FontSize = 20,
+                            FontSize = 16,
                             FontWeight = FontWeights.Bold,
                         },
                     };
@@ -148,9 +148,9 @@
                 {
                     Content = "Add Expense",
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 360,
+                    Width = 140,
                     FontWeight = FontWeights.Bold,
-                    FontSize = 30,
+                    FontSize = 20,
                 };
 
                 addCategoryExpenseButton.Click += (sender, e) =>
@@ -170,14 +170,14 @@
                 Button editCategoryButton = new Button
                 {
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 50,
-                    Height = 50,
+                    Width = 30,
+                    Height = 30,
                     Name = $"EditIncomeButton_{Guid.NewGuid():N}",
-                    VerticalAlignment = VerticalAlignment.Top,
+                    VerticalAlignment = VerticalAlignment.Center,
                     Content = new TextBlock
                     {
                         Text = "E",
-                        FontSize = 40,
+                        FontSize = 25,
                         FontWeight = FontWeights.Bold,
                     },
                 };
@@ -186,14 +186,14 @@
                 Button deleteCategoryButton = new Button
                 {
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 50,
-                    Height = 50,
+                    Width = 30,
+                    Height = 30,
                     Name = $"DeleteIncomeButton_{Guid.NewGuid().ToString("N")}",
-                    VerticalAlignment = VerticalAlignment.Top,
+                    VerticalAlignment = VerticalAlignment.Center,
                     Content = new TextBlock
                     {
                         Text = "D",
-                        FontSize = 40,
+                        FontSize = 25,
                         FontWeight = FontWeights.Bold,
                     },
                 };
@@ -237,7 +237,7 @@
                         {
                             Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                             Text = newExpense.Title,
-                            FontSize = 20,
+                            FontSize = 16,
                             FontWeight = FontWeights.DemiBold,
                         };
 
@@ -254,10 +254,10 @@
                         TextBlock newExpenseBudget = new TextBlock
                         {
                             Text = $"0/{newExpense.Amount} $",
-                            FontSize = 20,
+                            FontSize = 14,
                             FontWeight = FontWeights.DemiBold,
                             Foreground = Brushes.Gray,
-                            Height = 30,
+                            Height = 20,
                             VerticalAlignment = VerticalAlignment.Center,
                         };
 
@@ -347,20 +347,20 @@
                 {
                     Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = incomes[i].IncomeName,
-                    FontSize = 40,
+                    FontSize = 16,
                     FontWeight = FontWeights.DemiBold,
                 };
 
                 Button editIncomeButton = new Button
                 {
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 41,
-                    Height = 41,
+                    Width = 20,
+                    Height = 20,
                     Name = $"EditIncomeButton_{Guid.NewGuid():N}",
                     Content = new TextBlock
                     {
                         Text = "E",
-                        FontSize = 16,
+                        FontSize = 14,
                         FontWeight = FontWeights.Bold,
                     },
                 };
@@ -369,13 +369,13 @@
                 Button deleteIncomeButton = new Button
                 {
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 41,
-                    Height = 41,
+                    Width = 20,
+                    Height = 20,
                     Name = $"DeleteIncomeButton_{Guid.NewGuid().ToString("N")}",
                     Content = new TextBlock
                     {
                         Text = "D",
-                        FontSize = 16,
+                        FontSize = 14,
                         FontWeight = FontWeights.Bold,
                     },
                 };
@@ -403,20 +403,20 @@
                 {
                     Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = savings[i].SavingName,
-                    FontSize = 40,
+                    FontSize = 16,
                     FontWeight = FontWeights.DemiBold,
                 };
 
                 Button editSavingsButton = new Button
                 {
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 41,
-                    Height = 41,
+                    Width = 20,
+                    Height = 20,
                     Name = $"EditSavingsButton_{Guid.NewGuid():N}",
                     Content = new TextBlock
                     {
                         Text = "E",
-                        FontSize = 16,
+                        FontSize = 14,
                         FontWeight = FontWeights.Bold,
                     },
                 };
@@ -425,13 +425,13 @@
                 Button deleteSavingsButton = new Button
                 {
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 41,
-                    Height = 41,
+                    Width = 20,
+                    Height = 20,
                     Name = $"DeleteSavingsButton_{Guid.NewGuid().ToString("N")}",
                     Content = new TextBlock
                     {
                         Text = "D",
-                        FontSize = 16,
+                        FontSize = 14,
                         FontWeight = FontWeights.Bold,
                     },
                 };
