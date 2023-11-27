@@ -31,5 +31,10 @@
             ExpenseCategoryWithExpenses? temp = this.categoryWithExpenses.FirstOrDefault(category => category.ExpenseCategory.Id == this.expenseCategoryId);
             this.TitleOfCategoryTextBox.Text = temp.ExpenseCategory.CategoryName;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+ 
+        }
     }
 }

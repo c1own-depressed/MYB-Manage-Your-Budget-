@@ -15,6 +15,6 @@
         <TextBlock Text="{x:Static rs:Resources.TitleOfCategory}" Grid.Row="2" Margin="22,47,-9,-6" FontWeight="Bold" Foreground="{DynamicResource Text}"/>
         <TextBox x:Name="TitleOfCategoryTextBox" Grid.Row="2" Margin="124,47,56,3" Height="16" Width="100" Background="White" BorderBrush="Black" BorderThickness="0"/>
 
-        <Button Content="{x:Static rs:Resources.Btn_edit}" Grid.Row="2" Width="100" HorizontalAlignment="Center" Margin="0,92,0,-54" BorderThickness="0" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" FontWeight="DemiBold"/>
+        <Button Content="{x:Static rs:Resources.Btn_edit}" Grid.Row="2" Width="100" HorizontalAlignment="Center" Margin="0,92,0,-54" BorderThickness="0" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" FontWeight="DemiBold" Click="Button_Click"/>
     </Grid>
 </Window>
