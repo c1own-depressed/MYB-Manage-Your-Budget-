@@ -1,5 +1,6 @@
 ﻿namespace MYB_NEW
 {
+    using BLL;
     using System.Windows;
 
     /// <summary>
@@ -9,6 +10,14 @@
     {
         public EditExpensePage()
         {
+            if (UserManager.CurrentUser.Language == "ua")
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
             this.InitializeComponent();
         }
     }

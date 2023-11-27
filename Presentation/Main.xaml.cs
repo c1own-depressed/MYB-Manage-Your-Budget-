@@ -21,6 +21,14 @@ namespace MYB_NEW
 
         public Main()
         {
+            if (UserManager.CurrentUser.Language == "ua")
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
             if (UserManager.CurrentUser.LightTheme == true)
             {
                 AppTheme.ChangeTheme(new Uri("Themes/Light.xaml", UriKind.Relative));

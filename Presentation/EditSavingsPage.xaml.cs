@@ -16,6 +16,14 @@
 
         public EditSavingsPage(object main, int savingId)
         {
+            if (UserManager.CurrentUser.Language == "ua")
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            }
             int userId = UserManager.CurrentUser.Id;
             this.InitializeComponent();
             this.savingId = savingId;
