@@ -78,10 +78,18 @@ namespace MYB_NEW
                 };
 
                 StackPanel categoryListView = new StackPanel();
-                for (int j = 0; j < expenses[i].Expenses.Count; j++)
+
+                int currentIndexExpense = -1;
+                foreach (var pair in expenses[i].ExpensesWithCost)
                 {
-                    int currentIndexExpense = j;
-                    var expense = expenses[i].Expenses[j];
+                    var expense = pair.Key;  // expense
+                    double expenseTransactionSum = pair.Value;
+                    currentIndexExpense++;
+                //}
+                //for (int j = 0; j < expenses[i].Expenses.Count; j++)
+                //{
+                //    int currentIndexExpense = j;
+                //    var expense = expenses[i].Expenses[j];
 
                     StackPanel newExpensePanel = new StackPanel();
                     newExpensePanel.Orientation = Orientation.Horizontal;
@@ -104,7 +112,7 @@ namespace MYB_NEW
 
                     TextBlock newExpenseBudget = new TextBlock
                     {
-                        Text = $"0/{expense.Amount} $",
+                        Text = $"{expenseTransactionSum}/{expense.Amount} $",
                         FontSize = 12,
                         FontWeight = FontWeights.DemiBold,
                         Foreground = Brushes.Gray,
@@ -488,7 +496,7 @@ namespace MYB_NEW
         {
             int categoryId = this.expenses[currentIndex].ExpenseCategory.Id;
             MessageBox.Show($"Delete clicked for {this.expenses[currentIndex].ExpenseCategory.CategoryName}");
-            MainPageLogic.DeleteCategory(categoryId);
+            MainPageLogic.DeleteExpenseCategory(categoryId);
             
             // TODO: redraw MainPage
         }

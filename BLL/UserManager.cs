@@ -12,7 +12,7 @@
         {
             // Set the current user when logging in
             CurrentUser = LoginSignupLogic.GetUser(userId);
-            userExpenseCategoriesWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId);
+            userExpenseCategoriesWithExpenses = MainPageLogic.GetCategoriesAndExpensesByUserId(userId);
         }
 
         public static void LogOutUser()

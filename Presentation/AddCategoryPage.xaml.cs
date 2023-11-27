@@ -35,7 +35,7 @@ namespace MYB_NEW
             int userId = UserManager.CurrentUser.Id;
 
             MainPageLogic.AddExpenseCategory(userId, categoryTitle);
-            ExpenseCategoryWithExpenses? temp = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId)
+            ExpenseCategoryWithExpenses? temp = MainPageLogic.GetCategoriesAndExpensesByUserId(userId)
                     .FirstOrDefault(category => category.ExpenseCategory.CategoryName == categoryTitle);
             this.categoryID = temp.ExpenseCategory.Id;
             // Create a new category block

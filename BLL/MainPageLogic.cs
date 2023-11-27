@@ -40,17 +40,37 @@
 
         public static List<ExpenseCategoryWithExpenses> GetCategoriesAndExpensesByUserId(int userId)
         {
-            List<ExpenseCategory> expenseCategoryies = DAL.ExpenseCategoryQueries.GetExpenseCategoriesByUserId(userId);
+            List<ExpenseCategory> expenseCategories = ExpenseCategoryQueries.GetExpenseCategoriesByUserId(userId);
 
             List<ExpenseCategoryWithExpenses> categoriesWithExpenses = new List<ExpenseCategoryWithExpenses>();
 
-            foreach (var category in expenseCategoryies)
+            foreach (var category in expenseCategories)
             {
-                List<Expense> expenses = DAL.ExpenseQueries.GetExpensesByExpenseCategoryId(category.Id);
+                List<Expense> expenses = ExpenseQueries.GetExpensesByExpenseCategoryId(category.Id);
+
+                Dictionary<Expense, double> expensesWithCost = new Dictionary<Expense, double>();
+
+                int month = DateTime.Now.Month;
+                int year = DateTime.Now.Year;
+                foreach (var expense in expenses)
+                {
+                    var transactions = TransactionQueries.GetTransactionsByExpenseIdYearAndMonth(expense.Id, year, month);
+
+                    double suma = 0;
+                    foreach (var transaction in transactions)
+                    {
+                        suma += transaction.Amount;
+                    }
+
+                    expensesWithCost.Add(expense, suma);
+                    //expensesWithCost.Add(expense, 100);
+                }
+
                 categoriesWithExpenses.Add(new ExpenseCategoryWithExpenses
                 {
                     ExpenseCategory = category,
                     Expenses = expenses,
+                    ExpensesWithCost = expensesWithCost,
                 });
             }
 
