@@ -235,6 +235,76 @@ namespace Presentation {
                 return ResourceManager.GetString("SettingsLabel", resourceCulture);
             }
         }
-        
+        public static string IncomeLabel
+        {
+            get
+            {
+                return ResourceManager.GetString("IncomeLabel", resourceCulture);
+            }
+        }
+        public static string Btn_AddIncome
+        {
+            get
+            {
+                return ResourceManager.GetString("Btn_AddIncome", resourceCulture);
+            }
+        }
+        public static string SavingsLabel
+        {
+            get
+            {
+                return ResourceManager.GetString("SavingsLabel", resourceCulture);
+            }
+        }
+        public static string ExpensesLabel
+        {
+            get
+            {
+                return ResourceManager.GetString("ExpensesLabel", resourceCulture);
+            }
+        }
+        public static string Btn_AddSavings
+        {
+            get
+            {
+                return ResourceManager.GetString("Btn_AddSavings", resourceCulture);
+            }
+        }
+        public static string Btn_AddCategory
+        {
+            get
+            {
+                return ResourceManager.GetString("Btn_AddCategory", resourceCulture);
+            }
+        }
+        public static string Btn_AddTransaction
+        {
+            get
+            {
+                return ResourceManager.GetString("Btn_AddTransaction", resourceCulture);
+            }
+        }
+        public static string DataExportLabel
+        {
+            get
+            {
+                return ResourceManager.GetString("DataExportLabel", resourceCulture);
+            }
+        }
+        public static string SignOutLabel
+        {
+            get
+            {
+                return ResourceManager.GetString("SignOutLabel", resourceCulture);
+            }
+        }
+        public static string Btn_AddExpense
+        {
+            get
+            {
+                return ResourceManager.GetString("Btn_AddExpense", resourceCulture);
+            }
+        }
+
     }
 }

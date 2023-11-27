@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Btn_AddCategory" xml:space="preserve">
+    <value>Add Category</value>
+  </data>
+  <data name="Btn_AddExpense" xml:space="preserve">
+    <value>Add Expense</value>
+  </data>
+  <data name="Btn_AddIncome" xml:space="preserve">
+    <value>Add Income</value>
+  </data>
+  <data name="Btn_AddSavings" xml:space="preserve">
+    <value>Add Savings</value>
+  </data>
+  <data name="Btn_AddTransaction" xml:space="preserve">
+    <value>Add Transaction</value>
+  </data>
   <data name="Btn_back" xml:space="preserve">
     <value>Back</value>
   </data>
@@ -138,11 +153,20 @@
   <data name="CurencyLabel" xml:space="preserve">
     <value>Currency:</value>
   </data>
+  <data name="DataExportLabel" xml:space="preserve">
+    <value>Data export</value>
+  </data>
   <data name="EndDataLabel" xml:space="preserve">
     <value>End date:</value>
   </data>
   <data name="ExpenseLabel" xml:space="preserve">
     <value>Expense:</value>
+  </data>
+  <data name="ExpensesLabel" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="IncomeLabel" xml:space="preserve">
+    <value>Income</value>
   </data>
   <data name="LanguageLabel" xml:space="preserve">
     <value>Language:</value>
@@ -156,6 +180,9 @@
   <data name="Link3" xml:space="preserve">
     <value>Useful link 3</value>
   </data>
+  <data name="SavingsLabel" xml:space="preserve">
+    <value>Savings</value>
+  </data>
   <data name="SelectCategoryLabel" xml:space="preserve">
     <value>Select a category:</value>
   </data>
@@ -167,6 +194,9 @@
   </data>
   <data name="SettingsLabel" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="SignOutLabel" xml:space="preserve">
+    <value>Sign out</value>
   </data>
   <data name="StartDateLabel" xml:space="preserve">
     <value>Start date:</value>
