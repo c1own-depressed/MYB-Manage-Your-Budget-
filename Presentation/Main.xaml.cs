@@ -463,31 +463,30 @@ namespace MYB_NEW
 
         private void EditIncome_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            EditncomePage addCategoryPage = new EditncomePage(this, this.incomes[currentIndex].Id);
-            addCategoryPage.ShowDialog();
+            EditncomePage editncomePage = new EditncomePage(this, this.incomes[currentIndex].Id);
+            editncomePage.ShowDialog();
         }
 
         private void DeleteIncome_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            MessageBox.Show($"Delete clicked for {this.incomes[currentIndex].IncomeName}");
+            DeleteIncomePage deletencomePage = new DeleteIncomePage(this, this.incomes[currentIndex].Id);
+            deletencomePage.ShowDialog();
         }
 
         private void EditSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            EditSavingsPage addCategoryPage = new EditSavingsPage(this, this.savings[currentIndex].Id);
-            addCategoryPage.ShowDialog();
+            EditSavingsPage editSavingsPage = new EditSavingsPage(this, this.savings[currentIndex].Id);
+            editSavingsPage.ShowDialog();
         }
 
         private void DeleteSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            MessageBox.Show($"Delete clicked for {this.savings[currentIndex].SavingName}");
+            DeleteSavingsPage deleteSavingsPage = new DeleteSavingsPage(this, this.savings[currentIndex].Id);
+            deleteSavingsPage.ShowDialog();
         }
 
         private void EditCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            //string expenseName = "new expense name";
-            //int expenseId = this.expenses[currentIndex].ExpenseCategory.Id;
-            //MainPageLogic.EditExpense(expenseId, expenseName);
             EditCategoryPage addCategoryPage = new EditCategoryPage(this, this.expenses[currentIndex].ExpenseCategory.Id);
             addCategoryPage.ShowDialog();
         }
@@ -495,9 +494,9 @@ namespace MYB_NEW
         private void DeleteCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
             int categoryId = this.expenses[currentIndex].ExpenseCategory.Id;
-            MessageBox.Show($"Delete clicked for {this.expenses[currentIndex].ExpenseCategory.CategoryName}");
-            MainPageLogic.DeleteExpenseCategory(categoryId);
-            
+            DeleteCategoryPage deleteCategoryPage = new DeleteCategoryPage(this, categoryId);
+            deleteCategoryPage.ShowDialog();
+
             // TODO: redraw MainPage
         }
 
@@ -514,9 +513,9 @@ namespace MYB_NEW
         private void DeleteExpense_Click(object sender, RoutedEventArgs e, int currentCategoryIndex, int currentIndexExpense)
         {
             int expenseId = this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].Id;
-            MainPageLogic.DeleteExpense(expenseId);
-            MessageBox.Show($"{this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].ExpenseName} is successfully deleted");
-
+            int categoryId = this.expenses[currentCategoryIndex].ExpenseCategory.Id;
+            DeleteExpensesPage deleteExpenses = new DeleteExpensesPage(this, categoryId, expenseId);
+            deleteExpenses.ShowDialog();
             // TODO: redraw MainPage
         }
 

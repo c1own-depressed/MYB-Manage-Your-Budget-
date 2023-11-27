@@ -2,6 +2,7 @@
 {
     using BLL;
     using DAL;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
@@ -14,7 +15,7 @@
         int expenseCategoryId;
         List<ExpenseCategoryWithExpenses> categoryWithExpenses;
 
-        public EditCategoryPage(Main main, int expenseCategoryId)
+        public EditCategoryPage(object main, int expenseCategoryId)
         {
             if (UserManager.CurrentUser.Language == "ua")
             {
@@ -34,7 +35,9 @@
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
- 
+            string TitleOfCategory = this.TitleOfCategoryTextBox.Text;
+            MainPageLogic.EditExpenseCategory(this.expenseCategoryId, TitleOfCategory);
+            this.Close();
         }
     }
 }

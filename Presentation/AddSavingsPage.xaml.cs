@@ -6,6 +6,8 @@ namespace MYB_NEW
     using System.Windows.Controls;
     using System.Windows.Media;
     using BLL;
+    using DAL;
+    using Presentation;
 
     public partial class AddSavingsPage : Window
     {
@@ -65,7 +67,7 @@ namespace MYB_NEW
                 },
             };
 
-            deleteButton.Click += this.DeleteSaving_Click;
+            deleteButton.Click += (sender, e) => this.DeleteSaving_Click(sender, e, id);
             // Додайте новий "Savings" до списку на головній сторінці (SavingsListView)
             if (this.savingsListView != null)
             {
@@ -90,13 +92,14 @@ namespace MYB_NEW
 
         private void EditSaving_Click(object sender, RoutedEventArgs e, int id)
         {
-            EditSavingsPage addCategoryPage = new EditSavingsPage(this, id);
-            addCategoryPage.ShowDialog();
+            EditSavingsPage editSavingsPage = new EditSavingsPage(this, id);
+            editSavingsPage.ShowDialog();
         }
 
-        private void DeleteSaving_Click(object sender, RoutedEventArgs e)
+        private void DeleteSaving_Click(object sender, RoutedEventArgs e, int id)
         {
-            throw new NotImplementedException();
+            DeleteSavingsPage deleteSavingsPage = new DeleteSavingsPage(this, id);
+            deleteSavingsPage.ShowDialog();
         }
     }
 }

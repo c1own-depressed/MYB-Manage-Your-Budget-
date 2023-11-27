@@ -1,5 +1,6 @@
 ﻿namespace MYB_NEW
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
@@ -32,6 +33,14 @@
             Income? temp = this.incomeList.FirstOrDefault(income => income.Id == this.incomeId);
             this.IncomeTextBox.Text = temp.IncomeName;
             this.ProjectedIncomeTextBox.Text = temp.Amount.ToString();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int ProjectedIncome = Convert.ToInt32(this.ProjectedIncomeTextBox.Text);
+            string IncomeName = this.IncomeTextBox.Text;
+            MainPageLogic.EditExpense(this.incomeId, IncomeName, ProjectedIncome);
+            this.Close();
         }
     }
 }

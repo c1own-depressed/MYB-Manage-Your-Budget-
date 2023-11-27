@@ -41,8 +41,8 @@
         {
             int cost = Convert.ToInt32(this.ExpenseBudget.Text);
             string transactionName = this.TitleOfExpense.Text;
-            // TODO: add to the parameters amount
-            //MainPageLogic.EditExpense(expenseId, transactionName);
+            MainPageLogic.EditExpense(expenseId, transactionName,cost);
+
             this.Close();
         }
     }

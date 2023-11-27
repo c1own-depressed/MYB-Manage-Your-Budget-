@@ -7,6 +7,7 @@ namespace MYB_NEW
     using System.Windows.Controls;
     using System.Windows.Media;
     using BLL;
+    using Presentation;
 
     public partial class AddCategoryPage : Window
     {
@@ -98,6 +99,8 @@ namespace MYB_NEW
                     FontWeight = FontWeights.Bold,
                 },
             };
+            editCategoryButton.Click += (sender, e) => this.EditCategoryButton_Click(sender, e, this.categoryID);
+            deleteCategoryButton.Click += (sender, e) => this.DeleteCategoryButton_Click(sender, e, this.categoryID);
 
             addCategoryExpenseButton.Click += (sender, e) => this.AddCategoryExpenseButton_Click(sender, e, this.categoryID);
             this.categoryExpenseButtonMap.Add(addCategoryExpenseButton, categoryListView);
@@ -125,6 +128,18 @@ namespace MYB_NEW
             }
 
             this.Close();
+        }
+
+        private void DeleteCategoryButton_Click(object sender, RoutedEventArgs e, int categoryID)
+        {
+            DeleteCategoryPage deleteCategoryPage = new DeleteCategoryPage(this, categoryID);
+            deleteCategoryPage.ShowDialog();
+        }
+
+        private void EditCategoryButton_Click(object sender, RoutedEventArgs e, int categoryID)
+        {
+            EditCategoryPage editCategoryPage = new EditCategoryPage(this, categoryID);
+            editCategoryPage.ShowDialog();
         }
 
         private void AddCategoryExpenseButton_Click(object sender, RoutedEventArgs e, int categoryID)
