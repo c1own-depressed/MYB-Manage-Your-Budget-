@@ -1,3 +1,4 @@
+
 namespace MYB_NEW
 {
     using System;
@@ -58,7 +59,6 @@ namespace MYB_NEW
                 Dictionary<Button, StackPanel> categoryExpenseButtonMap = new Dictionary<Button, StackPanel>();
                 Border newCategoryBlock = new Border
                 {
-
                     BorderBrush = Brushes.Black,
                     BorderThickness = new Thickness(0),
                     Width = 360,
@@ -487,6 +487,7 @@ namespace MYB_NEW
         private void DeleteCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
             int categoryId = this.expenses[currentIndex].ExpenseCategory.Id;
+
             DeleteCategoryPage deleteCategoryPage = new DeleteCategoryPage(this, categoryId);
             deleteCategoryPage.ShowDialog();
 
@@ -499,6 +500,7 @@ namespace MYB_NEW
             int categoryId = this.expenses[currentCategoryIndex].ExpenseCategory.Id;
             EditExpensePage editExpensePage = new EditExpensePage(this,categoryId, expenseId);
             editExpensePage.ShowDialog();
+            
             // TODO: redraw MainPage
         }
 
@@ -552,6 +554,6 @@ namespace MYB_NEW
             Statistic1 statisticPage = new Statistic1();
             Window.GetWindow(this).Content = statisticPage;
         }
-
     }
 }
+

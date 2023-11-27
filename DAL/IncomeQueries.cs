@@ -25,5 +25,29 @@
             _context.Incomes.Add(income);
             _context.SaveChanges();
         }
+
+        public static void DeleteIncome(int incomeID)
+        {
+            var incomeToDelete = _context.Incomes.SingleOrDefault(e => e.Id == incomeID);
+
+            if (incomeToDelete != null)
+            {
+                _context.Incomes.Remove(incomeToDelete);
+                _context.SaveChanges();
+            }
+        }
+
+        public static void EditIncome(int incomeId, string incomeName, int amount)
+        {
+            var dbIncome = _context.Incomes.Find(incomeId);
+
+            if (dbIncome != null)
+            {
+                dbIncome.IncomeName = incomeName;
+                dbIncome.Amount = amount;
+
+                _context.SaveChanges();
+            }
+        }
     }
 }

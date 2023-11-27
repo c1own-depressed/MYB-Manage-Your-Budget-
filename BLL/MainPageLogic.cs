@@ -83,14 +83,39 @@
             ExpenseQueries.DeleteExpense(expenseId);
         }
 
-        public static void EditExpense(int expenseId, string expenseName)
+        public static void EditExpense(int expenseId, string expenseName, int expenseAmount)
         {
-            ExpenseQueries.EditExpense(expenseId, expenseName);
+            ExpenseQueries.EditExpense(expenseId, expenseName, expenseAmount);
         }
 
-        public static void DeleteCategory(int expenseCategoryId)
+        public static void DeleteExpenseCategory(int expenseCategoryId)
         {
             ExpenseCategoryQueries.DeleteExpenseCategory(expenseCategoryId);
+        }
+
+        public static void EditExpenseCategory(int expenseCategoryId, string expenseCategoryName)
+        {
+            ExpenseCategoryQueries.EditExpenseCategory(expenseCategoryId, expenseCategoryName);
+        }
+
+        public static void DeleteSaving(int savingId)
+        {
+            SavingQueries.DeleteSaving(savingId);
+        }
+
+        public static void EditSaving(int savingId, string savingName, int amount)
+        {
+            SavingQueries.EditSaving(savingId, savingName, amount);
+        }
+
+        public static void DeleteIncome(int incomeId)
+        {
+            IncomeQueries.DeleteIncome(incomeId);
+        }
+
+        public static void EditIncome(int incomeId, string incomeName, int amount)
+        {
+            IncomeQueries.EditIncome(incomeId, incomeName, amount);
         }
     }
 }

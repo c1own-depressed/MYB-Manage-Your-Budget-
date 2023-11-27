@@ -23,5 +23,29 @@
             _context.Savings.Add(saving);
             _context.SaveChanges();
         }
+
+        public static void DeleteSaving(int savingID)
+        {
+            var savingToDelete = _context.Savings.SingleOrDefault(e => e.Id == savingID);
+
+            if (savingToDelete != null)
+            {
+                _context.Savings.Remove(savingToDelete);
+                _context.SaveChanges();
+            }
+        }
+
+        public static void EditSaving(int savingId, string savingName, int amount)
+        {
+            var dbSaving = _context.Savings.Find(savingId);
+
+            if (dbSaving != null)
+            {
+                dbSaving.SavingName = savingName;
+                dbSaving.Amount = amount;
+
+                _context.SaveChanges();
+            }
+        }
     }
 }
