@@ -138,7 +138,8 @@ namespace MYB_NEW
 
         private void EditCategoryButton_Click(object sender, RoutedEventArgs e, int categoryID)
         {
-            throw new NotImplementedException();
+            EditCategoryPage editCategoryPage = new EditCategoryPage(this, categoryID);
+            editCategoryPage.ShowDialog();
         }
 
         private void AddCategoryExpenseButton_Click(object sender, RoutedEventArgs e, int categoryID)

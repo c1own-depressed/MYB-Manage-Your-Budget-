@@ -455,31 +455,30 @@ namespace MYB_NEW
 
         private void EditIncome_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            EditncomePage addCategoryPage = new EditncomePage(this, this.incomes[currentIndex].Id);
-            addCategoryPage.ShowDialog();
+            EditncomePage editncomePage = new EditncomePage(this, this.incomes[currentIndex].Id);
+            editncomePage.ShowDialog();
         }
 
         private void DeleteIncome_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            MessageBox.Show($"Delete clicked for {this.incomes[currentIndex].IncomeName}");
+            DeleteIncomePage deletencomePage = new DeleteIncomePage(this, this.incomes[currentIndex].Id);
+            deletencomePage.ShowDialog();
         }
 
         private void EditSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            EditSavingsPage addCategoryPage = new EditSavingsPage(this, this.savings[currentIndex].Id);
-            addCategoryPage.ShowDialog();
+            EditSavingsPage editSavingsPage = new EditSavingsPage(this, this.savings[currentIndex].Id);
+            editSavingsPage.ShowDialog();
         }
 
         private void DeleteSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            MessageBox.Show($"Delete clicked for {this.savings[currentIndex].SavingName}");
+            DeleteSavingsPage deleteSavingsPage = new DeleteSavingsPage(this, this.savings[currentIndex].Id);
+            deleteSavingsPage.ShowDialog();
         }
 
         private void EditCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
         {
-            //string expenseName = "new expense name";
-            //int expenseId = this.expenses[currentIndex].ExpenseCategory.Id;
-            //MainPageLogic.EditExpense(expenseId, expenseName);
             EditCategoryPage addCategoryPage = new EditCategoryPage(this, this.expenses[currentIndex].ExpenseCategory.Id);
             addCategoryPage.ShowDialog();
         }
