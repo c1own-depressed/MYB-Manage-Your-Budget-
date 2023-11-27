@@ -1,4 +1,4 @@
-﻿namespace MYB_NEW
+namespace MYB_NEW
 {
     using System;
     using System.Collections.Generic;
@@ -55,7 +55,7 @@
                 {
                     Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
                     Text = newExpense.Title,
-                    FontSize = 20,
+                    FontSize = 16,
                     FontWeight = FontWeights.DemiBold,
                 };
 
@@ -72,22 +72,22 @@
                 TextBlock newExpenseBudget = new TextBlock
                 {
                     Text = $"0/{newExpense.Amount} $",
-                    FontSize = 20,
+                    FontSize = 12,
                     FontWeight = FontWeights.DemiBold,
                     Foreground = Brushes.Gray,
-                    Height = 30,
+                    Height = 15,
                     VerticalAlignment = VerticalAlignment.Center,
                 };
                 Button editExpenseButton = new Button
                 {
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 30,
+                    Width = 20,
                     Name = $"EditIncomeButton_{Guid.NewGuid():N}",
                     VerticalAlignment = VerticalAlignment.Top,
                     Content = new TextBlock
                     {
                         Text = "E",
-                        FontSize = 20,
+                        FontSize = 16,
                         FontWeight = FontWeights.Bold,
                     },
                 };
@@ -96,13 +96,13 @@
                 Button deleteExpenseButton = new Button
                 {
                     Style = (Style)this.Resources["InvisibleButtonStyle"],
-                    Width = 30,
+                    Width = 20,
                     Name = $"EditIncomeButton_{Guid.NewGuid():N}",
                     VerticalAlignment = VerticalAlignment.Top,
                     Content = new TextBlock
                     {
                         Text = "D",
-                        FontSize = 20,
+                        FontSize = 16,
                         FontWeight = FontWeights.Bold,
                     },
                 };
