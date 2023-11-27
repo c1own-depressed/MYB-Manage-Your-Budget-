@@ -14,7 +14,9 @@
             ExpenseCategory expenseCategory = DAL.ExpenseCategoryQueries.GetExpenseCategoryById(expenseCategoryId);
             foreach (var expense in expenses)
             {
-                List<Transaction> transactions = DAL.TransactionQueries.GetTransactionsByExpenseId(expense.Id);
+                int year = DateTime.Now.Year;
+                int month = DateTime.Now.Month; 
+                List<Transaction> transactions = DAL.TransactionQueries.GetTransactionsByExpenseIdYearAndMonth(expense.Id, year, month);
 
                 foreach (var transaction in transactions)
                 {

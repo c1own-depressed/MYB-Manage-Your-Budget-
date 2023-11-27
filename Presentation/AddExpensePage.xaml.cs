@@ -47,7 +47,7 @@ namespace MYB_NEW
             string expenseTitle = this.ExpenseTitleTextBox.Text;
             double plannedBudget = double.Parse(this.PlannedBudgetTextBox.Text);
             MainPageLogic.AddExpense(this.categoryId, expenseTitle, (int)plannedBudget);
-            this.expenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(userId)
+            this.expenses = MainPageLogic.GetCategoriesAndExpensesByUserId(userId)
                     .FirstOrDefault(category => category.ExpenseCategory.Id == this.categoryId);
 
             // Створіть новий об'єкт "Expense"

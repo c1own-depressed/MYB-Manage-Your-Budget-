@@ -31,7 +31,7 @@
 
             this.userId = UserManager.CurrentUser.Id;
 
-            List<ExpenseCategoryWithExpenses> categoriesWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(this.userId);
+            List<ExpenseCategoryWithExpenses> categoriesWithExpenses = MainPageLogic.GetCategoriesAndExpensesByUserId(this.userId);
             foreach (var categoryWithExpenses in categoriesWithExpenses)
             {
                 this.CategoryComboBox.Items.Add(categoryWithExpenses.ExpenseCategory.CategoryName);
@@ -49,7 +49,7 @@
             if (this.CategoryComboBox.SelectedItem != null)
             {
                 string selectedCategory = this.CategoryComboBox?.SelectedItem?.ToString() ?? "Unknown";
-                this.selectedCategoryWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(this.userId)
+                this.selectedCategoryWithExpenses = MainPageLogic.GetCategoriesAndExpensesByUserId(this.userId)
                     .FirstOrDefault(category => category.ExpenseCategory.CategoryName == selectedCategory);
                 if (this.selectedCategoryWithExpenses != null)
                 {

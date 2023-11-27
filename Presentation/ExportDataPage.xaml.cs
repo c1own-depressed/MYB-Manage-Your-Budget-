@@ -31,7 +31,7 @@
 
             this.InitializeComponent();
             this.userId = UserManager.CurrentUser.Id;
-            this.categoriesWithExpenses = NewTransactionLogic.GetCategoriesAndExpensesByUserId(this.userId);
+            this.categoriesWithExpenses = MainPageLogic.GetCategoriesAndExpensesByUserId(this.userId);
             foreach (var categoryWithExpenses in this.categoriesWithExpenses)
             {
                 this.CategoryComboBox.Items.Add(categoryWithExpenses.ExpenseCategory.CategoryName);
@@ -64,7 +64,7 @@
 
             try
             {
-                var expensesAndCategory = NewTransactionLogic.GetCategoriesAndExpensesByUserId(this.userId)
+                var expensesAndCategory = MainPageLogic.GetCategoriesAndExpensesByUserId(this.userId)
                     .FirstOrDefault(category => category.ExpenseCategory.CategoryName == selectedCategory);
                 MemoryStream memoryStream = ExportDataLogic.GetCSVMemoryStream(expensesAndCategory.ExpenseCategory.Id, from.Value, to.Value);
                 SaveFileDialog saveFileDialog = new SaveFileDialog();

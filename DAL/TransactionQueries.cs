@@ -14,10 +14,10 @@
             _context = new AppDBContext();
         }
 
-        public static List<Transaction> GetTransactionsByExpenseId(int expenseID)
+        public static List<Transaction> GetTransactionsByExpenseIdYearAndMonth(int expenseID, int year, int month)
         {
             return (from transaction in _context.Transactions
-                    where transaction.ExpenseId == expenseID
+                    where transaction.ExpenseId == expenseID && transaction.Date.Month == month && transaction.Date.Year == year
                     select transaction).ToList();
         }
 
