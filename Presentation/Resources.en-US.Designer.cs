@@ -389,6 +389,35 @@ namespace Presentation {
                 return ResourceManager.GetString("AYS", resourceCulture);
             }
         }
-
+        public static string UaComboBox
+        {
+            get
+            {
+                return ResourceManager.GetString("UaComboBox", resourceCulture);
+            }
+        }
+            public static string EnComboBox
+        {
+            get
+            {
+                return ResourceManager.GetString("EnComboBox", resourceCulture);
+            }
+        }
+        public static string DarkComboBox
+        {
+            get
+            {
+                return ResourceManager.GetString("DarkComboBox", resourceCulture);
+            }
+        }
+        public static string LightComboBox
+        {
+            get
+            {
+                return ResourceManager.GetString("LightComboBox", resourceCulture);
+            }
+        }
     }
+
+    
 }
