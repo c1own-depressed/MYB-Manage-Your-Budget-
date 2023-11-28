@@ -97,7 +97,7 @@ namespace MYB_NEW
                     TextBlock newExpenseTitle = new TextBlock
                     {
                         Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
-                        Text = expense.ExpenseName,
+                        Text = TruncateText(expense.ExpenseName, 27),
                         FontSize = 16,
                         FontWeight = FontWeights.DemiBold,
                     };
@@ -295,7 +295,18 @@ namespace MYB_NEW
                 }
             }
         }
-
+        private string TruncateText(string text, int maxLength)
+        {
+            if (text.Length <= maxLength)
+            {
+                return text;
+            }
+            else
+            {
+                // Truncate the text and append "..."
+                return text.Substring(0, maxLength - 3) + "...";
+            }
+        }
         private void AddIncome_Click(object sender, RoutedEventArgs e)
         {
             AddIncomePage addIncomePage = new AddIncomePage(this.IncomeListView);
