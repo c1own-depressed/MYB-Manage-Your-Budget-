@@ -112,14 +112,19 @@ namespace MYB_NEW
 
                     TextBlock newExpenseBudget = new TextBlock
                     {
+
                         Text = $"{expenseTransactionSum}/{expense.Amount} $",
                         FontSize = 12,
                         FontWeight = FontWeights.DemiBold,
                         Foreground = Brushes.Gray,
                         Height = 15,
                         VerticalAlignment = VerticalAlignment.Center,
-                    };
 
+                    };
+                    if (expenseTransactionSum > expense.Amount)
+                    {
+                        newExpenseBudget.Foreground = Brushes.Red;
+                    }
                     Button editExpenseButton = new Button
                     {
                         Style = (Style)this.Resources["InvisibleButtonStyle"],
