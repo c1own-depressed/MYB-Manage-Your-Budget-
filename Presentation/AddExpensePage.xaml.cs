@@ -63,7 +63,7 @@ namespace MYB_NEW
                 TextBlock newExpenseTitle = new TextBlock
                 {
                     Foreground = (SolidColorBrush)Application.Current.Resources["Text"],
-                    Text = newExpense.Title,
+                    Text = TruncateText(newExpense.Title, 27),
                     FontSize = 16,
                     FontWeight = FontWeights.DemiBold,
                 };
@@ -137,7 +137,18 @@ namespace MYB_NEW
             // Закрийте сторінку "AddExpensePage"
             this.Close();
         }
-
+        private string TruncateText(string text, int maxLength)
+        {
+            if (text.Length <= maxLength)
+            {
+                return text;
+            }
+            else
+            {
+                // Truncate the text and append "..."
+                return text.Substring(0, maxLength - 3) + "...";
+            }
+        }
         private void EditExpense_Click(object sender, RoutedEventArgs e,  string currentIndexExpense)
         {
             int Id = this.expenses.Expenses

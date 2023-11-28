@@ -4,6 +4,36 @@
       xmlns:rs="clr-namespace:Presentation"
       Title="Main Page" MinHeight="600" MinWidth="1000" Background="#d3d3d3">
     <Page.Resources>
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation To="#80B2B2B2" Duration="0:0:0.2" Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.2" Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="VisibleButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="Black"/>
@@ -39,7 +69,7 @@
                     <MenuItem Header="Exit" Click="Exit_Click"></MenuItem>
                 </ContextMenu>
             </Grid.ContextMenu>
-            <Grid>
+            <Grid Margin="10,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
@@ -71,9 +101,9 @@
 
 
             <!-- Block: Expenses -->
-            <ScrollViewer  VerticalScrollBarVisibility="Auto" Height="500" Margin="250,0,264,0" >
+            <ScrollViewer  VerticalScrollBarVisibility="Hidden" Height="600"  Width="400" Margin="284,0,265,0" >
 
-                <Border BorderBrush="Black" BorderThickness="0" Width="472">
+                <Border BorderBrush="Black" BorderThickness="0" Width="400">
                     <StackPanel>
 
                         <TextBlock Text="{x:Static rs:Resources.ExpensesLabel}" FontSize="36" FontWeight="Bold" Foreground="{DynamicResource Text}"/>
@@ -105,14 +135,20 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <!--<Button x:Name="StatisticButton" Content="Statistic" Style="{StaticResource InvisibleButtonStyle}" Height="40" FontSize="25" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="0,76,0,-69" BorderBrush="Black" BorderThickness="1" Click="StatisticButton_Click" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="174" />-->
-                                    <Button x:Name="DataExportButton" Content="{x:Static rs:Resources.DataExportLabel}" Style="{StaticResource InvisibleButtonStyle}" Height="40" FontSize="25" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="42,116,0,-109" BorderBrush="Black" BorderThickness="1" Click="DataExportButton_Click" />
-                                    <Button x:Name="TipsAndTricksButton" Content="{x:Static rs:Resources.TipsTricks}" Style="{StaticResource InvisibleButtonStyle}" Height="40" FontSize="25" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="42,156,0,-149" BorderBrush="Black" BorderThickness="1" Click="TipsAndTricksButton_Click" />
-                                    <Button x:Name="SettingsButton" Content="{x:Static rs:Resources.SettingsLabel}" Style="{StaticResource InvisibleButtonStyle}" Height="40" FontSize="25" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="42,196,0,-189" BorderBrush="Black" BorderThickness="1" Click="SettingsButton_Click" />
-                                    <Button x:Name="SignOutButton" Content="{x:Static rs:Resources.SignOutLabel}" Style="{StaticResource InvisibleButtonStyle}" Height="40" FontSize="25" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="42,236,0,-229" BorderBrush="Black" BorderThickness="1" Click="SignOutButton_Click" />
+                                    <Button x:Name="DataExportButton" Content="{x:Static rs:Resources.DataExportLabel}" Style="{StaticResource RoundedButtonStyle}" Height="40" FontSize="25" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="42,116,0,-109" BorderBrush="Black" BorderThickness="1" Click="DataExportButton_Click" />
 
-                                    <Button x:Name="ToggleButton" Click="Toggle_Click" Height="40" Foreground="White" Margin="239,4,10,3" Width="40" BorderThickness="0">
-                                        <Image Source="menu.png" Width="40" Height="40"/>
+                                    <Button x:Name="TipsAndTricksButton" Content="{x:Static rs:Resources.TipsTricks}" Style="{StaticResource RoundedButtonStyle}" Height="40" FontSize="25" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="42,161,0,-154" BorderBrush="Black" BorderThickness="1" Click="TipsAndTricksButton_Click" />
+
+                                    <Button x:Name="SettingsButton" Content="{x:Static rs:Resources.SettingsLabel}" Style="{StaticResource RoundedButtonStyle}" Height="40" FontSize="25" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="42,206,0,-199" BorderBrush="Black" BorderThickness="1" Click="SettingsButton_Click" />
+
+                                    <Button x:Name="SignOutButton" Content="{x:Static rs:Resources.SignOutLabel}" Style="{StaticResource RoundedButtonStyle}" Height="40" FontSize="25" FontWeight="Bold" Background="{DynamicResource Button}" Foreground="{DynamicResource Text}" Margin="42,251,0,-244" BorderBrush="Black" BorderThickness="1" Click="SignOutButton_Click" />
+
+
+                                    <Button x:Name="ToggleButton" Click="Toggle_Click" Height="40" Margin="239,4,10,3" Width="40" BorderThickness="0" Style="{StaticResource InvisibleButtonStyle}"  >
+                                        <TextBlock Text="&#x2630;" FontSize="32" FontWeight="Bold" Foreground="{DynamicResource Text}"/>
                                     </Button>
+
+
                                 </Grid>
                             </StackPanel>
                         </Border>
@@ -120,10 +156,10 @@
                     </Grid>
                 </StackPanel>
             </Border>
-            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0"  Width="396" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="70" >
+            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0"  Width="387" HorizontalAlignment="Right" VerticalAlignment="Center" Height="70" Margin="613,0,0,0" >
 
-                <StackPanel>
-                    <Button Click="TransactionButton_Click" Content="{x:Static rs:Resources.Btn_AddTransaction}" Style="{StaticResource InvisibleButtonStyle}"  Width="350" FontWeight="Bold"  FontSize="36" />
+                <StackPanel Margin="79,0,0,0">
+                    <Button Click="TransactionButton_Click" Content="{x:Static rs:Resources.Btn_AddTransaction}" Style="{StaticResource InvisibleButtonStyle}"  Width="344" FontWeight="Bold"  FontSize="25" />
                 </StackPanel>
             </Border>
         </Grid>
