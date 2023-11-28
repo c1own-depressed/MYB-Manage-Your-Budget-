@@ -171,8 +171,14 @@
   <data name="CurencyLabel" xml:space="preserve">
     <value>Валюта:  </value>
   </data>
+  <data name="DarkComboBox" xml:space="preserve">
+    <value>Темна</value>
+  </data>
   <data name="DataExportLabel" xml:space="preserve">
     <value>Експорт Даних</value>
+  </data>
+  <data name="EnComboBox" xml:space="preserve">
+    <value>Англійська</value>
   </data>
   <data name="EndDataLabel" xml:space="preserve">
     <value>Кінцева дата:</value>
@@ -188,6 +194,9 @@
   </data>
   <data name="LanguageLabel" xml:space="preserve">
     <value>Мова:</value>
+  </data>
+  <data name="LightComboBox" xml:space="preserve">
+    <value>Світла</value>
   </data>
   <data name="Link1" xml:space="preserve">
     <value>Корисне посилання 1</value>
@@ -254,5 +263,8 @@
   </data>
   <data name="TransactionNameLabel" xml:space="preserve">
     <value>Назва транзакції:</value>
+  </data>
+  <data name="UaComboBox" xml:space="preserve">
+    <value>Українська</value>
   </data>
 </root>

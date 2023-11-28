@@ -9,7 +9,7 @@
     d:DesignHeight="450" d:DesignWidth="800"
     Title="Settings" >
    
-    <Grid Background="{DynamicResource Back}">
+    <Grid x:Name="GridX" Background="{DynamicResource Back}">
         <StackPanel Orientation="Horizontal"  Margin="20">
             <Button Name="btnBack" Content="Back" Click="btnBack_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#D9D9D9" BorderThickness="0">
                 <Button.ContentTemplate>
@@ -21,21 +21,21 @@
             
         </StackPanel>
         <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <TextBlock x:Name="SettingsTextBlock" Text="{x:Static rs:Resources.SettingsLabel}" FontWeight="Bold" FontSize="28" Margin="0 0 0 10" TextAlignment="Center" />
+            <TextBlock x:Name="SettingsTextBlock" Foreground="{DynamicResource Text}" Text="{x:Static rs:Resources.SettingsLabel}" FontWeight="Bold" FontSize="28" Margin="0 0 0 10" TextAlignment="Center" />
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Center" Width="178">
                 <TextBlock Text="{x:Static rs:Resources.LanguageLabel}" Margin="0 5 20 5" Width="54" TextAlignment="Center" Foreground="{DynamicResource Text}"/>
                 <ComboBox x:Name="LanguageComboBox" Width="100" Height="25" >
-                    <ComboBoxItem Content="Ukrainian"/>
-                    <ComboBoxItem Content="English"/>
+                    <ComboBoxItem Content="{x:Static rs:Resources.UaComboBox}"/>
+                    <ComboBoxItem Content="{x:Static rs:Resources.EnComboBox}"/>
 
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Stretch" Width="231">
                 <TextBlock Text="{x:Static rs:Resources.ChooseThemeLabel}" Width="80" HorizontalAlignment="Left" TextAlignment="Center" Margin="0 5 20 5" Foreground="{DynamicResource Text}"/>
                 <ComboBox x:Name="ThemeComboBox" Width="100" Height="25">
-
-                    <ComboBoxItem Content="Dark"/>
-                    <ComboBoxItem Content="Light"/>
+                    <ComboBoxItem Content="{x:Static rs:Resources.LightComboBox}"/>
+                    <ComboBoxItem Content="{x:Static rs:Resources.DarkComboBox}"/>
+                    
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5" HorizontalAlignment="Center">

@@ -171,8 +171,14 @@
   <data name="CurencyLabel" xml:space="preserve">
     <value>Currency:</value>
   </data>
+  <data name="DarkComboBox" xml:space="preserve">
+    <value>Dark</value>
+  </data>
   <data name="DataExportLabel" xml:space="preserve">
     <value>Data export</value>
+  </data>
+  <data name="EnComboBox" xml:space="preserve">
+    <value>English</value>
   </data>
   <data name="EndDataLabel" xml:space="preserve">
     <value>End date:</value>
@@ -188,6 +194,9 @@
   </data>
   <data name="LanguageLabel" xml:space="preserve">
     <value>Language:</value>
+  </data>
+  <data name="LightComboBox" xml:space="preserve">
+    <value>Light</value>
   </data>
   <data name="Link1" xml:space="preserve">
     <value>Useful link 1</value>
@@ -254,5 +263,8 @@
   </data>
   <data name="TransactionNameLabel" xml:space="preserve">
     <value>Transaction name:</value>
+  </data>
+  <data name="UaComboBox" xml:space="preserve">
+    <value>Ukrainian</value>
   </data>
 </root>
