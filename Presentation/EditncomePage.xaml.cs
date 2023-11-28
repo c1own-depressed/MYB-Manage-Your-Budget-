@@ -39,7 +39,7 @@
         {
             int ProjectedIncome = Convert.ToInt32(this.ProjectedIncomeTextBox.Text);
             string IncomeName = this.IncomeTextBox.Text;
-            MainPageLogic.EditExpense(this.incomeId, IncomeName, ProjectedIncome);
+            MainPageLogic.EditIncome(this.incomeId, IncomeName, ProjectedIncome);
             this.Close();
         }
     }
