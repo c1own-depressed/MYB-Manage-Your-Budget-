@@ -12,8 +12,9 @@ namespace MYB_NEW
     public partial class AddSavingsPage : Window
     {
         private StackPanel savingsListView;
+        Main main;
 
-        public AddSavingsPage(StackPanel listView)
+        public AddSavingsPage(Main main)
         {
             if (UserManager.CurrentUser.Language == "ua")
             {
@@ -24,7 +25,8 @@ namespace MYB_NEW
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
             }
             this.InitializeComponent();
-            this.savingsListView = listView;
+            this.savingsListView = main.SavingsListView;
+            this.main = main;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -94,12 +96,14 @@ namespace MYB_NEW
         {
             EditSavingsPage editSavingsPage = new EditSavingsPage(this, id);
             editSavingsPage.ShowDialog();
+            this.main.UpdateUIAfterCategoryChange();
         }
 
         private void DeleteSaving_Click(object sender, RoutedEventArgs e, int id)
         {
             DeleteSavingsPage deleteSavingsPage = new DeleteSavingsPage(this, id);
             deleteSavingsPage.ShowDialog();
+            this.main.UpdateUIAfterCategoryChange();
         }
     }
 }

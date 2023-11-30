@@ -6,9 +6,10 @@ namespace MYB_NEW
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
+    using System.Windows.Navigation;
     using BLL;
     using Presentation;
-
+    
     public partial class AddCategoryPage : Window
     {
         private int categoryID;
@@ -134,12 +135,14 @@ namespace MYB_NEW
         {
             DeleteCategoryPage deleteCategoryPage = new DeleteCategoryPage(this, categoryID);
             deleteCategoryPage.ShowDialog();
+            this.mainPage.UpdateUIAfterCategoryChange();
         }
 
         private void EditCategoryButton_Click(object sender, RoutedEventArgs e, int categoryID)
         {
             EditCategoryPage editCategoryPage = new EditCategoryPage(this, categoryID);
             editCategoryPage.ShowDialog();
+            this.mainPage.UpdateUIAfterCategoryChange();
         }
 
         private void AddCategoryExpenseButton_Click(object sender, RoutedEventArgs e, int categoryID)
