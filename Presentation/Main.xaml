@@ -58,7 +58,7 @@
         </Style>
     </Page.Resources>
     <ScrollViewer  VerticalScrollBarVisibility="Auto"  >
-        <Grid Background="{DynamicResource Back}" >
+        <Grid x:Name="Gridx" Background="{DynamicResource Back}" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

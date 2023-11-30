@@ -149,6 +149,7 @@ namespace MYB_NEW
                 return text.Substring(0, maxLength - 3) + "...";
             }
         }
+
         private void EditExpense_Click(object sender, RoutedEventArgs e,  string currentIndexExpense)
         {
             int Id = this.expenses.Expenses
