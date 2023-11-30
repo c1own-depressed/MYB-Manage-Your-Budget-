@@ -488,7 +488,9 @@ namespace MYB_NEW
         {
             EditncomePage editncomePage = new EditncomePage(this, this.incomes[currentIndex].Id);
             editncomePage.ShowDialog();
+
             UpdateUIAfterCategoryChange();
+
         }
 
         private void DeleteIncome_Click(object sender, RoutedEventArgs e, int currentIndex)
@@ -496,6 +498,7 @@ namespace MYB_NEW
             DeleteIncomePage deletencomePage = new DeleteIncomePage(this, this.incomes[currentIndex].Id);
             deletencomePage.ShowDialog();
             UpdateUIAfterCategoryChange();
+
         }
 
         private void EditSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
@@ -503,6 +506,7 @@ namespace MYB_NEW
             EditSavingsPage editSavingsPage = new EditSavingsPage(this, this.savings[currentIndex].Id);
             editSavingsPage.ShowDialog();
             UpdateUIAfterCategoryChange();
+
         }
 
         private void DeleteSavings_Click(object sender, RoutedEventArgs e, int currentIndex)
@@ -510,6 +514,7 @@ namespace MYB_NEW
             DeleteSavingsPage deleteSavingsPage = new DeleteSavingsPage(this, this.savings[currentIndex].Id);
             deleteSavingsPage.ShowDialog();
             UpdateUIAfterCategoryChange();
+
         }
 
         private void EditCategory_Click(object sender, RoutedEventArgs e, int currentIndex)
@@ -533,9 +538,10 @@ namespace MYB_NEW
         {
             int expenseId = this.expenses[currentCategoryIndex].Expenses[currentIndexExpense].Id;
             int categoryId = this.expenses[currentCategoryIndex].ExpenseCategory.Id;
-            EditExpensePage editExpensePage = new EditExpensePage(this,categoryId, expenseId);
+            EditExpensePage editExpensePage = new EditExpensePage(this, categoryId, expenseId);
             editExpensePage.ShowDialog();
             UpdateUIAfterCategoryChange();
+
             // TODO: redraw MainPage
         }
 
