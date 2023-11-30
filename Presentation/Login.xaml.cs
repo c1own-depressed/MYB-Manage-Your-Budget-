@@ -16,6 +16,13 @@
             this.InitializeComponent();
         }
 
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            //GuestPage guestPage = new GuestPage();
+            Signup signup = new Signup();
+            Window.GetWindow(this).Content = signup;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string username = this.UsernameTextBox.Text;

@@ -5,34 +5,46 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Presentation"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
-      Height="800" Width="1200"
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Height="720" Width="1200"
       Title="Signup">
 
     <Grid Background="#d9d9d9">
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="400"/>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="360"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-<!--FontFamily="{StaticResource Inter}"-->
+
+        <StackPanel Orientation="Horizontal"  Margin="20">
+            <Button Name="btnBack" Content="Back" Click="btnBack_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#D9D9D9" BorderThickness="0">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <Image Source="back_icon.png" Width="48" Height="48" />
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <TextBlock Text="Back" FontWeight="Bold" FontSize="36" TextAlignment="Left" VerticalAlignment="Top" />
+        </StackPanel>
+
+
+        <!--FontFamily="{StaticResource Inter}"-->
         <TextBlock Text="Sign Up" 
-                   FontSize="90" 
-                   
+                   FontSize="70" 
                    FontWeight="Bold"
                    TextAlignment="Center"
                    HorizontalAlignment="Center" 
-                   VerticalAlignment="Top" IsEnabled="False" Margin="0,92,0,0"/>
+                   VerticalAlignment="Center" IsEnabled="False"  Width="300"/>
 
-        <Label Grid.Row="1" Margin="0,55,0,0" Width="500" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Create your Username" FontSize="22" FontWeight="Bold" />
+        <Label Grid.Row="1" Margin="0,55,0,0" Width="500" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Create your Username" FontSize="21" FontWeight="Bold" />
         <TextBox x:Name="UsernameTextBox" Grid.Row="1" Margin="0,100,0,0" Width="500" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" Text="" />
 
-        <Label Grid.Row="1" Margin="0,155,0,0" Width="500" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Enter your Email" FontSize="22" FontWeight="Bold" />
-        <TextBox x:Name="EmailTextBox" Grid.Row="1" Width="500" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" Margin="0,200,0,0"  />
+        <Label Grid.Row="1" Margin="0,155,0,0" Width="500" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Enter your Email" FontSize="21" FontWeight="Bold" />
+        <TextBox x:Name="EmailTextBox" Grid.Row="1" Width="500" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" Margin="0,195,0,0"  />
 
-        <Label Grid.Row="1" Margin="0,255,0,0" Width="500" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Create your Password" FontSize="22" FontWeight="Bold" />
-        <PasswordBox x:Name="PasswordTextBox" Grid.Row="1" Margin="0,300,0,0" Width="500" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32"   />
+        <Label Grid.Row="1" Margin="0,255,0,0" Width="500" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Create your Password" FontSize="21" FontWeight="Bold" />
+        <PasswordBox x:Name="PasswordTextBox" Grid.Row="1" Margin="0,300,0,0" Width="500" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30"   />
 
-        <Button  Grid.Row="2" Content="Sign up" Width="475" Height="104" VerticalAlignment="Top" FontSize="64" Foreground="White" Background="#6E6E6E" Margin="375,0,350,0" Click="Button_Click" />
+        <Button  Grid.Row="2" Content="Sign up" Width="430" Height="90" VerticalAlignment="Top" FontSize="54" Foreground="White" Background="#6E6E6E" Margin="302,36,302,0" Click="Button_Click" />
     </Grid>
 </Page>

@@ -38,6 +38,7 @@ namespace MYB_NEW
             {
                 AppTheme.ChangeTheme(new Uri("Themes/Dark.xaml", UriKind.Relative));
             }
+
             this.InitializeComponent();
             int userId = UserManager.CurrentUser.Id;
 
@@ -82,14 +83,9 @@ namespace MYB_NEW
                 int currentIndexExpense = -1;
                 foreach (var pair in expenses[i].ExpensesWithCost)
                 {
-                    var expense = pair.Key;  // expense
+                    var expense = pair.Key;
                     double expenseTransactionSum = pair.Value;
                     currentIndexExpense++;
-                //}
-                //for (int j = 0; j < expenses[i].Expenses.Count; j++)
-                //{
-                //    int currentIndexExpense = j;
-                //    var expense = expenses[i].Expenses[j];
 
                     StackPanel newExpensePanel = new StackPanel();
                     newExpensePanel.Orientation = Orientation.Horizontal;
@@ -119,7 +115,6 @@ namespace MYB_NEW
                         Foreground = Brushes.Gray,
                         Height = 15,
                         VerticalAlignment = VerticalAlignment.Center,
-
                     };
                     if (expenseTransactionSum > expense.Amount)
                     {
