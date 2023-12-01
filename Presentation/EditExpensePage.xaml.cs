@@ -1,11 +1,13 @@
 ﻿namespace MYB_NEW
 {
-    using BLL;
-    using DAL;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Windows;
+    using System.Windows.Media; // for SolidColorBrush
+    using System.Windows.Threading;
+    using BLL;
+    using DAL;
 
     /// <summary>
     /// Interaction logic for EditExpensePage.xaml
@@ -39,11 +41,39 @@
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int cost = Convert.ToInt32(this.ExpenseBudget.Text);
-            string transactionName = this.TitleOfExpense.Text;
-            MainPageLogic.EditExpense(expenseId, transactionName,cost);
+            try
+            {
+                int cost = Convert.ToInt32(this.ExpenseBudget.Text);
+                string transactionName = this.TitleOfExpense.Text;
+                MainPageLogic.EditExpense(expenseId, transactionName, cost);
 
-            this.Close();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex.Message, LogLevel.Error);
+
+                this.ExpenseBudget.Background = Brushes.LightPink;
+
+                DispatcherTimer timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromMilliseconds(500);
+                timer.Tick += (s, args) =>
+                {
+                    this.ExpenseBudget.Background = Brushes.White;
+                    var expense = (from expCategory in UserManager.userExpenseCategoriesWithExpenses
+                                   from exp in expCategory.Expenses
+                                   where exp.ExpenseName == this.TitleOfExpense.Text
+                                   select exp).FirstOrDefault();
+                    if (expense != null)
+                    {
+                        this.ExpenseBudget.Text = expense.Amount.ToString();
+                    }
+
+                    timer.Stop();
+                };
+
+                timer.Start();
+            }
         }
     }
 }

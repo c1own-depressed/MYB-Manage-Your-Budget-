@@ -18,29 +18,47 @@
 
         public EditncomePage(object main, int incomeId)
         {
-            if (UserManager.CurrentUser.Language == "ua")
+            try
             {
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+                if (UserManager.CurrentUser.Language == "ua")
+                {
+                    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+                }
+                else
+                {
+                    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+                }
+
+                int userId = UserManager.CurrentUser.Id;
+                this.InitializeComponent();
+                this.incomeId = incomeId;
+                this.incomeList = MainPageLogic.GetIncomesByUserId(userId);
+                Income? temp = this.incomeList.FirstOrDefault(income => income.Id == this.incomeId);
+                this.IncomeTextBox.Text = temp.IncomeName;
+                this.ProjectedIncomeTextBox.Text = temp.Amount.ToString();
             }
-            else
+            catch (Exception ex)
             {
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+                Logger.WriteLog(ex.Message, LogLevel.Error);
             }
-            int userId = UserManager.CurrentUser.Id;
-            this.InitializeComponent();
-            this.incomeId = incomeId;
-            this.incomeList = MainPageLogic.GetIncomesByUserId(userId);
-            Income? temp = this.incomeList.FirstOrDefault(income => income.Id == this.incomeId);
-            this.IncomeTextBox.Text = temp.IncomeName;
-            this.ProjectedIncomeTextBox.Text = temp.Amount.ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int ProjectedIncome = Convert.ToInt32(this.ProjectedIncomeTextBox.Text);
-            string IncomeName = this.IncomeTextBox.Text;
-            MainPageLogic.EditIncome(this.incomeId, IncomeName, ProjectedIncome);
-            this.Close();
+            try
+            {
+                int ProjectedIncome = Convert.ToInt32(this.ProjectedIncomeTextBox.Text);
+                string IncomeName = this.IncomeTextBox.Text;
+                MainPageLogic.EditIncome(this.incomeId, IncomeName, ProjectedIncome);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex.Message, LogLevel.Error);
+                this.IncomeTextBox.Text = string.Empty;
+                this.ProjectedIncomeTextBox.Text = string.Empty;
+                // TODO: change input field borders to red
+            }
         }
     }
 }
